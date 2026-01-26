@@ -1,0 +1,191 @@
+// BK Media House - Prisma Schema
+// SQLite for development, PostgreSQL for production
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ============================================
+// USER & AUTHENTICATION
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String    // bcrypt hashed
+  name          String?
+  role          String    @default("CLIENT") // ADMIN, STAFF, CLIENT
+  image         String?
+  
+  // Relations
+  bookings      Booking[]
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// ============================================
+// PORTFOLIO / CASE STUDIES
+// ============================================
+
+model Project {
+  id               String    @id @default(cuid())
+  title            String
+  slug             String    @unique
+  clientName       String
+  coverImage       String
+  images           String    // JSON array of image URLs
+  description      String
+  challenge        String?   // Proje zorluğu
+  solution         String?   // Çözüm
+  result           String?   // Sonuç
+  servicesProvided String    // JSON array of services
+  stats            String?   // JSON for flexible stats
+  featured         Boolean   @default(false)
+  publishedAt      DateTime?
+  
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+// ============================================
+// BOOKING SYSTEM
+// ============================================
+
+model Booking {
+  id          String        @id @default(cuid())
+  startTime   DateTime
+  endTime     DateTime
+  status      String        @default("PENDING") // PENDING, CONFIRMED, REJECTED, CANCELLED
+  clientName  String
+  clientEmail String
+  clientPhone String?
+  notes       String?
+  
+  // Relation to user who created the booking (null if external client)
+  createdBy   User?         @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  createdById String?
+  
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+// ============================================
+// AVAILABLE TIME SLOTS (Admin defined)
+// ============================================
+
+model AvailableSlot {
+  id        String   @id @default(cuid())
+  startTime DateTime
+  endTime   DateTime
+  isBooked  Boolean  @default(false)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============================================
+// CONTACT INQUIRIES
+// ============================================
+
+model Inquiry {
+  id          String   @id @default(cuid())
+  
+  // Step 1: Services
+  services    String   // JSON array of selected services
+  
+  // Step 2: Budget & Timeline
+  budgetRange String
+  timeline    String?
+  
+  // Step 3: Contact Info
+  name        String
+  email       String
+  phone       String?
+  company     String?
+  message     String
+  
+  // Status
+  isRead      Boolean  @default(false)
+  isArchived  Boolean  @default(false)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ============================================
+// SITE SETTINGS (for dynamic content)
+// ============================================
+
+model SiteSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============================================
+// TRUSTED COMPANIES (Logo Marquee)
+// ============================================
+
+model TrustedCompany {
+  id        String   @id @default(cuid())
+  name      String
+  logoUrl   String
+  websiteUrl String?
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============================================
+// TESTIMONIALS (Customer Reviews)
+// ============================================
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  title     String   // Job title / position
+  company   String?
+  content   String   // Review text
+  photoUrl  String?
+  rating    Int      @default(5) // 1-5 stars
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============================================
+// SERVICES (with 3D Models)
+// ============================================
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String   // Short description
+  longDescription String? // Detailed description for detail page
+  icon        String   // Lucide icon name
+  modelType   String   @default("cube") // 3D model type: cube, sphere, torus, cylinder, cone, etc.
+  modelUrl    String?  // Custom 3D model URL (.glb/.gltf)
+  effectType  String   @default("flash") // flash, glitch, wireframe, particles
+  color       String   @default("#3b82f6") // Primary color for 3D model
+  features    String?  // JSON array of features
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,415 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import { motion } from 'framer-motion'
+import {
+    ArrowLeft,
+    Save,
+    Loader2,
+    Plus,
+    X,
+    ImageIcon,
+    Sparkles,
+    TrendingUp,
+    Trash2,
+} from 'lucide-react'
+import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { createProject, generateProjectSlug } from '@/actions/projects'
+import { SERVICES, SERVICE_LABELS } from '@/lib/validations/inquiry'
+
+// Form data type
+interface ProjectFormData {
+    title: string
+    slug: string
+    clientName: string
+    coverImage: string
+    images: string[]
+    description: string
+    challenge: string
+    solution: string
+    result: string
+    servicesProvided: string[]
+    featured: boolean
+}
+
+export default function NewProjectPage() {
+    const router = useRouter()
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+    const [selectedServices, setSelectedServices] = useState<string[]>([])
+    const [stats, setStats] = useState<{ label: string; value: string }[]>([])
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setValue,
+        formState: { errors },
+    } = useForm<ProjectFormData>({
+        defaultValues: {
+            title: '',
+            slug: '',
+            clientName: '',
+            coverImage: '',
+            images: [],
+            description: '',
+            challenge: '',
+            solution: '',
+            result: '',
+            servicesProvided: [],
+            featured: false,
+        },
+    })
+
+    const title = watch('title')
+
+    // Auto-generate slug from title
+    useEffect(() => {
+        if (title) {
+            const timeoutId = setTimeout(async () => {
+                const slug = await generateProjectSlug(title)
+                setValue('slug', slug)
+            }, 500)
+            return () => clearTimeout(timeoutId)
+        }
+    }, [title, setValue])
+
+    const toggleService = (service: string) => {
+        const newServices = selectedServices.includes(service)
+            ? selectedServices.filter((s) => s !== service)
+            : [...selectedServices, service]
+        setSelectedServices(newServices)
+        setValue('servicesProvided', newServices)
+    }
+
+    const addStat = () => {
+        setStats([...stats, { label: '', value: '' }])
+    }
+
+    const removeStat = (index: number) => {
+        setStats(stats.filter((_, i) => i !== index))
+    }
+
+    const updateStat = (index: number, field: 'label' | 'value', value: string) => {
+        const newStats = [...stats]
+        newStats[index][field] = value
+        setStats(newStats)
+    }
+
+    const onSubmit = async (data: ProjectFormData) => {
+        setIsLoading(true)
+        setError(null)
+
+        try {
+            // Convert stats array to object
+            const statsObject: Record<string, string> = {}
+            stats.forEach(stat => {
+                if (stat.label && stat.value) {
+                    statsObject[stat.label] = stat.value
+                }
+            })
+
+            const result = await createProject({
+                ...data,
+                servicesProvided: selectedServices,
+                stats: Object.keys(statsObject).length > 0 ? statsObject : undefined,
+            })
+
+            if (!result.success) {
+                setError(result.error || 'Proje oluşturulamadı')
+                return
+            }
+
+            router.push('/admin/projeler')
+            router.refresh()
+        } catch {
+            setError('Bir hata oluştu')
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    return (
+        <div className="space-y-6">
+            <div className="flex items-center gap-4">
+                <Link href="/admin/projeler">
+                    <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                        <ArrowLeft className="h-5 w-5" />
+                    </Button>
+                </Link>
+                <div>
+                    <h1 className="text-2xl font-bold text-white">Yeni Proje</h1>
+                    <p className="text-zinc-500">Portföyünüze yeni bir proje ekleyin</p>
+                </div>
+            </div>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                {error && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400"
+                    >
+                        {error}
+                    </motion.div>
+                )}
+
+                <div className="grid gap-6 lg:grid-cols-3">
+                    {/* Main Content */}
+                    <div className="lg:col-span-2 space-y-6">
+                        {/* Basic Info */}
+                        <Card className="border-zinc-800 bg-zinc-900/50">
+                            <CardHeader>
+                                <CardTitle className="text-white">Temel Bilgiler</CardTitle>
+                                <CardDescription className="text-zinc-500">
+                                    Projenin temel bilgilerini girin
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-4">
+                                <div className="grid gap-4 md:grid-cols-2">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="title" className="text-zinc-300">Proje Başlığı</Label>
+                                        <Input
+                                            id="title"
+                                            placeholder="Örn: Marka Yenileme Projesi"
+                                            className="bg-zinc-800/50 border-zinc-700 text-white"
+                                            {...register('title')}
+                                        />
+                                        {errors.title && (
+                                            <p className="text-sm text-red-400">{errors.title.message}</p>
+                                        )}
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="slug" className="text-zinc-300">URL Slug</Label>
+                                        <Input
+                                            id="slug"
+                                            placeholder="marka-yenileme-projesi"
+                                            className="bg-zinc-800/50 border-zinc-700 text-white"
+                                            {...register('slug')}
+                                        />
+                                        {errors.slug && (
+                                            <p className="text-sm text-red-400">{errors.slug.message}</p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="clientName" className="text-zinc-300">Müşteri Adı</Label>
+                                    <Input
+                                        id="clientName"
+                                        placeholder="Örn: ABC Şirketi"
+                                        className="bg-zinc-800/50 border-zinc-700 text-white"
+                                        {...register('clientName')}
+                                    />
+                                    {errors.clientName && (
+                                        <p className="text-sm text-red-400">{errors.clientName.message}</p>
+                                    )}
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="description" className="text-zinc-300">Açıklama</Label>
+                                    <Textarea
+                                        id="description"
+                                        placeholder="Proje hakkında detaylı açıklama..."
+                                        rows={4}
+                                        className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                        {...register('description')}
+                                    />
+                                    {errors.description && (
+                                        <p className="text-sm text-red-400">{errors.description.message}</p>
+                                    )}
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        {/* Case Study Details */}
+                        <Card className="border-zinc-800 bg-zinc-900/50">
+                            <CardHeader>
+                                <CardTitle className="text-white">Vaka Çalışması Detayları</CardTitle>
+                                <CardDescription className="text-zinc-500">
+                                    Zorluk, Çözüm ve Sonuç formatında detaylar
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="challenge" className="text-zinc-300">Zorluk</Label>
+                                    <Textarea
+                                        id="challenge"
+                                        placeholder="Müşterinin karşılaştığı zorluklar..."
+                                        rows={3}
+                                        className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                        {...register('challenge')}
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="solution" className="text-zinc-300">Çözüm</Label>
+                                    <Textarea
+                                        id="solution"
+                                        placeholder="Sunduğunuz çözüm..."
+                                        rows={3}
+                                        className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                        {...register('solution')}
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="result" className="text-zinc-300">Sonuç</Label>
+                                    <Textarea
+                                        id="result"
+                                        placeholder="Elde edilen sonuçlar..."
+                                        rows={3}
+                                        className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                        {...register('result')}
+                                    />
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        {/* Stats/Results */}
+                        <Card className="border-zinc-800 bg-zinc-900/50">
+                            <CardHeader>
+                                <CardTitle className="text-white flex items-center gap-2">
+                                    <TrendingUp className="h-5 w-5" />
+                                    Sonuçlar / İstatistikler
+                                </CardTitle>
+                                <CardDescription className="text-zinc-500">
+                                    Proje sonuçlarını yüzdelik olarak girin (ör: Etkileşim Artışı - %150)
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="space-y-4">
+                                {stats.map((stat, index) => (
+                                    <div key={index} className="flex gap-2 items-start">
+                                        <div className="flex-1 space-y-1">
+                                            <Input
+                                                placeholder="İstatistik Adı (ör: Etkileşim Artışı)"
+                                                value={stat.label}
+                                                onChange={(e) => updateStat(index, 'label', e.target.value)}
+                                                className="bg-zinc-800/50 border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                        <div className="w-32 space-y-1">
+                                            <Input
+                                                placeholder="%150"
+                                                value={stat.value}
+                                                onChange={(e) => updateStat(index, 'value', e.target.value)}
+                                                className="bg-zinc-800/50 border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                        <Button
+                                            type="button"
+                                            variant="ghost"
+                                            size="icon"
+                                            onClick={() => removeStat(index)}
+                                            className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                                        >
+                                            <Trash2 className="h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                ))}
+                                <Button
+                                    type="button"
+                                    variant="outline"
+                                    onClick={addStat}
+                                    className="w-full border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500"
+                                >
+                                    <Plus className="mr-2 h-4 w-4" />
+                                    İstatistik Ekle
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </div>
+
+                    {/* Sidebar */}
+                    <div className="space-y-6">
+                        {/* Cover Image */}
+                        <Card className="border-zinc-800 bg-zinc-900/50">
+                            <CardHeader>
+                                <CardTitle className="text-white text-base">Kapak Görseli</CardTitle>
+                            </CardHeader>
+                            <CardContent className="space-y-4">
+                                <div className="space-y-2">
+                                    <Label htmlFor="coverImage" className="text-zinc-300">Görsel URL</Label>
+                                    <Input
+                                        id="coverImage"
+                                        placeholder="https://..."
+                                        className="bg-zinc-800/50 border-zinc-700 text-white"
+                                        {...register('coverImage')}
+                                    />
+                                    {errors.coverImage && (
+                                        <p className="text-sm text-red-400">{errors.coverImage.message}</p>
+                                    )}
+                                </div>
+                                <div className="aspect-video rounded-lg bg-zinc-800 flex items-center justify-center border border-zinc-700 border-dashed">
+                                    <div className="text-center text-zinc-500">
+                                        <ImageIcon className="h-8 w-8 mx-auto mb-2" />
+                                        <p className="text-sm">Görsel önizleme</p>
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        {/* Services */}
+                        <Card className="border-zinc-800 bg-zinc-900/50">
+                            <CardHeader>
+                                <CardTitle className="text-white text-base">Sunulan Hizmetler</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="flex flex-wrap gap-2">
+                                    {SERVICES.map((service) => (
+                                        <Badge
+                                            key={service}
+                                            variant="outline"
+                                            className={`cursor-pointer transition-colors ${selectedServices.includes(service)
+                                                ? 'bg-white text-zinc-900 border-white'
+                                                : 'text-zinc-400 border-zinc-700 hover:border-zinc-500'
+                                                }`}
+                                            onClick={() => toggleService(service)}
+                                        >
+                                            {SERVICE_LABELS[service]}
+                                        </Badge>
+                                    ))}
+                                </div>
+                                {errors.servicesProvided && (
+                                    <p className="text-sm text-red-400 mt-2">{errors.servicesProvided.message}</p>
+                                )}
+                            </CardContent>
+                        </Card>
+
+                        {/* Actions */}
+                        <Card className="border-zinc-800 bg-zinc-900/50">
+                            <CardContent className="pt-6">
+                                <Button
+                                    type="submit"
+                                    disabled={isLoading}
+                                    className="w-full bg-white text-zinc-900 hover:bg-zinc-200"
+                                >
+                                    {isLoading ? (
+                                        <>
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                            Kaydediliyor...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Save className="mr-2 h-4 w-4" />
+                                            Kaydet
+                                        </>
+                                    )}
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </div>
+            </form>
+        </div>
+    )
+}
