@@ -211,7 +211,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {/* Back to Portfolio */}
             <div className="container mx-auto px-4 py-16 text-center">
                 <Link href="/calismalar">
-                    <Button variant="outline" size="lg" className="border-zinc-800 text-white hover:bg-zinc-900">
+                    <Button variant="outline" size="lg" className="border-zinc-300 bg-white text-black hover:bg-zinc-100">
                         <ArrowLeft className="mr-2 h-4 w-4" />
                         Tüm Çalışmalara Dön
                     </Button>

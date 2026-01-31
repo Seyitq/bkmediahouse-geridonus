@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
@@ -36,15 +37,20 @@ export function Header() {
         <>
             <header
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                        ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-4'
-                        : 'bg-transparent py-6'
+                    ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-4'
+                    : 'bg-transparent py-6'
                     }`}
             >
                 <div className="container mx-auto px-4 flex items-center justify-between">
                     <Link href="/" className="relative z-50 group">
-                        <span className="text-xl font-bold text-white tracking-tighter">
-                            BK<span className="text-zinc-400 font-light group-hover:text-white transition-colors">MediaHouse</span>
-                        </span>
+                        <Image
+                            src="/bk-logo.jpg"
+                            alt="BK Media House"
+                            width={120}
+                            height={40}
+                            className="h-10 w-auto invert"
+                            priority
+                        />
                     </Link>
 
                     {/* Desktop Navigation */}

@@ -12,8 +12,8 @@ import { CTASection } from '@/components/marketing/cta-section'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'BK Media House | Dijital Ajans İstanbul',
-  description: 'Markanızın dijital dünyadaki potansiyelini modern tasarım, video prodüksiyon ve stratejik içerik ile açığa çıkarıyoruz. İstanbul merkezli dijital ajans.',
+  title: 'BK Media House | Dijital Ajans Konya - Video Prodüksiyon & Web Tasarım',
+  description: 'Konya merkezli dijital ajans. Kurumsal video prodüksiyon, drone çekimi, web tasarım, logo & marka kimliği, sosyal medya yönetimi hizmetleri. Markanızı dijitalde güçlendiriyoruz.',
   path: '/',
 })
 

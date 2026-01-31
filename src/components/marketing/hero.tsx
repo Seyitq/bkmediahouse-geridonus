@@ -63,7 +63,7 @@ export function Hero() {
                     <Link href="/calismalar">
                         <Button size="lg" variant="outline" className="h-14 px-8 text-lg rounded-full bg-transparent backdrop-blur-sm border-2 border-white/20 text-white hover:bg-white hover:text-black hover:border-white hover:scale-105 transition-all duration-300 group">
                             <Play className="mr-2 h-4 w-4 fill-current group-hover:scale-110 transition-transform" />
-                            Showreel İzle
+                            Projelerimizi İnceleyin
                         </Button>
                     </Link>
                 </motion.div>

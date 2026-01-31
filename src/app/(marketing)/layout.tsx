@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { WhatsAppButton } from '@/components/whatsapp-button'
+import { SocialButtons } from '@/components/social-buttons'
 
 export default function MarketingLayout({
     children,
@@ -16,7 +16,7 @@ export default function MarketingLayout({
             <div id="main-footer" className="relative z-50">
                 <Footer />
             </div>
-            <WhatsAppButton />
+            <SocialButtons />
         </div>
     )
 }

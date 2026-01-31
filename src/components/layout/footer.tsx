@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Instagram, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -13,9 +14,13 @@ export function Footer() {
                     {/* Brand Column */}
                     <div className="footer-col-brand space-y-6">
                         <Link href="/" className="block">
-                            <span className="text-2xl font-bold text-white tracking-tighter">
-                                BK<span className="text-zinc-600 font-light">MediaHouse</span>
-                            </span>
+                            <Image
+                                src="/bk-logo.jpg"
+                                alt="BK Media House"
+                                width={150}
+                                height={50}
+                                className="h-12 w-auto invert"
+                            />
                         </Link>
                         <p className="text-zinc-400 max-w-xs leading-relaxed">
                             Markanızın dijital dünyadaki potansiyelini modern tasarım ve stratejik içerik ile açığa çıkarıyoruz.
