@@ -52,7 +52,7 @@ export function LogoMarquee({ companies, speed = 80 }: LogoMarqueeProps) {
         )
 
         return (
-            <div className="flex-shrink-0 w-32 h-16 mx-8 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300">
+            <div className="flex-shrink-0 w-32 h-16 mx-8 opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300">
                 {websiteUrl ? (
                     <a href={websiteUrl} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                         {content}

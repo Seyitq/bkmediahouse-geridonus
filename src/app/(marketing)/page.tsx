@@ -6,6 +6,7 @@ import { FeaturedProjects } from '@/components/marketing/featured-projects'
 import { LogoMarquee } from '@/components/marketing/logo-marquee'
 import { TestimonialMarquee } from '@/components/marketing/testimonial-marquee'
 import { ServicesMarquee } from '@/components/marketing/services-marquee'
+import { PortfolioSlider } from '@/components/marketing/portfolio-slider'
 import { CTASection } from '@/components/marketing/cta-section'
 
 // Force dynamic rendering to prevent build-time database calls
@@ -18,7 +19,7 @@ export const metadata: Metadata = generatePageMetadata({
 })
 
 async function getHomePageData() {
-  const [companies, testimonials, services] = await Promise.all([
+  const [companies, testimonials, services, projects] = await Promise.all([
     db.trustedCompany.findMany({
       where: { isActive: true },
       orderBy: { order: 'asc' },
@@ -31,12 +32,24 @@ async function getHomePageData() {
       where: { isActive: true },
       orderBy: { order: 'asc' },
     }),
+    db.project.findMany({
+      orderBy: { createdAt: 'desc' },
+      take: 8,
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        coverImage: true,
+        clientName: true,
+        servicesProvided: true,
+      }
+    }),
   ])
-  return { companies, testimonials, services }
+  return { companies, testimonials, services, projects }
 }
 
 export default async function HomePage() {
-  const { companies, testimonials, services } = await getHomePageData()
+  const { companies, testimonials, services, projects } = await getHomePageData()
 
   return (
     <>
@@ -45,8 +58,8 @@ export default async function HomePage() {
       <FeaturedProjects />
       <ServicesMarquee services={services} />
       <TestimonialMarquee testimonials={testimonials} />
+      <PortfolioSlider projects={projects} />
       <CTASection />
     </>
   )
 }
-
