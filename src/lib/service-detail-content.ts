@@ -641,9 +641,10 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         ],
 
         caseStudies: [
-            { title: 'Ürün Kataloğu', client: 'Mobilya Markası', metric: '500+ ürün çekimi' },
-            { title: 'Kurumsal Çekim', client: 'Teknoloji Şirketi', metric: 'Tam ekip fotoğrafı' },
-            { title: 'E-ticaret Seti', client: 'Kozmetik Markası', metric: '%35 satış artışı' }
+            { title: 'Kızıl Gece', client: 'Portre Çekimi', metric: 'Profesyonel Stüdyo', image: '/services/case-studies/kizil-gece.jpeg' },
+            { title: 'Tutku', client: 'Konsept Çekim', metric: 'Lokasyon Çekimi', image: '/services/case-studies/tutku.jpeg' },
+            { title: 'Zamanın Ötesi', client: 'Moda Çekimi', metric: 'Yaratıcı Konsept', image: '/services/case-studies/zamanin-otesi.jpeg' },
+            { title: 'Mavi Rüya', client: 'Sanatsal Çekim', metric: 'Işık & Renk Tasarımı', image: '/services/case-studies/mavi-ruya.jpeg' }
         ],
 
         faqs: [

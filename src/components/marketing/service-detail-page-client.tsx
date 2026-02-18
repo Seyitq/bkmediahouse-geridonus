@@ -349,7 +349,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                         <p className="text-zinc-400 text-lg">Gerçek sonuçlar, gerçek markalar</p>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <div className={`grid gap-6 max-w-6xl mx-auto ${content.caseStudies.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}>
                         {content.caseStudies.map((study, idx) => (
                             <motion.div
                                 key={idx}
@@ -359,9 +359,18 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 transition={{ delay: idx * 0.1 }}
                                 className="group p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 transition-all"
                             >
-                                {/* Placeholder for image */}
-                                <div className="aspect-video rounded-lg bg-zinc-800 mb-4 overflow-hidden">
-                                    <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
+                                {/* Case study image */}
+                                <div className="aspect-[3/4] rounded-lg bg-zinc-800 mb-4 overflow-hidden relative">
+                                    {study.image ? (
+                                        <Image
+                                            src={study.image}
+                                            alt={study.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
+                                    )}
                                 </div>
 
                                 <h3 className="text-lg font-bold mb-1">{study.title}</h3>

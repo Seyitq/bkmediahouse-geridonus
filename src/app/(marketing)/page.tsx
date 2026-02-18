@@ -4,7 +4,7 @@ import { db } from '@/lib/db'
 import { Hero } from '@/components/marketing/hero'
 import { FeaturedProjects } from '@/components/marketing/featured-projects'
 import { LogoMarquee } from '@/components/marketing/logo-marquee'
-import { TestimonialMarquee } from '@/components/marketing/testimonial-marquee'
+import { TestimonialSlider } from '@/components/marketing/testimonial-slider'
 import { ServicesMarquee } from '@/components/marketing/services-marquee'
 import { PortfolioSlider } from '@/components/marketing/portfolio-slider'
 import { CTASection } from '@/components/marketing/cta-section'
@@ -57,7 +57,7 @@ export default async function HomePage() {
       <LogoMarquee companies={companies} />
       <FeaturedProjects />
       <ServicesMarquee services={services} />
-      <TestimonialMarquee testimonials={testimonials} />
+      <TestimonialSlider testimonials={testimonials} />
       <PortfolioSlider projects={projects} />
       <CTASection />
     </>
