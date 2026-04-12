@@ -146,57 +146,63 @@ function BentoCard({
             >
                 {/* Background gradient on hover */}
                 <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500"
+                    className="absolute inset-0 opacity-0 group-hover:opacity-[0.06] transition-opacity duration-500"
                     style={{
                         background: `radial-gradient(ellipse at top left, ${service.color}, transparent 70%)`,
                     }}
                 />
 
-                {/* Decorative corner accent */}
-                <div
-                    className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-[0.05] group-hover:opacity-[0.1] transition-opacity duration-500"
-                    style={{ backgroundColor: service.color }}
-                />
+                {/* Large decorative icon in background */}
+                <div className="absolute -bottom-6 -right-6 opacity-[0.04] group-hover:opacity-[0.08] transition-all duration-700 group-hover:scale-110">
+                    <DynamicIcon
+                        name={service.icon}
+                        className={isLarge ? 'h-48 w-48' : isWide ? 'h-36 w-36' : 'h-28 w-28'}
+                    />
+                </div>
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
-                    {/* Icon */}
+                    {/* Icon badge */}
                     <div
-                        className={`flex items-center justify-center rounded-xl mb-4 transition-transform duration-500 group-hover:scale-110 ${isLarge ? 'w-14 h-14' : 'w-11 h-11'
-                            }`}
+                        className={`flex items-center justify-center rounded-2xl mb-4 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg ${
+                            isLarge ? 'w-16 h-16' : 'w-12 h-12'
+                        }`}
                         style={{
-                            backgroundColor: `${service.color}12`,
+                            backgroundColor: `${service.color}15`,
                             color: service.color,
+                            boxShadow: `0 0 0 0 ${service.color}00`,
                         }}
                     >
                         <DynamicIcon
                             name={service.icon}
-                            className={isLarge ? 'h-7 w-7' : 'h-5 w-5'}
+                            className={isLarge ? 'h-8 w-8' : 'h-6 w-6'}
                         />
                     </div>
 
                     {/* Text */}
                     <div className="flex-1 flex flex-col">
                         <h3
-                            className={`font-semibold text-zinc-900 mb-2 ${isLarge ? 'text-xl md:text-2xl' : 'text-base'
-                                }`}
+                            className={`font-semibold text-zinc-900 mb-2 ${
+                                isLarge ? 'text-xl md:text-2xl' : 'text-base'
+                            }`}
                         >
                             {service.name}
                         </h3>
                         <p
-                            className={`text-zinc-500 leading-relaxed ${isLarge
+                            className={`text-zinc-500 leading-relaxed ${
+                                isLarge
                                     ? 'text-sm md:text-base line-clamp-4'
                                     : isWide
                                         ? 'text-sm line-clamp-2'
                                         : 'text-sm line-clamp-2'
-                                }`}
+                            }`}
                         >
                             {service.description}
                         </p>
                     </div>
 
                     {/* Arrow */}
-                    <div className="flex items-center gap-1 mt-4">
+                    <div className="flex items-center gap-1.5 mt-4">
                         <span
                             className="text-xs font-medium opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                             style={{ color: service.color }}
