@@ -172,13 +172,13 @@ function ServiceCard({
         >
             <div className={`
                 relative h-full p-6 rounded-2xl overflow-hidden
-                bg-gradient-to-br from-zinc-900/80 to-zinc-950/80
-                border border-zinc-800/50
-                hover:border-blue-500/30
+                bg-white
+                border border-zinc-200
+                hover:border-blue-300
                 transition-all duration-300
                 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5
-                ${isHighlighted ? 'ring-2 ring-blue-500/50 border-blue-500/30' : ''}
-                ${isFeatured ? 'bg-gradient-to-br from-blue-900/20 via-zinc-900/80 to-purple-900/20 border-blue-500/20' : ''}
+                ${isHighlighted ? 'ring-2 ring-blue-400 border-blue-300' : ''}
+                ${isFeatured ? 'bg-gradient-to-br from-blue-50 via-white to-purple-50 border-blue-200' : ''}
             `}>
                 {/* Gradient border effect */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
@@ -195,17 +195,17 @@ function ServiceCard({
                 <div className="relative mb-4">
                     <div className={`
                         inline-flex p-3 rounded-xl
-                        bg-gradient-to-br from-zinc-800 to-zinc-900
-                        ${isFeatured ? 'from-blue-500/20 to-purple-500/20' : ''}
-                        group-hover:from-blue-500/20 group-hover:to-purple-500/20
+                        bg-zinc-100
+                        ${isFeatured ? 'bg-blue-50' : ''}
+                        group-hover:bg-blue-50
                         transition-all duration-300
                     `}>
                         {/* Glow effect */}
                         <div className="absolute inset-0 rounded-xl bg-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <Icon className={`
                             relative w-7 h-7 
-                            ${isFeatured ? 'text-blue-400' : 'text-zinc-400'}
-                            group-hover:text-blue-400 
+                            ${isFeatured ? 'text-blue-500' : 'text-zinc-500'}
+                            group-hover:text-blue-500 
                             transition-colors duration-300
                         `} strokeWidth={1.5} />
                     </div>
@@ -213,14 +213,14 @@ function ServiceCard({
 
                 {/* Content */}
                 <h3 className={`
-                    text-xl font-bold text-white mb-2 
-                    group-hover:text-blue-400 transition-colors duration-300
+                    text-xl font-bold text-zinc-900 mb-2 
+                    group-hover:text-blue-600 transition-colors duration-300
                     ${isFeatured ? 'text-2xl' : ''}
                 `}>
                     {service.title}
                 </h3>
 
-                <p className="text-zinc-400 mb-4 leading-relaxed">
+                <p className="text-zinc-500 mb-4 leading-relaxed">
                     {service.tagline}
                 </p>
 
@@ -238,7 +238,7 @@ function ServiceCard({
                 {service.platforms && service.platforms.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-6">
                         {service.platforms.map((platform) => (
-                            <span key={platform} className="px-2 py-1 text-xs bg-zinc-800/50 text-zinc-400 rounded-md">
+                            <span key={platform} className="px-2 py-1 text-xs bg-zinc-100 text-zinc-500 rounded-md">
                                 {platform}
                             </span>
                         ))}
@@ -249,7 +249,7 @@ function ServiceCard({
                 <div className="relative z-20 flex items-center gap-3 pt-4 mt-auto">
                     <Link
                         href={`/hizmetler/${service.id}`}
-                        className="inline-flex items-center justify-center h-9 px-4 text-sm font-medium rounded-lg border border-zinc-700 text-zinc-300 bg-zinc-800/50 hover:bg-zinc-700 hover:text-white hover:border-zinc-600 transition-all duration-200"
+                        className="inline-flex items-center justify-center h-9 px-4 text-sm font-medium rounded-lg border border-zinc-300 text-zinc-600 bg-zinc-50 hover:bg-zinc-100 hover:text-zinc-900 hover:border-zinc-400 transition-all duration-200"
                     >
                         Detay
                     </Link>
@@ -257,7 +257,7 @@ function ServiceCard({
                         href="/booking"
                         className={`inline-flex items-center justify-center h-9 px-4 text-sm font-medium rounded-lg transition-all duration-200 ${isFeatured
                             ? 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg shadow-blue-500/25'
-                            : 'bg-white text-black hover:bg-zinc-100 shadow-sm'
+                            : 'bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm'
                             }`}
                     >
                         Teklif Al
@@ -287,7 +287,7 @@ export function ServicesPageClient() {
     const showFeatured = !selectedGoal || highlightedServices.includes(featuredService.id)
 
     return (
-        <div className="min-h-screen bg-black pt-32 pb-24">
+        <div className="min-h-screen bg-white pt-32 pb-24">
             <div className="container px-4 mx-auto">
                 {/* Mini Hero */}
                 <motion.div
@@ -295,10 +295,10 @@ export function ServicesPageClient() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center mb-12 space-y-6"
                 >
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tighter">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-zinc-900 tracking-tighter">
                         Hizmetler
                     </h1>
-                    <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
+                    <p className="text-xl text-zinc-500 max-w-2xl mx-auto">
                         İhtiyacına göre 8 hizmetten doğru kombinasyonu önerelim.
                     </p>
 
@@ -307,7 +307,7 @@ export function ServicesPageClient() {
                         {proofChips.map((chip, idx) => (
                             <div
                                 key={idx}
-                                className="flex items-center gap-2 px-4 py-2 bg-zinc-900/50 border border-zinc-800 rounded-full text-sm text-zinc-400"
+                                className="flex items-center gap-2 px-4 py-2 bg-zinc-50 border border-zinc-200 rounded-full text-sm text-zinc-500"
                             >
                                 <chip.icon className="w-4 h-4 text-blue-400" />
                                 {chip.text}
@@ -333,8 +333,8 @@ export function ServicesPageClient() {
                                     flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium
                                     border transition-all duration-300
                                     ${selectedGoal === goal.id
-                                        ? 'bg-blue-500/20 border-blue-500/50 text-blue-400'
-                                        : 'bg-zinc-900/50 border-zinc-800 text-zinc-400 hover:border-zinc-700 hover:text-white'
+                                        ? 'bg-blue-50 border-blue-400 text-blue-600'
+                                        : 'bg-zinc-50 border-zinc-200 text-zinc-500 hover:border-zinc-300 hover:text-zinc-900'
                                     }
                                 `}
                             >
@@ -347,7 +347,7 @@ export function ServicesPageClient() {
                         {selectedGoal && (
                             <button
                                 onClick={() => setSelectedGoal(null)}
-                                className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-all duration-300"
+                                className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium border border-zinc-300 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 transition-all duration-300"
                             >
                                 Tümünü Göster
                             </button>
@@ -386,17 +386,17 @@ export function ServicesPageClient() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-500/20 rounded-2xl p-12 md:p-16"
+                    className="text-center bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-100 rounded-2xl p-12 md:p-16"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-6">
                         Projenizi Hayata Geçirelim
                     </h2>
-                    <p className="text-lg text-zinc-400 max-w-xl mx-auto mb-8">
+                    <p className="text-lg text-zinc-500 max-w-xl mx-auto mb-8">
                         İhtiyaçlarınızı anlayalım ve size özel bir çözüm sunalım. Hemen bizimle iletişime geçin.
                     </p>
                     <Link
                         href="/booking"
-                        className="inline-flex items-center justify-center h-14 px-10 text-lg bg-white text-black hover:bg-zinc-200 rounded-full font-medium transition-colors"
+                        className="inline-flex items-center justify-center h-14 px-10 text-lg bg-zinc-900 text-white hover:bg-zinc-800 rounded-full font-medium transition-colors"
                     >
                         Ücretsiz Danışmanlık Alın
                         <ArrowRight className="ml-2 h-5 w-5" />

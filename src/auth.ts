@@ -3,6 +3,7 @@ import Credentials from 'next-auth/providers/credentials'
 import bcrypt from 'bcryptjs'
 import { db } from '@/lib/db'
 import { loginSchema } from '@/lib/validations/auth'
+import { authConfig } from '@/auth.config'
 
 declare module 'next-auth' {
     interface User {
@@ -20,7 +21,7 @@ declare module 'next-auth' {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-    trustHost: true,
+    ...authConfig,
     providers: [
         Credentials({
             name: 'credentials',
@@ -61,27 +62,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             },
         }),
     ],
-    callbacks: {
-        async jwt({ token, user }) {
-            if (user) {
-                token.id = user.id as string
-                token.role = user.role
-            }
-            return token
-        },
-        async session({ session, token }) {
-            if (token) {
-                session.user.id = token.id as string
-                session.user.role = token.role as string
-            }
-            return session
-        },
-    },
-    pages: {
-        signIn: '/giris',
-        error: '/giris',
-    },
-    session: {
-        strategy: 'jwt',
-    },
 })

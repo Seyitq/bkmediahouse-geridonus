@@ -75,15 +75,15 @@ export function TestimonialSlider({
 
     return (
         <section
-            className="py-20 bg-zinc-900/50 overflow-hidden"
+            className="py-20 bg-white overflow-hidden"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
             <div className="container px-4 mx-auto">
                 {/* Header */}
                 <div className="text-center space-y-4 mb-12">
-                    <p className="text-blue-400 text-sm uppercase tracking-widest">Müşteri Yorumları</p>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                    <p className="text-blue-600 text-sm uppercase tracking-widest">Müşteri Yorumları</p>
+                    <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 tracking-tight">
                         Müşterilerimiz Ne Diyor?
                     </h2>
                 </div>
@@ -95,7 +95,7 @@ export function TestimonialSlider({
                         variant="ghost"
                         size="icon"
                         onClick={goToPrev}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 z-10 h-12 w-12 rounded-full bg-zinc-800/80 hover:bg-zinc-700 text-white border border-zinc-700 backdrop-blur-sm transition-all hover:scale-110"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-16 z-10 h-12 w-12 rounded-full bg-white hover:bg-zinc-100 text-zinc-700 border border-zinc-200 shadow-sm transition-all hover:scale-110"
                         aria-label="Önceki yorum"
                     >
                         <ChevronLeft className="h-6 w-6" />
@@ -105,7 +105,7 @@ export function TestimonialSlider({
                         variant="ghost"
                         size="icon"
                         onClick={goToNext}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 z-10 h-12 w-12 rounded-full bg-zinc-800/80 hover:bg-zinc-700 text-white border border-zinc-700 backdrop-blur-sm transition-all hover:scale-110"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-16 z-10 h-12 w-12 rounded-full bg-white hover:bg-zinc-100 text-zinc-700 border border-zinc-200 shadow-sm transition-all hover:scale-110"
                         aria-label="Sonraki yorum"
                     >
                         <ChevronRight className="h-6 w-6" />
@@ -124,14 +124,14 @@ export function TestimonialSlider({
                                         className="w-full flex-shrink-0 px-4"
                                     >
                                         <Card className={cn(
-                                            "bg-zinc-900/80 border-zinc-800 backdrop-blur-sm transition-all duration-500",
+                                            "bg-white border-zinc-200 shadow-sm transition-all duration-500",
                                             index === currentIndex ? "opacity-100 scale-100" : "opacity-50 scale-95"
                                         )}>
                                             <CardContent className="p-8 md:p-12">
                                                 <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
                                                     {/* Photo */}
                                                     <div className="flex-shrink-0">
-                                                        <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-zinc-800 flex items-center justify-center overflow-hidden ring-4 ring-zinc-700/50">
+                                                        <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-zinc-100 flex items-center justify-center overflow-hidden ring-4 ring-zinc-200">
                                                             {testimonial.photoUrl ? (
                                                                 /* eslint-disable-next-line @next/next/no-img-element */
                                                                 <img
@@ -140,16 +140,16 @@ export function TestimonialSlider({
                                                                     className="w-full h-full object-cover"
                                                                 />
                                                             ) : (
-                                                                <User className="h-12 w-12 md:h-16 md:w-16 text-zinc-600" />
+                                                                <User className="h-12 w-12 md:h-16 md:w-16 text-zinc-400" />
                                                             )}
                                                         </div>
                                                     </div>
 
                                                     {/* Content */}
                                                     <div className="flex-1 text-center md:text-left">
-                                                        <Quote className="h-10 w-10 text-blue-500/30 mb-4 mx-auto md:mx-0" />
+                                                        <Quote className="h-10 w-10 text-blue-500/20 mb-4 mx-auto md:mx-0" />
 
-                                                        <p className="text-zinc-300 text-lg md:text-xl leading-relaxed mb-6">
+                                                        <p className="text-zinc-600 text-lg md:text-xl leading-relaxed mb-6">
                                                             &ldquo;{testimonial.content}&rdquo;
                                                         </p>
 
@@ -162,7 +162,7 @@ export function TestimonialSlider({
                                                                         "h-5 w-5",
                                                                         i < testimonial.rating
                                                                             ? "fill-yellow-500 text-yellow-500"
-                                                                            : "fill-zinc-700 text-zinc-700"
+                                                                            : "fill-zinc-200 text-zinc-200"
                                                                     )}
                                                                 />
                                                             ))}
@@ -170,10 +170,10 @@ export function TestimonialSlider({
 
                                                         {/* Author Info */}
                                                         <div>
-                                                            <div className="font-semibold text-white text-lg">
+                                                            <div className="font-semibold text-zinc-900 text-lg">
                                                                 {testimonial.name}
                                                             </div>
-                                                            <div className="text-blue-400">
+                                                            <div className="text-blue-600">
                                                                 {testimonial.title}
                                                                 {testimonial.company && `, ${testimonial.company}`}
                                                             </div>
@@ -198,8 +198,8 @@ export function TestimonialSlider({
                             className={cn(
                                 "h-2 rounded-full transition-all duration-300 relative overflow-hidden",
                                 index === currentIndex
-                                    ? "w-16 bg-zinc-700"
-                                    : "w-2 bg-zinc-700 hover:bg-zinc-600"
+                                    ? "w-16 bg-zinc-200"
+                                    : "w-2 bg-zinc-200 hover:bg-zinc-300"
                             )}
                             aria-label={`Yorum ${index + 1}'e git`}
                         >

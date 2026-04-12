@@ -14,9 +14,14 @@ import { SERVICE_LABELS } from '@/lib/validations/inquiry'
 export const dynamic = 'force-dynamic'
 
 async function getProject(slug: string) {
-    return await db.project.findUnique({
-        where: { slug },
-    })
+    try {
+        return await db.project.findUnique({
+            where: { slug },
+        })
+    } catch (error) {
+        console.error('[ProjectDetail] Veritabanı sorgusu başarısız:', error)
+        return null
+    }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -48,7 +53,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     const stats = project.stats ? JSON.parse(project.stats as unknown as string) : null
 
     return (
-        <article className="min-h-screen bg-black pt-24 pb-24">
+        <article className="min-h-screen bg-white pt-24 pb-24">
             {/* Hero Section */}
             <div className="relative h-[60vh] min-h-[500px] overflow-hidden">
                 {project.coverImage ? (
@@ -58,18 +63,19 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         fill
                         className="object-cover"
                         priority
+                        unoptimized
                     />
                 ) : (
-                    <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
-                        <span className="text-zinc-700 text-2xl">Görsel Yok</span>
+                    <div className="w-full h-full bg-zinc-100 flex items-center justify-center">
+                        <span className="text-zinc-400 text-2xl">Görsel Yok</span>
                     </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent" />
 
                 {/* Hero Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
                     <div className="container mx-auto">
-                        <Link href="/calismalar" className="inline-flex items-center text-zinc-400 hover:text-white transition-colors mb-6">
+                        <Link href="/calismalar" className="inline-flex items-center text-zinc-300 hover:text-white transition-colors mb-6">
                             <ArrowLeft className="mr-2 h-4 w-4" />
                             Tüm Çalışmalar
                         </Link>
@@ -101,8 +107,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     <div className="lg:col-span-2 space-y-12">
                         {/* Description */}
                         <section>
-                            <h2 className="text-2xl font-bold text-white mb-6">Proje Hakkında</h2>
-                            <p className="text-lg text-zinc-400 leading-relaxed">
+                            <h2 className="text-2xl font-bold text-zinc-900 mb-6">Proje Hakkında</h2>
+                            <p className="text-lg text-zinc-500 leading-relaxed">
                                 {project.description}
                             </p>
                         </section>
@@ -110,8 +116,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         {/* Challenge */}
                         {project.challenge && (
                             <section>
-                                <h2 className="text-2xl font-bold text-white mb-6">Zorluk</h2>
-                                <p className="text-lg text-zinc-400 leading-relaxed">
+                                <h2 className="text-2xl font-bold text-zinc-900 mb-6">Zorluk</h2>
+                                <p className="text-lg text-zinc-500 leading-relaxed">
                                     {project.challenge}
                                 </p>
                             </section>
@@ -120,8 +126,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         {/* Solution */}
                         {project.solution && (
                             <section>
-                                <h2 className="text-2xl font-bold text-white mb-6">Çözüm</h2>
-                                <p className="text-lg text-zinc-400 leading-relaxed">
+                                <h2 className="text-2xl font-bold text-zinc-900 mb-6">Çözüm</h2>
+                                <p className="text-lg text-zinc-500 leading-relaxed">
                                     {project.solution}
                                 </p>
                             </section>
@@ -130,8 +136,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         {/* Result */}
                         {project.result && (
                             <section>
-                                <h2 className="text-2xl font-bold text-white mb-6">Sonuç</h2>
-                                <p className="text-lg text-zinc-400 leading-relaxed">
+                                <h2 className="text-2xl font-bold text-zinc-900 mb-6">Sonuç</h2>
+                                <p className="text-lg text-zinc-500 leading-relaxed">
                                     {project.result}
                                 </p>
                             </section>
@@ -140,15 +146,16 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         {/* Gallery */}
                         {images.length > 0 && (
                             <section>
-                                <h2 className="text-2xl font-bold text-white mb-6">Galeri</h2>
+                                <h2 className="text-2xl font-bold text-zinc-900 mb-6">Galeri</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {images.map((image, index) => (
-                                        <div key={index} className="relative aspect-video rounded-lg overflow-hidden bg-zinc-900">
+                                        <div key={index} className="relative aspect-video rounded-lg overflow-hidden bg-zinc-100">
                                             <Image
                                                 src={image}
                                                 alt={`${project.title} - Görsel ${index + 1}`}
                                                 fill
                                                 className="object-cover"
+                                                unoptimized
                                             />
                                         </div>
                                     ))}
@@ -161,12 +168,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     <div className="space-y-8">
                         {/* Stats */}
                         {stats && Object.keys(stats).length > 0 && (
-                            <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
-                                <h3 className="text-lg font-bold text-white mb-6">Sonuçlar</h3>
+                            <div className="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm">
+                                <h3 className="text-lg font-bold text-zinc-900 mb-6">Sonuçlar</h3>
                                 <div className="space-y-4">
                                     {Object.entries(stats).map(([key, value]) => (
                                         <div key={key}>
-                                            <div className="text-3xl font-bold text-white">{String(value)}</div>
+                                            <div className="text-3xl font-bold text-zinc-900">{String(value)}</div>
                                             <div className="text-sm text-zinc-500">{key}</div>
                                         </div>
                                     ))}
@@ -175,13 +182,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         )}
 
                         {/* Services */}
-                        <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
-                            <h3 className="text-lg font-bold text-white mb-6">Sunulan Hizmetler</h3>
+                        <div className="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm">
+                            <h3 className="text-lg font-bold text-zinc-900 mb-6">Sunulan Hizmetler</h3>
                             <div className="flex flex-wrap gap-2">
                                 {services.map((service) => (
                                     <Badge
                                         key={service}
-                                        className="bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
+                                        className="bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
                                     >
                                         {SERVICE_LABELS[service as keyof typeof SERVICE_LABELS] || service}
                                     </Badge>
@@ -190,13 +197,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         </div>
 
                         {/* CTA */}
-                        <div className="bg-gradient-to-br from-blue-900/20 to-purple-900/20 border border-blue-500/20 rounded-xl p-6">
-                            <h3 className="text-lg font-bold text-white mb-3">Benzer Bir Proje mi?</h3>
-                            <p className="text-zinc-400 mb-6">
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
+                            <h3 className="text-lg font-bold text-zinc-900 mb-3">Benzer Bir Proje mi?</h3>
+                            <p className="text-zinc-500 mb-6">
                                 Markanız için de böyle bir proje oluşturmak ister misiniz?
                             </p>
                             <Link href="/booking">
-                                <Button className="w-full bg-white text-black hover:bg-zinc-200">
+                                <Button className="w-full bg-zinc-900 text-white hover:bg-zinc-800">
                                     Hemen İletişime Geçin
                                     <ExternalLink className="ml-2 h-4 w-4" />
                                 </Button>
@@ -206,7 +213,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 </div>
             </div>
 
-            <Separator className="bg-zinc-900" />
+            <Separator className="bg-zinc-200" />
 
             {/* Back to Portfolio */}
             <div className="container mx-auto px-4 py-16 text-center">

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Save, Loader2, Layers, FileText, Palette, Hash } from 'lucide-react'
+import { ArrowLeft, Save, Loader2, Layers, FileText, Palette, Hash, ImageIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,36 +11,12 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Switch } from '@/components/ui/switch'
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select'
 import { createService } from '@/actions/services'
-
-const modelTypes = [
-    { value: 'box', label: 'Küp' },
-    { value: 'sphere', label: 'Küre' },
-    { value: 'cylinder', label: 'Silindir' },
-    { value: 'cone', label: 'Koni' },
-    { value: 'torus', label: 'Halka' },
-    { value: 'octahedron', label: 'Oktahedron' },
-    { value: 'dodecahedron', label: 'Dodecahedron' },
-    { value: 'icosahedron', label: 'Icosahedron' },
-]
+import { ImageUploader } from '@/components/admin/image-uploader'
 
 const iconOptions = [
     'Video', 'Share2', 'Palette', 'Monitor', 'Camera', 'Megaphone', 'FileText', 'Calendar',
     'Layers', 'Zap', 'Star', 'Heart', 'Target', 'Briefcase', 'Cpu', 'Globe'
-]
-
-const effectTypes = [
-    { value: 'flash', label: 'Flash (Işık Patlaması)' },
-    { value: 'glitch', label: 'Glitch (Bozulma)' },
-    { value: 'wireframe', label: 'Wireframe (Tel Kafes)' },
-    { value: 'particles', label: 'Particles (Parçacıklar)' },
 ]
 
 export default function NewServicePage() {
@@ -54,11 +30,9 @@ export default function NewServicePage() {
         description: '',
         longDescription: '',
         icon: 'Layers',
-        modelType: 'box',
-        modelUrl: '',
-        effectType: 'flash',
         color: '#3b82f6',
         features: '',
+        photos: '[]',
         order: 0,
         isActive: true,
     })
@@ -116,7 +90,7 @@ export default function NewServicePage() {
                 </Link>
                 <div>
                     <h1 className="text-2xl font-bold text-white">Yeni Hizmet Ekle</h1>
-                    <p className="text-zinc-500">Yeni bir hizmet ve 3D model ekleyin</p>
+                    <p className="text-zinc-500">Yeni bir hizmet ekleyin</p>
                 </div>
             </div>
 
@@ -224,6 +198,29 @@ export default function NewServicePage() {
                                     onCheckedChange={(checked) => setFormData(prev => ({ ...prev, isActive: checked }))}
                                 />
                             </div>
+                        </CardContent>
+                    </Card>
+
+                    {/* Service Photos */}
+                    <Card className="border-zinc-800 bg-zinc-900/50">
+                        <CardHeader>
+                            <CardTitle className="text-white flex items-center gap-2">
+                                <ImageIcon className="h-5 w-5" />
+                                Hizmet Fotoğrafları
+                            </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <ImageUploader
+                                multiple
+                                values={(() => {
+                                    try {
+                                        return JSON.parse(formData.photos || '[]')
+                                    } catch {
+                                        return []
+                                    }
+                                })()}
+                                onMultiChange={(urls) => setFormData(prev => ({ ...prev, photos: JSON.stringify(urls) }))}
+                            />
                         </CardContent>
                     </Card>
                 </div>

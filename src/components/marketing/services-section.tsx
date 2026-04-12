@@ -13,7 +13,6 @@ interface Service {
     slug: string
     description: string
     icon: string
-    modelType: string
     color: string
 }
 
@@ -38,19 +37,19 @@ export function ServicesSection({ services }: ServicesSectionProps) {
     }
 
     return (
-        <section className="py-24 bg-zinc-950 border-y border-zinc-900 overflow-hidden">
+        <section className="py-24 bg-zinc-50 border-y border-zinc-200 overflow-hidden">
             <div className="container px-4 mx-auto">
                 <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tighter">
-                        Hizmet <span className="text-zinc-600">Alanı</span>
+                    <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 tracking-tighter">
+                        Hizmet <span className="text-zinc-400">Alanı</span>
                     </h2>
-                    <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
+                    <p className="text-zinc-500 max-w-2xl mx-auto text-lg">
                         Markanızın ihtiyacı olan tüm dijital çözümleri tek bir çatı altında sunuyoruz.
                     </p>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
-                    {/* 3D Viewer Section */}
+                    {/* Icon Section */}
                     <div className="relative order-2 lg:order-1">
                         <div className="aspect-square max-w-lg mx-auto relative">
                             {/* Glow effect */}
@@ -59,7 +58,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                                 style={{ backgroundColor: selectedService?.color || '#3b82f6' }}
                             />
 
-                            {/* 3D Canvas */}
+                            {/* Icon Display */}
                             <div className="relative z-10 w-full h-full">
                                 {selectedService && (
                                     <div className="w-full h-full flex items-center justify-center">
@@ -81,7 +80,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                                 >
                                     {selectedService.name}
                                 </h3>
-                                <p className="text-zinc-400 max-w-md mx-auto">
+                                <p className="text-zinc-500 max-w-md mx-auto">
                                     {selectedService.description}
                                 </p>
                                 <Link href={`/hizmetler/${selectedService.slug}`}>
@@ -109,8 +108,8 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                                     <Card
                                         key={service.id}
                                         className={`
-                                            bg-black border-zinc-900 transition-all duration-300 cursor-pointer group
-                                            ${isSelected ? 'border-2 scale-105 shadow-lg' : 'hover:border-zinc-700'}
+                                            bg-white border-zinc-200 transition-all duration-300 cursor-pointer group
+                                            ${isSelected ? 'border-2 scale-105 shadow-lg' : 'hover:border-zinc-300 hover:shadow-md'}
                                         `}
                                         style={{
                                             borderColor: isSelected ? service.color : undefined,
@@ -122,15 +121,15 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                                             <div
                                                 className="p-4 rounded-full transition-colors"
                                                 style={{
-                                                    backgroundColor: isSelected ? `${service.color}20` : 'rgb(24 24 27)',
-                                                    color: isSelected ? service.color : 'rgb(161 161 170)',
+                                                    backgroundColor: isSelected ? `${service.color}20` : 'rgb(244 244 245)',
+                                                    color: isSelected ? service.color : 'rgb(113 113 122)',
                                                 }}
                                             >
                                                 <DynamicIcon name={service.icon} className="h-8 w-8" />
                                             </div>
                                             <h3
                                                 className="font-medium transition-colors"
-                                                style={{ color: isSelected ? service.color : '#fff' }}
+                                                style={{ color: isSelected ? service.color : '#18181b' }}
                                             >
                                                 {service.name}
                                             </h3>

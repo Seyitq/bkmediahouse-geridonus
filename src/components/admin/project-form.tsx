@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { updateProject, deleteProject } from '@/actions/projects'
 import { SERVICES, SERVICE_LABELS } from '@/lib/validations/inquiry'
+import { ImageUploader } from '@/components/admin/image-uploader'
 
 interface Project {
     id: string
@@ -49,6 +50,14 @@ export function EditProjectForm({ project }: { project: Project }) {
     const [error, setError] = useState<string | null>(null)
     const [selectedServices, setSelectedServices] = useState<string[]>([])
     const [stats, setStats] = useState<{ label: string; value: string }[]>([])
+    const [coverImage, setCoverImage] = useState(project.coverImage || '')
+    const [galleryImages, setGalleryImages] = useState<string[]>(() => {
+        try {
+            return JSON.parse(project.images || '[]')
+        } catch {
+            return []
+        }
+    })
 
     const {
         register,
@@ -125,8 +134,9 @@ export function EditProjectForm({ project }: { project: Project }) {
             const result = await updateProject({
                 id: project.id,
                 ...data,
+                coverImage,
                 servicesProvided: selectedServices,
-                images: JSON.parse(project.images || '[]'),
+                images: galleryImages,
                 stats: Object.keys(statsObject).length > 0 ? statsObject : undefined,
             })
 
@@ -335,26 +345,28 @@ export function EditProjectForm({ project }: { project: Project }) {
                         <CardHeader>
                             <CardTitle className="text-white text-base">Kapak Görseli</CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-4">
-                            <div className="space-y-2">
-                                <Label htmlFor="coverImage" className="text-zinc-300">Görsel URL</Label>
-                                <Input
-                                    id="coverImage"
-                                    placeholder="https://..."
-                                    className="bg-zinc-800/50 border-zinc-700 text-white"
-                                    {...register('coverImage')}
-                                />
-                            </div>
-                            <div
-                                className="aspect-video rounded-lg bg-zinc-800 bg-cover bg-center border border-zinc-700"
-                                style={{ backgroundImage: project.coverImage ? `url(${project.coverImage})` : undefined }}
-                            >
-                                {!project.coverImage && (
-                                    <div className="h-full flex items-center justify-center text-zinc-500">
-                                        <ImageIcon className="h-8 w-8" />
-                                    </div>
-                                )}
-                            </div>
+                        <CardContent>
+                            <ImageUploader
+                                value={coverImage}
+                                onChange={setCoverImage}
+                            />
+                        </CardContent>
+                    </Card>
+
+                    {/* Gallery Images */}
+                    <Card className="border-zinc-800 bg-zinc-900/50">
+                        <CardHeader>
+                            <CardTitle className="text-white text-base">Proje Görselleri</CardTitle>
+                            <CardDescription className="text-zinc-500">
+                                Birden fazla görsel ekleyebilirsiniz
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <ImageUploader
+                                multiple
+                                values={galleryImages}
+                                onMultiChange={setGalleryImages}
+                            />
                         </CardContent>
                     </Card>
 

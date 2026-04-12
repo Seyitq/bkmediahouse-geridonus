@@ -12,16 +12,8 @@ function getEnvVar(key: string, required: boolean = true): string {
 }
 
 export const env = {
-    // Database
-    DATABASE_URL: getEnvVar('DATABASE_URL'),
-
     // Auth
     AUTH_SECRET: getEnvVar('AUTH_SECRET'),
-
-    // Cloudinary (optional)
-    CLOUDINARY_CLOUD_NAME: getEnvVar('CLOUDINARY_CLOUD_NAME', false),
-    CLOUDINARY_API_KEY: getEnvVar('CLOUDINARY_API_KEY', false),
-    CLOUDINARY_API_SECRET: getEnvVar('CLOUDINARY_API_SECRET', false),
 
     // Google Analytics (optional)
     NEXT_PUBLIC_GA_ID: getEnvVar('NEXT_PUBLIC_GA_ID', false),

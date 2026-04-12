@@ -74,7 +74,7 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         slug: 'video-produksiyon',
         title: 'Video Prodüksiyon',
         heroPromise: '2–4 haftada reklam filmi + sosyal medya kesitleri (cut) seti.',
-        heroImage: '/services/video-produksiyon.png',
+        heroImage: '/hizmetler/video-produksiyon/hero.png',
         proofChips: ['24 saat içinde dönüş', 'Net kapsam + teklif', 'Ölçülebilir sonuç'],
 
         deliverables: [
@@ -190,7 +190,7 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         slug: 'sosyal-medya-yonetimi',
         title: 'Sosyal Medya Yönetimi',
         heroPromise: '30 günde içerik düzeni + topluluk yönetimi + raporlama.',
-        heroImage: '/services/sosyal-medya.png',
+        heroImage: '/hizmetler/sosyal-medya/hero.png',
         proofChips: ['24 saat içinde dönüş', 'Net kapsam + teklif', 'Ölçülebilir sonuç'],
 
         deliverables: [
@@ -307,7 +307,7 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         slug: 'marka-kimligi',
         title: 'Marka Kimliği',
         heroPromise: '2–3 haftada tutarlı kimlik: logo + sistem + rehber.',
-        heroImage: '/services/marka-kimligi.png',
+        heroImage: '/hizmetler/marka-kimligi/hero.png',
         proofChips: ['24 saat içinde dönüş', 'Net kapsam + teklif', 'Ölçülebilir sonuç'],
 
         deliverables: [
@@ -424,7 +424,7 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         slug: 'web-tasarim',
         title: 'Web Tasarım',
         heroPromise: 'Hızlı, modern ve dönüşüm odaklı web sitesi.',
-        heroImage: '/services/web-tasarim.png',
+        heroImage: '/hizmetler/web-tasarim/hero.png',
         proofChips: ['24 saat içinde dönüş', 'Net kapsam + teklif', 'Ölçülebilir sonuç'],
 
         deliverables: [
@@ -544,7 +544,7 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         slug: 'fotograf-cekimi',
         title: 'Fotoğraf Çekimi',
         heroPromise: '1–2 günde çekim + profesyonel retouch teslim.',
-        heroImage: '/services/fotograf-cekimi.png',
+        heroImage: '/hizmetler/fotograf-cekimi/hero.png',
         proofChips: ['24 saat içinde dönüş', 'Net kapsam + teklif', 'Ölçülebilir sonuç'],
 
         deliverables: [
@@ -641,10 +641,10 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         ],
 
         caseStudies: [
-            { title: 'Kızıl Gece', client: 'Portre Çekimi', metric: 'Profesyonel Stüdyo', image: '/services/case-studies/kizil-gece.jpeg' },
-            { title: 'Tutku', client: 'Konsept Çekim', metric: 'Lokasyon Çekimi', image: '/services/case-studies/tutku.jpeg' },
-            { title: 'Zamanın Ötesi', client: 'Moda Çekimi', metric: 'Yaratıcı Konsept', image: '/services/case-studies/zamanin-otesi.jpeg' },
-            { title: 'Mavi Rüya', client: 'Sanatsal Çekim', metric: 'Işık & Renk Tasarımı', image: '/services/case-studies/mavi-ruya.jpeg' }
+            { title: 'Kızıl Gece', client: 'Portre Çekimi', metric: 'Profesyonel Stüdyo', image: '/hizmetler/fotograf-cekimi/kizil-gece.jpeg' },
+            { title: 'Tutku', client: 'Konsept Çekim', metric: 'Lokasyon Çekimi', image: '/hizmetler/fotograf-cekimi/tutku.jpeg' },
+            { title: 'Zamanın Ötesi', client: 'Moda Çekimi', metric: 'Yaratıcı Konsept', image: '/hizmetler/fotograf-cekimi/zamanin-otesi.jpeg' },
+            { title: 'Mavi Rüya', client: 'Sanatsal Çekim', metric: 'Işık & Renk Tasarımı', image: '/hizmetler/fotograf-cekimi/mavi-ruya.jpeg' }
         ],
 
         faqs: [
@@ -660,7 +660,7 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         slug: 'reklam-kampanyasi',
         title: 'Reklam Kampanyası',
         heroPromise: '7 günde ölçüm + kampanya seti + optimizasyon planı.',
-        heroImage: '/services/reklam-kampanyasi.png',
+        heroImage: '/hizmetler/reklam-kampanyasi/hero.png',
         proofChips: ['24 saat içinde dönüş', 'Net kapsam + teklif', 'Ölçülebilir sonuç'],
 
         deliverables: [
@@ -778,7 +778,7 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         slug: 'icerik-uretimi',
         title: 'İçerik Üretimi',
         heroPromise: 'Haftalık üretim: SEO + sosyal + e-posta akışı.',
-        heroImage: '/services/icerik-uretimi.png',
+        heroImage: '/hizmetler/icerik-uretimi/hero.png',
         proofChips: ['24 saat içinde dönüş', 'Net kapsam + teklif', 'Ölçülebilir sonuç'],
 
         deliverables: [
@@ -892,7 +892,7 @@ export const serviceDetailContents: Record<string, ServiceDetailContent> = {
         slug: 'etkinlik-yonetimi',
         title: 'Etkinlik Yönetimi',
         heroPromise: 'Planlama + operasyon + içerik: uçtan uca etkinlik.',
-        heroImage: '/services/etkinlik-yonetimi.png',
+        heroImage: '/hizmetler/etkinlik-yonetimi/hero.png',
         proofChips: ['24 saat içinde dönüş', 'Net kapsam + teklif', 'Ölçülebilir sonuç'],
 
         deliverables: [

@@ -47,7 +47,7 @@ export default async function ServicesPage() {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-2xl font-bold text-white">Hizmetler</h1>
-                    <p className="text-zinc-500">3D modelli hizmetleri yönetin</p>
+                    <p className="text-zinc-500">Hizmetleri yönetin</p>
                 </div>
                 <div className="flex gap-2">
                     {services.length === 0 && (
@@ -75,7 +75,7 @@ export default async function ServicesPage() {
                 <CardHeader>
                     <CardTitle className="text-white">Tüm Hizmetler</CardTitle>
                     <CardDescription className="text-zinc-500">
-                        Ana sayfada gösterilecek hizmetler ve 3D modelleri
+                        Ana sayfada gösterilecek hizmetler
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -94,7 +94,6 @@ export default async function ServicesPage() {
                                     <TableHead className="text-zinc-400 w-16">Sıra</TableHead>
                                     <TableHead className="text-zinc-400">Icon</TableHead>
                                     <TableHead className="text-zinc-400">Hizmet</TableHead>
-                                    <TableHead className="text-zinc-400">3D Model</TableHead>
                                     <TableHead className="text-zinc-400">Durum</TableHead>
                                     <TableHead className="text-zinc-400 text-right">İşlemler</TableHead>
                                 </TableRow>
@@ -116,11 +115,6 @@ export default async function ServicesPage() {
                                                 <div className="text-white font-medium">{service.name}</div>
                                                 <div className="text-sm text-zinc-500">{service.slug}</div>
                                             </div>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Badge variant="outline" className="border-zinc-700 text-zinc-400">
-                                                {service.modelType}
-                                            </Badge>
                                         </TableCell>
                                         <TableCell>
                                             <Badge variant="outline" className={service.isActive ? 'bg-green-500/10 text-green-400 border-green-500/20' : 'bg-zinc-500/10 text-zinc-400 border-zinc-500/20'}>

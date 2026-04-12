@@ -91,20 +91,20 @@ export default function ContactPage() {
 
     if (isSuccess) {
         return (
-            <div className="min-h-screen bg-black pt-32 pb-24 flex items-center justify-center">
+            <div className="min-h-screen bg-white pt-32 pb-24 flex items-center justify-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center max-w-md mx-auto px-4"
                 >
-                    <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-8">
-                        <Check className="w-10 h-10 text-green-500" />
+                    <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-8">
+                        <Check className="w-10 h-10 text-green-600" />
                     </div>
-                    <h1 className="text-3xl font-bold text-white mb-4">Talebiniz Alındı!</h1>
-                    <p className="text-zinc-400 mb-8">
+                    <h1 className="text-3xl font-bold text-zinc-900 mb-4">Talebiniz Alındı!</h1>
+                    <p className="text-zinc-500 mb-8">
                         En kısa sürede sizinle iletişime geçeceğiz. Teşekkür ederiz!
                     </p>
-                    <Button onClick={() => router.push('/')} className="bg-white text-black hover:bg-zinc-200">
+                    <Button onClick={() => router.push('/')} className="bg-zinc-900 text-white hover:bg-zinc-800">
                         Ana Sayfaya Dön
                     </Button>
                 </motion.div>
@@ -113,14 +113,14 @@ export default function ContactPage() {
     }
 
     return (
-        <div className="min-h-screen bg-black pt-32 pb-24">
+        <div className="min-h-screen bg-white pt-32 pb-24">
             <div className="container px-4 mx-auto max-w-3xl">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-4">
+                    <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tighter mb-4">
                         İletişime Geçin
                     </h1>
-                    <p className="text-lg text-zinc-400">
+                    <p className="text-lg text-zinc-500">
                         Projenizi anlatın, size özel bir teklif hazırlayalım.
                     </p>
                 </div>
@@ -130,13 +130,13 @@ export default function ContactPage() {
                     {steps.map((step, index) => (
                         <div key={step.id} className="flex items-center flex-1">
                             <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-colors ${currentStep >= step.id
-                                ? 'bg-white border-white text-black'
-                                : 'border-zinc-700 text-zinc-500'
+                                ? 'bg-zinc-900 border-zinc-900 text-white'
+                                : 'border-zinc-300 text-zinc-400'
                                 }`}>
                                 {currentStep > step.id ? <Check className="w-5 h-5" /> : step.id}
                             </div>
                             {index < steps.length - 1 && (
-                                <div className={`flex-1 h-0.5 mx-4 transition-colors ${currentStep > step.id ? 'bg-white' : 'bg-zinc-800'
+                                <div className={`flex-1 h-0.5 mx-4 transition-colors ${currentStep > step.id ? 'bg-zinc-900' : 'bg-zinc-200'
                                     }`} />
                             )}
                         </div>
@@ -144,7 +144,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Step Content */}
-                <Card className="bg-zinc-900/50 border-zinc-800">
+                <Card className="bg-white border-zinc-200 shadow-sm">
                     <CardContent className="p-8">
                         {error && (
                             <motion.div
@@ -167,8 +167,8 @@ export default function ContactPage() {
                                     className="space-y-6"
                                 >
                                     <div>
-                                        <h2 className="text-2xl font-bold text-white mb-2">{steps[0].title}</h2>
-                                        <p className="text-zinc-400">{steps[0].description}</p>
+                                        <h2 className="text-2xl font-bold text-zinc-900 mb-2">{steps[0].title}</h2>
+                                        <p className="text-zinc-500">{steps[0].description}</p>
                                     </div>
                                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         {SERVICES.map((service) => (
@@ -176,8 +176,8 @@ export default function ContactPage() {
                                                 key={service}
                                                 variant="outline"
                                                 className={`py-3 px-4 text-center cursor-pointer transition-all ${selectedServices.includes(service)
-                                                    ? 'bg-white text-black border-white'
-                                                    : 'text-zinc-400 border-zinc-700 hover:border-zinc-500'
+                                                    ? 'bg-zinc-900 text-white border-zinc-900'
+                                                    : 'text-zinc-500 border-zinc-300 hover:border-zinc-400'
                                                     }`}
                                                 onClick={() => toggleService(service)}
                                             >
@@ -198,20 +198,20 @@ export default function ContactPage() {
                                     className="space-y-6"
                                 >
                                     <div>
-                                        <h2 className="text-2xl font-bold text-white mb-2">{steps[1].title}</h2>
-                                        <p className="text-zinc-400">{steps[1].description}</p>
+                                        <h2 className="text-2xl font-bold text-zinc-900 mb-2">{steps[1].title}</h2>
+                                        <p className="text-zinc-500">{steps[1].description}</p>
                                     </div>
 
                                     <div className="space-y-4">
-                                        <Label className="text-zinc-300">Bütçe Aralığı</Label>
+                                        <Label className="text-zinc-700">Bütçe Aralığı</Label>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                             {BUDGET_RANGES.map((range) => (
                                                 <Badge
                                                     key={range}
                                                     variant="outline"
                                                     className={`py-4 px-6 text-center cursor-pointer transition-all ${budgetRange === range
-                                                        ? 'bg-white text-black border-white'
-                                                        : 'text-zinc-400 border-zinc-700 hover:border-zinc-500'
+                                                        ? 'bg-zinc-900 text-white border-zinc-900'
+                                                        : 'text-zinc-500 border-zinc-300 hover:border-zinc-400'
                                                         }`}
                                                     onClick={() => setBudgetRange(range)}
                                                 >
@@ -222,15 +222,15 @@ export default function ContactPage() {
                                     </div>
 
                                     <div className="space-y-4">
-                                        <Label className="text-zinc-300">Zaman Çizelgesi (İsteğe bağlı)</Label>
+                                        <Label className="text-zinc-700">Zaman Çizelgesi (İsteğe bağlı)</Label>
                                         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                                             {TIMELINES.map((t) => (
                                                 <Badge
                                                     key={t}
                                                     variant="outline"
                                                     className={`py-3 px-4 text-center cursor-pointer transition-all ${timeline === t
-                                                        ? 'bg-white text-black border-white'
-                                                        : 'text-zinc-400 border-zinc-700 hover:border-zinc-500'
+                                                        ? 'bg-zinc-900 text-white border-zinc-900'
+                                                        : 'text-zinc-500 border-zinc-300 hover:border-zinc-400'
                                                         }`}
                                                     onClick={() => setTimeline(timeline === t ? '' : t)}
                                                 >
@@ -252,62 +252,62 @@ export default function ContactPage() {
                                     className="space-y-6"
                                 >
                                     <div>
-                                        <h2 className="text-2xl font-bold text-white mb-2">{steps[2].title}</h2>
-                                        <p className="text-zinc-400">{steps[2].description}</p>
+                                        <h2 className="text-2xl font-bold text-zinc-900 mb-2">{steps[2].title}</h2>
+                                        <p className="text-zinc-500">{steps[2].description}</p>
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div className="space-y-2">
-                                            <Label htmlFor="name" className="text-zinc-300">Ad Soyad *</Label>
+                                            <Label htmlFor="name" className="text-zinc-700">Ad Soyad *</Label>
                                             <Input
                                                 id="name"
                                                 value={contactInfo.name}
                                                 onChange={(e) => setContactInfo(prev => ({ ...prev, name: e.target.value }))}
-                                                className="bg-zinc-800/50 border-zinc-700 text-white"
+                                                className="bg-zinc-50 border-zinc-300 text-zinc-900"
                                                 placeholder="İsminiz"
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <Label htmlFor="email" className="text-zinc-300">E-posta *</Label>
+                                            <Label htmlFor="email" className="text-zinc-700">E-posta *</Label>
                                             <Input
                                                 id="email"
                                                 type="email"
                                                 value={contactInfo.email}
                                                 onChange={(e) => setContactInfo(prev => ({ ...prev, email: e.target.value }))}
-                                                className="bg-zinc-800/50 border-zinc-700 text-white"
+                                                className="bg-zinc-50 border-zinc-300 text-zinc-900"
                                                 placeholder="ornek@email.com"
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <Label htmlFor="phone" className="text-zinc-300">Telefon</Label>
+                                            <Label htmlFor="phone" className="text-zinc-700">Telefon</Label>
                                             <Input
                                                 id="phone"
                                                 value={contactInfo.phone}
                                                 onChange={(e) => setContactInfo(prev => ({ ...prev, phone: e.target.value }))}
-                                                className="bg-zinc-800/50 border-zinc-700 text-white"
+                                                className="bg-zinc-50 border-zinc-300 text-zinc-900"
                                                 placeholder="+90 5XX XXX XX XX"
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <Label htmlFor="company" className="text-zinc-300">Şirket</Label>
+                                            <Label htmlFor="company" className="text-zinc-700">Şirket</Label>
                                             <Input
                                                 id="company"
                                                 value={contactInfo.company}
                                                 onChange={(e) => setContactInfo(prev => ({ ...prev, company: e.target.value }))}
-                                                className="bg-zinc-800/50 border-zinc-700 text-white"
+                                                className="bg-zinc-50 border-zinc-300 text-zinc-900"
                                                 placeholder="Şirket adı"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="space-y-2">
-                                        <Label htmlFor="message" className="text-zinc-300">Mesajınız *</Label>
+                                        <Label htmlFor="message" className="text-zinc-700">Mesajınız *</Label>
                                         <Textarea
                                             id="message"
                                             rows={4}
                                             value={contactInfo.message}
                                             onChange={(e) => setContactInfo(prev => ({ ...prev, message: e.target.value }))}
-                                            className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                            className="bg-zinc-50 border-zinc-300 text-zinc-900 resize-none"
                                             placeholder="Projeniz hakkında bize bilgi verin..."
                                         />
                                     </div>
@@ -316,12 +316,12 @@ export default function ContactPage() {
                         </AnimatePresence>
 
                         {/* Navigation */}
-                        <div className="flex justify-between mt-8 pt-6 border-t border-zinc-800">
+                        <div className="flex justify-between mt-8 pt-6 border-t border-zinc-200">
                             <Button
                                 variant="outline"
                                 onClick={() => setCurrentStep(prev => prev - 1)}
                                 disabled={currentStep === 1}
-                                className="border-zinc-700 text-zinc-400 hover:text-white hover:bg-zinc-800"
+                                className="border-zinc-300 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100"
                             >
                                 <ArrowLeft className="mr-2 h-4 w-4" />
                                 Geri
@@ -331,7 +331,7 @@ export default function ContactPage() {
                                 <Button
                                     onClick={() => setCurrentStep(prev => prev + 1)}
                                     disabled={!canProceed()}
-                                    className="bg-white text-black hover:bg-zinc-200"
+                                    className="bg-zinc-900 text-white hover:bg-zinc-800"
                                 >
                                     İleri
                                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -340,7 +340,7 @@ export default function ContactPage() {
                                 <Button
                                     onClick={handleSubmit}
                                     disabled={!canProceed() || isSubmitting}
-                                    className="bg-white text-black hover:bg-zinc-200"
+                                    className="bg-zinc-900 text-white hover:bg-zinc-800"
                                 >
                                     {isSubmitting ? (
                                         <>

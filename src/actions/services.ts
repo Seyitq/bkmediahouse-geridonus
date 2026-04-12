@@ -10,11 +10,9 @@ const serviceSchema = z.object({
     description: z.string().min(1, 'Açıklama gerekli'),
     longDescription: z.string().optional(),
     icon: z.string().min(1, 'Icon gerekli'),
-    modelType: z.string().default('cube'),
-    modelUrl: z.string().optional().nullable(),
-    effectType: z.string().default('flash'),
     color: z.string().default('#3b82f6'),
     features: z.string().optional(),
+    photos: z.string().optional().nullable(),
     order: z.number().default(0),
     isActive: z.boolean().default(true),
 })
@@ -133,14 +131,14 @@ export async function toggleServiceActive(id: string, isActive: boolean) {
 // Seed default services
 export async function seedDefaultServices() {
     const defaultServices = [
-        { name: 'Video Prodüksiyon', slug: 'video-produksiyon', description: 'Profesyonel video çekimi ve kurgu hizmetleri', icon: 'Video', modelType: 'cylinder', color: '#ef4444', order: 1 },
-        { name: 'Sosyal Medya Yönetimi', slug: 'sosyal-medya-yonetimi', description: 'Sosyal medya stratejisi ve içerik yönetimi', icon: 'Share2', modelType: 'sphere', color: '#3b82f6', order: 2 },
-        { name: 'Marka Kimliği', slug: 'marka-kimligi', description: 'Logo tasarımı ve kurumsal kimlik oluşturma', icon: 'Palette', modelType: 'torus', color: '#8b5cf6', order: 3 },
-        { name: 'Web Tasarım', slug: 'web-tasarim', description: 'Modern ve responsive web sitesi tasarımı', icon: 'Monitor', modelType: 'box', color: '#10b981', order: 4 },
-        { name: 'Fotoğraf Çekimi', slug: 'fotograf-cekimi', description: 'Profesyonel fotoğraf çekimi hizmetleri', icon: 'Camera', modelType: 'octahedron', color: '#f59e0b', order: 5 },
-        { name: 'Reklam Kampanyası', slug: 'reklam-kampanyasi', description: 'Dijital reklam kampanyası planlaması ve yönetimi', icon: 'Megaphone', modelType: 'cone', color: '#ec4899', order: 6 },
-        { name: 'İçerik Üretimi', slug: 'icerik-uretimi', description: 'Blog yazıları, makaleler ve içerik stratejisi', icon: 'FileText', modelType: 'dodecahedron', color: '#06b6d4', order: 7 },
-        { name: 'Etkinlik Yönetimi', slug: 'etkinlik-yonetimi', description: 'Kurumsal etkinlik planlama ve yönetimi', icon: 'Calendar', modelType: 'icosahedron', color: '#84cc16', order: 8 },
+        { name: 'Video Prodüksiyon', slug: 'video-produksiyon', description: 'Profesyonel video çekimi ve kurgu hizmetleri', icon: 'Video', color: '#ef4444', order: 1 },
+        { name: 'Sosyal Medya Yönetimi', slug: 'sosyal-medya-yonetimi', description: 'Sosyal medya stratejisi ve içerik yönetimi', icon: 'Share2', color: '#3b82f6', order: 2 },
+        { name: 'Marka Kimliği', slug: 'marka-kimligi', description: 'Logo tasarımı ve kurumsal kimlik oluşturma', icon: 'Palette', color: '#8b5cf6', order: 3 },
+        { name: 'Web Tasarım', slug: 'web-tasarim', description: 'Modern ve responsive web sitesi tasarımı', icon: 'Monitor', color: '#10b981', order: 4 },
+        { name: 'Fotoğraf Çekimi', slug: 'fotograf-cekimi', description: 'Profesyonel fotoğraf çekimi hizmetleri', icon: 'Camera', color: '#f59e0b', order: 5 },
+        { name: 'Reklam Kampanyası', slug: 'reklam-kampanyasi', description: 'Dijital reklam kampanyası planlaması ve yönetimi', icon: 'Megaphone', color: '#ec4899', order: 6 },
+        { name: 'İçerik Üretimi', slug: 'icerik-uretimi', description: 'Blog yazıları, makaleler ve içerik stratejisi', icon: 'FileText', color: '#06b6d4', order: 7 },
+        { name: 'Etkinlik Yönetimi', slug: 'etkinlik-yonetimi', description: 'Kurumsal etkinlik planlama ve yönetimi', icon: 'Calendar', color: '#84cc16', order: 8 },
     ]
 
     try {

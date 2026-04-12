@@ -75,16 +75,16 @@ function LoginForm() {
             )}
 
             <div className="space-y-2">
-                <Label htmlFor="email" className="text-zinc-300">
+                <Label htmlFor="email" className="text-zinc-700">
                     E-posta
                 </Label>
                 <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
                     <Input
                         id="email"
                         type="email"
                         placeholder="ornek@email.com"
-                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-zinc-500 focus:ring-zinc-500"
+                        className="pl-10 bg-zinc-50 border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-zinc-500"
                         {...register('email')}
                     />
                 </div>
@@ -94,16 +94,16 @@ function LoginForm() {
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="password" className="text-zinc-300">
+                <Label htmlFor="password" className="text-zinc-700">
                     Şifre
                 </Label>
                 <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
                     <Input
                         id="password"
                         type="password"
                         placeholder="••••••••"
-                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-zinc-500 focus:ring-zinc-500"
+                        className="pl-10 bg-zinc-50 border-zinc-300 text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-zinc-500"
                         {...register('password')}
                     />
                 </div>
@@ -115,7 +115,7 @@ function LoginForm() {
             <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-white text-zinc-900 hover:bg-zinc-200 transition-all duration-200 group"
+                className="w-full bg-zinc-900 text-white hover:bg-zinc-800 transition-all duration-200 group"
             >
                 {isLoading ? (
                     <>
@@ -135,9 +135,9 @@ function LoginForm() {
 
 export default function LoginPage() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-zinc-950 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-zinc-50 p-4">
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white via-zinc-50 to-zinc-100" />
 
             {/* Subtle grid pattern */}
             <div
@@ -153,17 +153,17 @@ export default function LoginPage() {
                 transition={{ duration: 0.5 }}
                 className="relative z-10 w-full max-w-md"
             >
-                <Card className="border-zinc-800 bg-zinc-900/50 backdrop-blur-xl shadow-2xl">
+                <Card className="border-zinc-200 bg-white shadow-xl">
                     <CardHeader className="space-y-1 text-center">
                         <motion.div
                             initial={{ scale: 0.9 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.2, duration: 0.3 }}
                         >
-                            <CardTitle className="text-2xl font-bold text-white">
-                                BK Media House
+                            <CardTitle className="text-2xl font-bold text-zinc-900">
+                                New Social Agency
                             </CardTitle>
-                            <CardDescription className="text-zinc-400">
+                            <CardDescription className="text-zinc-500">
                                 Yönetim paneline giriş yapın
                             </CardDescription>
                         </motion.div>
@@ -176,7 +176,7 @@ export default function LoginPage() {
                 </Card>
 
                 {/* Decorative elements */}
-                <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-zinc-800/20 to-transparent blur-3xl" />
+                <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-zinc-200/30 to-transparent blur-3xl" />
             </motion.div>
         </div>
     )

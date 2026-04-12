@@ -13,39 +13,50 @@ import { CTASection } from '@/components/marketing/cta-section'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'BK Media House | Dijital Ajans Konya - Video Prodüksiyon & Web Tasarım',
-  description: 'Konya merkezli dijital ajans. Kurumsal video prodüksiyon, drone çekimi, web tasarım, logo & marka kimliği, sosyal medya yönetimi hizmetleri. Markanızı dijitalde güçlendiriyoruz.',
+  title: 'Ankara Dijital Ajans | Sosyal Medya Yönetimi, Video Prodüksiyon, Web Tasarım',
+  description: 'Ankara\'nın lider dijital ajansı New Social Agency. Emlak sosyal medya yönetimi, kurumsal video prodüksiyon, drone çekimi, web tasarım, marka kimliği, reklam kampanyası. Gayrimenkul, inşaat ve kurumsal firmalar için dijital çözümler.',
   path: '/',
+  keywords: [
+    'dijital ajans ankara', 'sosyal medya yönetimi ankara', 'video prodüksiyon ankara',
+    'web tasarım ankara', 'emlak sosyal medya yönetimi', 'gayrimenkul dijital pazarlama',
+    'drone çekimi ankara', 'reklam ajansı ankara', 'marka kimliği ankara',
+    'kurumsal video çekimi ankara', 'ankara reklam ajansı', 'en iyi dijital ajans ankara',
+  ],
 })
 
 async function getHomePageData() {
-  const [companies, testimonials, services, projects] = await Promise.all([
-    db.trustedCompany.findMany({
-      where: { isActive: true },
-      orderBy: { order: 'asc' },
-    }),
-    db.testimonial.findMany({
-      where: { isActive: true },
-      orderBy: { order: 'asc' },
-    }),
-    db.service.findMany({
-      where: { isActive: true },
-      orderBy: { order: 'asc' },
-    }),
-    db.project.findMany({
-      orderBy: { createdAt: 'desc' },
-      take: 8,
-      select: {
-        id: true,
-        title: true,
-        slug: true,
-        coverImage: true,
-        clientName: true,
-        servicesProvided: true,
-      }
-    }),
-  ])
-  return { companies, testimonials, services, projects }
+  try {
+    const [companies, testimonials, services, projects] = await Promise.all([
+      db.trustedCompany.findMany({
+        where: { isActive: true },
+        orderBy: { order: 'asc' },
+      }),
+      db.testimonial.findMany({
+        where: { isActive: true },
+        orderBy: { order: 'asc' },
+      }),
+      db.service.findMany({
+        where: { isActive: true },
+        orderBy: { order: 'asc' },
+      }),
+      db.project.findMany({
+        orderBy: { createdAt: 'desc' },
+        take: 8,
+        select: {
+          id: true,
+          title: true,
+          slug: true,
+          coverImage: true,
+          clientName: true,
+          servicesProvided: true,
+        }
+      }),
+    ])
+    return { companies, testimonials, services, projects }
+  } catch (error) {
+    console.error('[HomePage] Veritabanı sorgusu başarısız:', error)
+    return { companies: [], testimonials: [], services: [], projects: [] }
+  }
 }
 
 export default async function HomePage() {

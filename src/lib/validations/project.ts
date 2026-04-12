@@ -18,10 +18,9 @@ export const projectSchema = z.object({
         .min(1, 'Müşteri adı gerekli'),
     coverImage: z
         .string()
-        .min(1, 'Kapak görseli gerekli')
-        .url('Geçerli bir URL girin'),
+        .min(1, 'Kapak görseli gerekli'),
     images: z
-        .array(z.string().url('Geçerli bir URL girin'))
+        .array(z.string())
         .optional()
         .default([]),
     description: z

@@ -38,7 +38,7 @@ export function Topbar({ user }: TopbarProps) {
         : 'UK'
 
     return (
-        <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-zinc-800 bg-zinc-950/80 px-6 backdrop-blur-xl">
+        <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-zinc-800 bg-zinc-950/80 px-4 sm:px-6 pl-14 lg:pl-6 backdrop-blur-xl">
             {/* Search */}
             <div className="flex-1">
                 <div className="relative max-w-md">

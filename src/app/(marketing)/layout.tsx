@@ -1,14 +1,31 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { SocialButtons } from '@/components/social-buttons'
+import { getOrganizationJsonLd, getWebsiteJsonLd, getLocalBusinessJsonLd } from '@/lib/json-ld'
 
 export default function MarketingLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const organizationJsonLd = getOrganizationJsonLd()
+    const websiteJsonLd = getWebsiteJsonLd()
+    const localBusinessJsonLd = getLocalBusinessJsonLd()
+
     return (
-        <div className="flex min-h-screen flex-col bg-black text-white selection:bg-white selection:text-black">
+            <div className="flex min-h-screen flex-col bg-white text-zinc-900 selection:bg-zinc-900 selection:text-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+            />
             <Header />
             <main className="flex-1">
                 {children}

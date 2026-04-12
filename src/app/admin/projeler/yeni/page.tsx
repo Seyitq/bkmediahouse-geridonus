@@ -25,6 +25,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { createProject, generateProjectSlug } from '@/actions/projects'
 import { SERVICES, SERVICE_LABELS } from '@/lib/validations/inquiry'
+import { ImageUploader } from '@/components/admin/image-uploader'
 
 // Form data type
 interface ProjectFormData {
@@ -47,6 +48,8 @@ export default function NewProjectPage() {
     const [error, setError] = useState<string | null>(null)
     const [selectedServices, setSelectedServices] = useState<string[]>([])
     const [stats, setStats] = useState<{ label: string; value: string }[]>([])
+    const [coverImage, setCoverImage] = useState('')
+    const [galleryImages, setGalleryImages] = useState<string[]>([])
 
     const {
         register,
@@ -120,6 +123,8 @@ export default function NewProjectPage() {
 
             const result = await createProject({
                 ...data,
+                coverImage,
+                images: galleryImages,
                 servicesProvided: selectedServices,
                 stats: Object.keys(statsObject).length > 0 ? statsObject : undefined,
             })
@@ -336,25 +341,28 @@ export default function NewProjectPage() {
                             <CardHeader>
                                 <CardTitle className="text-white text-base">Kapak Görseli</CardTitle>
                             </CardHeader>
-                            <CardContent className="space-y-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="coverImage" className="text-zinc-300">Görsel URL</Label>
-                                    <Input
-                                        id="coverImage"
-                                        placeholder="https://..."
-                                        className="bg-zinc-800/50 border-zinc-700 text-white"
-                                        {...register('coverImage')}
-                                    />
-                                    {errors.coverImage && (
-                                        <p className="text-sm text-red-400">{errors.coverImage.message}</p>
-                                    )}
-                                </div>
-                                <div className="aspect-video rounded-lg bg-zinc-800 flex items-center justify-center border border-zinc-700 border-dashed">
-                                    <div className="text-center text-zinc-500">
-                                        <ImageIcon className="h-8 w-8 mx-auto mb-2" />
-                                        <p className="text-sm">Görsel önizleme</p>
-                                    </div>
-                                </div>
+                            <CardContent>
+                                <ImageUploader
+                                    value={coverImage}
+                                    onChange={setCoverImage}
+                                />
+                            </CardContent>
+                        </Card>
+
+                        {/* Gallery Images */}
+                        <Card className="border-zinc-800 bg-zinc-900/50">
+                            <CardHeader>
+                                <CardTitle className="text-white text-base">Proje Görselleri</CardTitle>
+                                <CardDescription className="text-zinc-500">
+                                    Birden fazla görsel ekleyebilirsiniz
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <ImageUploader
+                                    multiple
+                                    values={galleryImages}
+                                    onMultiChange={setGalleryImages}
+                                />
                             </CardContent>
                         </Card>
 

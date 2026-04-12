@@ -1,14 +1,13 @@
-// BK Media House - Prisma Schema
-// SQLite for development, PostgreSQL for production
+// New Social Agency - Prisma Schema
+// Local SQLite database
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 // ============================================
@@ -22,9 +21,14 @@ model User {
   name          String?
   role          String    @default("CLIENT") // ADMIN, STAFF, CLIENT
   image         String?
+  title         String?   // "Grafik Tasarımcı", "Yazılımcı" vs.
+  phone         String?   // İletişim numarası
   
   // Relations
   bookings      Booking[]
+  assignedTasks Task[]    @relation("AssignedTo")
+  createdTasks  Task[]    @relation("CreatedBy")
+  taskNotes     TaskNote[]
   
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
@@ -168,7 +172,7 @@ model Testimonial {
 }
 
 // ============================================
-// SERVICES (with 3D Models)
+// SERVICES
 // ============================================
 
 model Service {
@@ -178,14 +182,78 @@ model Service {
   description String   // Short description
   longDescription String? // Detailed description for detail page
   icon        String   // Lucide icon name
-  modelType   String   @default("cube") // 3D model type: cube, sphere, torus, cylinder, cone, etc.
-  modelUrl    String?  // Custom 3D model URL (.glb/.gltf)
-  effectType  String   @default("flash") // flash, glitch, wireframe, particles
-  color       String   @default("#3b82f6") // Primary color for 3D model
+  color       String   @default("#3b82f6") // Primary color
   features    String?  // JSON array of features
+  photos      String?  // JSON array of photo URLs for service detail page
   order       Int      @default(0)
   isActive    Boolean  @default(true)
   
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============================================
+// TASK CATEGORIES (Briefing System)
+// ============================================
+
+model TaskCategory {
+  id        String   @id @default(cuid())
+  name      String   @unique // "Sosyal Medya Tasarımı", "Video Prodüksiyon" vs.
+  color     String   @default("#3b82f6")
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  tasks     Task[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ============================================
+// TASKS (Briefing System)
+// ============================================
+
+model Task {
+  id           String    @id @default(cuid())
+  title        String
+  description  String?
+  status       String    @default("PENDING") // PENDING, IN_PROGRESS, REVISION, COMPLETED, PAID
+  priority     String    @default("NORMAL")  // LOW, NORMAL, HIGH, URGENT
+
+  projectName  String?   // Proje adı
+  clientName   String?   // Müşteri adı
+  projectPart  String?   // Projenin hangi kısmı
+
+  deadline     DateTime?
+  completedAt  DateTime? // Görev tamamlandığında
+  paidAt       DateTime? // Ödeme yapıldığında
+  amount       Float?    // Ödeme tutarı (opsiyonel)
+
+  // Relations
+  assignedTo   User?         @relation("AssignedTo", fields: [assignedToId], references: [id], onDelete: SetNull)
+  assignedToId String?
+  createdBy    User?         @relation("CreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  createdById  String?
+  category     TaskCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  categoryId   String?
+  notes        TaskNote[]
+
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+// ============================================
+// TASK NOTES (Briefing System)
+// ============================================
+
+model TaskNote {
+  id       String   @id @default(cuid())
+  content  String
+
+  task     Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  taskId   String
+  author   User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId String
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

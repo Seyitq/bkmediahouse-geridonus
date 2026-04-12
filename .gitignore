@@ -48,3 +48,6 @@ dev.db
 
 # large files
 *.zip
+
+# uploaded files
+/public/uploads/

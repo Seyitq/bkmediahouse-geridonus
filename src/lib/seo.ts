@@ -2,115 +2,162 @@ import { Metadata } from 'next'
 
 // Base metadata for the site
 export const siteConfig = {
-    name: 'BK Media House',
-    description: 'Markanızın dijital dünyadaki potansiyelini modern tasarım ve stratejik içerik ile açığa çıkarıyoruz.',
-    url: 'https://bkmediahouse.com.tr',
+    name: 'New Social Agency | Ankara Dijital Ajans',
+    shortName: 'New Social Agency',
+    description: 'Ankara\'nın lider dijital ajansı. Emlak sosyal medya yönetimi, kurumsal video prodüksiyon, drone çekimi, web tasarım, marka kimliği ve reklam kampanyası hizmetleri. Gayrimenkul, inşaat ve kurumsal firmalar için etkili dijital çözümler.',
+    url: 'https://newsocialankara.com',
     ogImage: '/og-image.jpg',
     locale: 'tr_TR',
+    phone: '+905309303276',
+    email: 'info@newsocialankara.com',
+    address: {
+        city: 'Ankara',
+        country: 'TR',
+        region: 'İç Anadolu',
+    },
     keywords: [
-        // Genel ajans
-        'dijital ajans',
-        'dijital ajans konya',
-        'reklam ajansı',
-        'reklam ajansı konya',
-        'medya ajansı konya',
-        'kreatif ajans konya',
+        // Ana anahtar kelimeler
+        'dijital ajans ankara',
+        'ankara dijital ajans',
+        'reklam ajansı ankara',
+        'sosyal medya ajansı ankara',
+        'medya ajansı ankara',
+        'kreatif ajans ankara',
+        'ankara reklam ajansı',
+
+        // Emlak & gayrimenkul sosyal medya
+        'emlak sosyal medya yönetimi',
+        'emlak sosyal medya ankara',
+        'gayrimenkul sosyal medya yönetimi',
+        'gayrimenkul dijital pazarlama',
+        'emlak reklam ajansı',
+        'emlak dijital pazarlama ankara',
+        'inşaat firması sosyal medya',
+        'inşaat sosyal medya yönetimi',
+        'müteahhit sosyal medya',
+        'konut projesi tanıtımı',
+        'emlak video çekimi',
+        'gayrimenkul drone çekimi',
+        'emlak fotoğraf çekimi',
+        'konut projesi reklam filmi',
 
         // Video prodüksiyon
-        'video prodüksiyon',
-        'video prodüksiyon konya',
-        'kurumsal video',
-        'kurumsal video çekimi konya',
-        'tanıtım filmi',
-        'tanıtım filmi konya',
-        'reklam filmi',
-        'reklam filmi çekimi',
+        'video prodüksiyon ankara',
+        'kurumsal video çekimi ankara',
+        'tanıtım filmi ankara',
+        'reklam filmi çekimi ankara',
+        'sosyal medya video çekimi',
+        'ürün tanıtım videosu',
+        'firma tanıtım filmi ankara',
 
         // Drone
-        'drone çekimi',
-        'drone çekimi konya',
-        'havadan çekim',
-        'havadan çekim konya',
-        'drone video',
+        'drone çekimi ankara',
+        'havadan çekim ankara',
+        'drone video ankara',
+        'havadan fotoğraf çekimi ankara',
+        'inşaat drone çekimi',
+        'şantiye drone çekimi',
 
         // Fotoğraf
-        'fotoğraf çekimi',
-        'fotoğraf çekimi konya',
-        'ürün fotoğrafı',
-        'ürün fotoğrafı konya',
-        'kurumsal fotoğraf çekimi',
-        'profesyonel fotoğraf',
+        'fotoğraf çekimi ankara',
+        'ürün fotoğrafı ankara',
+        'kurumsal fotoğraf çekimi ankara',
+        'profesyonel fotoğraf ankara',
+        'mekan fotoğraf çekimi',
+        'iç mekan fotoğraf çekimi',
 
-        // Web & Site tasarım
-        'web tasarım',
-        'web tasarım konya',
-        'site tasarımı',
-        'site tasarımı konya',
-        'web sitesi yapımı',
-        'web sitesi yapımı konya',
-        'kurumsal web sitesi',
-        'e-ticaret sitesi konya',
+        // Web tasarım
+        'web tasarım ankara',
+        'web sitesi yapımı ankara',
+        'kurumsal web sitesi ankara',
+        'e-ticaret sitesi ankara',
+        'landing page tasarımı',
+        'emlak web sitesi',
+        'inşaat firması web sitesi',
 
-        // Logo & Marka
-        'logo tasarımı',
-        'logo tasarımı konya',
-        'marka kimliği',
-        'marka kimliği tasarımı',
-        'kurumsal kimlik',
-        'kurumsal kimlik konya',
-        'grafik tasarım',
-        'grafik tasarım konya',
+        // Logo & marka
+        'logo tasarımı ankara',
+        'marka kimliği ankara',
+        'kurumsal kimlik ankara',
+        'grafik tasarım ankara',
+        'marka stratejisi',
 
-        // Sosyal medya
-        'sosyal medya yönetimi',
-        'sosyal medya yönetimi konya',
-        'instagram yönetimi',
-        'sosyal medya danışmanlığı',
-        'içerik üretimi',
+        // Sosyal medya yönetimi
+        'sosyal medya yönetimi ankara',
+        'instagram yönetimi ankara',
+        'sosyal medya danışmanlığı ankara',
+        'içerik üretimi ankara',
+        'sosyal medya içerik üretimi',
+        'dijital pazarlama ankara',
+        'google ads ankara',
+        'meta reklam yönetimi',
+        'tiktok yönetimi ankara',
 
-        // Diğer hizmetler
-        'katalog tasarımı',
-        'broşür tasarımı',
-        'afiş tasarımı',
-        'packaging tasarım',
-        'ambalaj tasarımı',
-        'sunum tasarımı',
+        // Reklam kampanyası
+        'reklam kampanyası ankara',
+        'dijital reklam ankara',
+        'performans pazarlama ankara',
+        'google ads yönetimi',
+        'facebook reklam yönetimi',
+        'instagram reklam yönetimi',
 
-        // Lokasyon
-        'konya',
-        'konya dijital hizmetler',
+        // Etkinlik
+        'etkinlik yönetimi ankara',
+        'kurumsal etkinlik ankara',
+        'etkinlik video çekimi',
+        'etkinlik fotoğraf çekimi',
+
+        // Sektörel
+        'ankara kurumsal hizmetler',
+        'ankara dijital pazarlama',
+        'ankara marka danışmanlığı',
+        'startup dijital ajans',
+        'kobilere dijital pazarlama',
+        'restoran sosyal medya yönetimi',
+        'otel sosyal medya yönetimi',
+        'sağlık sektörü dijital pazarlama',
+        'eğitim kurumu sosyal medya',
+
+        // AI & modern search
+        'en iyi dijital ajans ankara',
+        'ankara en iyi reklam ajansı',
+        'ankara sosyal medya firması',
+        'ankara web tasarım firması',
+        'ankara video prodüksiyon firması',
     ],
 }
 
 export const baseMetadata: Metadata = {
     metadataBase: new URL(siteConfig.url),
     title: {
-        default: siteConfig.name,
-        template: `%s | ${siteConfig.name}`,
+        default: `${siteConfig.shortName} | Dijital Ajans Ankara - Sosyal Medya, Video, Web Tasarım`,
+        template: `%s | ${siteConfig.shortName}`,
     },
     description: siteConfig.description,
     keywords: siteConfig.keywords,
-    authors: [{ name: 'BK Media House' }],
-    creator: 'BK Media House',
+    authors: [{ name: 'New Social Agency', url: siteConfig.url }],
+    creator: 'New Social Agency',
+    publisher: 'New Social Agency',
+    category: 'technology',
     openGraph: {
         type: 'website',
         locale: siteConfig.locale,
         url: siteConfig.url,
-        siteName: siteConfig.name,
-        title: siteConfig.name,
+        siteName: siteConfig.shortName,
+        title: `${siteConfig.shortName} | Dijital Ajans Ankara`,
         description: siteConfig.description,
         images: [
             {
                 url: siteConfig.ogImage,
                 width: 1200,
                 height: 630,
-                alt: siteConfig.name,
+                alt: 'New Social Agency - Ankara Dijital Ajans',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: siteConfig.name,
+        title: `${siteConfig.shortName} | Dijital Ajans Ankara`,
         description: siteConfig.description,
         images: [siteConfig.ogImage],
     },
@@ -128,6 +175,9 @@ export const baseMetadata: Metadata = {
     verification: {
         google: 'U-b8-M-PPMJvYGIPD9AGEM8EW7iSolK2Nv4Co_gwyT4',
     },
+    alternates: {
+        canonical: siteConfig.url,
+    },
 }
 
 // Helper to generate page metadata
@@ -136,11 +186,13 @@ export function generatePageMetadata({
     description,
     path = '',
     image,
+    keywords,
 }: {
     title: string
     description: string
     path?: string
     image?: string
+    keywords?: string[]
 }): Metadata {
     const url = `${siteConfig.url}${path}`
     const ogImage = image || siteConfig.ogImage
@@ -148,6 +200,7 @@ export function generatePageMetadata({
     return {
         title,
         description,
+        keywords: keywords || siteConfig.keywords,
         openGraph: {
             title,
             description,

@@ -20,13 +20,14 @@ export default async function AdminLayout({
 
     return (
         <div className="min-h-screen bg-zinc-950">
-            <Sidebar />
-            <div className="pl-64">
+            <Sidebar userRole={session.user.role} />
+            <div className="lg:pl-64">
                 <Topbar user={session.user} />
-                <main className="p-6">
+                <main className="p-4 sm:p-6 pt-16 lg:pt-6">
                     {children}
                 </main>
             </div>
         </div>
     )
 }
+

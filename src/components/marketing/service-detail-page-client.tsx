@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -28,18 +28,20 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
     const [isStickyCTAVisible, setIsStickyCTAVisible] = useState(false)
 
     // Show sticky CTA after scrolling past hero
-    if (typeof window !== 'undefined') {
-        window.addEventListener('scroll', () => {
+    useEffect(() => {
+        const handleScroll = () => {
             setIsStickyCTAVisible(window.scrollY > 600)
-        })
-    }
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
 
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen bg-white text-zinc-900">
             {/* 1. HERO SECTION */}
             <section className="relative pt-32 pb-20 px-4 overflow-hidden">
                 {/* Background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-black to-black" />
+                <div className="absolute inset-0 bg-gradient-to-b from-blue-50 via-white to-white" />
 
                 <div className="container mx-auto relative z-10">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -52,7 +54,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6">
                                 {content.title}
                             </h1>
-                            <p className="text-xl md:text-2xl text-zinc-300 mb-8 leading-relaxed">
+                            <p className="text-xl md:text-2xl text-zinc-500 mb-8 leading-relaxed">
                                 {content.heroPromise}
                             </p>
 
@@ -61,7 +63,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 {content.proofChips.map((chip, idx) => (
                                     <div
                                         key={idx}
-                                        className="flex items-center gap-2 px-4 py-2 bg-zinc-900/80 border border-zinc-800 rounded-full text-sm text-zinc-300"
+                                        className="flex items-center gap-2 px-4 py-2 bg-zinc-50 border border-zinc-200 rounded-full text-sm text-zinc-600"
                                     >
                                         <Check className="w-4 h-4 text-green-400" />
                                         {chip}
@@ -73,7 +75,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                             <div className="flex flex-wrap gap-4">
                                 <Button
                                     size="lg"
-                                    className="h-14 px-8 text-lg bg-white text-black hover:bg-zinc-200 rounded-full"
+                                    className="h-14 px-8 text-lg bg-zinc-900 text-white hover:bg-zinc-800 rounded-full"
                                     asChild
                                 >
                                     <Link href="/booking">
@@ -84,11 +86,11 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 <Button
                                     size="lg"
                                     variant="outline"
-                                    className="h-14 px-8 text-lg border-green-500 text-green-400 hover:bg-green-500/10 rounded-full"
+                                    className="h-14 px-8 text-lg border-green-500 text-green-600 hover:bg-green-50 rounded-full"
                                     asChild
                                 >
                                     <a
-                                        href="https://wa.me/905321234567"
+                                        href="https://wa.me/905309303276"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -106,7 +108,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                             transition={{ duration: 0.6, delay: 0.2 }}
                             className="hidden lg:block"
                         >
-                            <div className="relative aspect-square rounded-3xl overflow-hidden border border-zinc-800/50">
+                            <div className="relative aspect-square rounded-3xl overflow-hidden border border-zinc-200">
                                 <Image
                                     src={content.heroImage}
                                     alt={content.title}
@@ -115,7 +117,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                     priority
                                 />
                                 {/* Overlay gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent" />
                             </div>
                         </motion.div>
                     </div>
@@ -123,7 +125,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
             </section>
 
             {/* 2. QUICK SUMMARY BLOCKS */}
-            <section className="py-20 px-4 bg-zinc-950">
+            <section className="py-20 px-4 bg-zinc-50">
                 <div className="container mx-auto">
                     <div className="grid md:grid-cols-3 gap-6">
                         {/* Deliverables */}
@@ -131,14 +133,14 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800"
+                            className="p-6 rounded-2xl bg-white border border-zinc-200 shadow-sm"
                         >
-                            <Package className="w-10 h-10 text-blue-400 mb-4" />
+                            <Package className="w-10 h-10 text-blue-500 mb-4" />
                             <h3 className="text-xl font-bold mb-4">Teslimatlar</h3>
                             <ul className="space-y-2">
                                 {content.deliverables.map((item, idx) => (
-                                    <li key={idx} className="flex items-start gap-2 text-zinc-400">
-                                        <Check className="w-4 h-4 text-green-400 mt-1 shrink-0" />
+                                    <li key={idx} className="flex items-start gap-2 text-zinc-500">
+                                        <Check className="w-4 h-4 text-green-500 mt-1 shrink-0" />
                                         <span>{item}</span>
                                     </li>
                                 ))}
@@ -151,11 +153,11 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800"
+                            className="p-6 rounded-2xl bg-white border border-zinc-200 shadow-sm"
                         >
-                            <Clock className="w-10 h-10 text-purple-400 mb-4" />
+                            <Clock className="w-10 h-10 text-purple-500 mb-4" />
                             <h3 className="text-xl font-bold mb-4">Süre</h3>
-                            <p className="text-3xl font-bold text-white mb-2">{content.timeline}</p>
+                            <p className="text-3xl font-bold text-zinc-900 mb-2">{content.timeline}</p>
                             <p className="text-zinc-500">Tipik proje süresi</p>
                         </motion.div>
 
@@ -165,9 +167,9 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800"
+                            className="p-6 rounded-2xl bg-white border border-zinc-200 shadow-sm"
                         >
-                            <Zap className="w-10 h-10 text-yellow-400 mb-4" />
+                            <Zap className="w-10 h-10 text-yellow-500 mb-4" />
                             <h3 className="text-xl font-bold mb-4">Süreç</h3>
                             <div className="flex items-center gap-2">
                                 {content.processSteps.map((step, idx) => (
@@ -194,7 +196,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                         className="text-center mb-12"
                     >
                         <h2 className="text-4xl md:text-5xl font-bold mb-4">Ne Elde Edeceksiniz?</h2>
-                        <p className="text-zinc-400 text-lg">Ölçülebilir ve somut çıktılar</p>
+                        <p className="text-zinc-500 text-lg">Ölçülebilir ve somut çıktılar</p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
@@ -205,12 +207,12 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.05 }}
-                                className="flex items-center gap-3 p-4 rounded-xl bg-zinc-900/30 border border-zinc-800/50"
+                                className="flex items-center gap-3 p-4 rounded-xl bg-zinc-50 border border-zinc-200"
                             >
-                                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                                    <Check className="w-4 h-4 text-green-400" />
+                                <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center shrink-0">
+                                    <Check className="w-4 h-4 text-green-500" />
                                 </div>
-                                <span className="text-zinc-300">{outcome}</span>
+                                <span className="text-zinc-600">{outcome}</span>
                             </motion.div>
                         ))}
                     </div>
@@ -218,7 +220,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
             </section>
 
             {/* 4. PACKAGES */}
-            <section className="py-20 px-4 bg-zinc-950">
+            <section className="py-20 px-4 bg-zinc-50">
                 <div className="container mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -227,7 +229,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                         className="text-center mb-12"
                     >
                         <h2 className="text-4xl md:text-5xl font-bold mb-4">Paketler</h2>
-                        <p className="text-zinc-400 text-lg">İhtiyacınıza uygun paketi seçin</p>
+                        <p className="text-zinc-500 text-lg">İhtiyacınıza uygun paketi seçin</p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -239,8 +241,8 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
                                 className={`relative p-6 rounded-2xl border transition-all duration-300 ${pkg.popular
-                                    ? 'bg-gradient-to-b from-blue-900/30 to-zinc-900/50 border-blue-500/50 ring-1 ring-blue-500/20'
-                                    : 'bg-zinc-900/50 border-zinc-800 hover:border-zinc-700'
+                                    ? 'bg-gradient-to-b from-blue-50 to-white border-blue-300 ring-1 ring-blue-200'
+                                    : 'bg-white border-zinc-200 hover:border-zinc-300 shadow-sm'
                                     }`}
                             >
                                 {pkg.popular && (
@@ -253,26 +255,26 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 )}
 
                                 <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
-                                <p className="text-zinc-400 mb-6">{pkg.description}</p>
+                                <p className="text-zinc-500 mb-6">{pkg.description}</p>
 
                                 <ul className="space-y-3 mb-6">
                                     {pkg.features.map((feature, fidx) => (
                                         <li key={fidx} className="flex items-start gap-2 text-sm">
-                                            <Check className="w-4 h-4 text-green-400 mt-0.5 shrink-0" />
-                                            <span className="text-zinc-300">{feature}</span>
+                                            <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
+                                            <span className="text-zinc-600">{feature}</span>
                                         </li>
                                     ))}
                                 </ul>
 
-                                <div className="p-3 rounded-lg bg-zinc-800/50 mb-6">
-                                    <p className="text-xs text-zinc-500 uppercase tracking-wide mb-1">Kimler için?</p>
-                                    <p className="text-sm text-zinc-400">{pkg.forWho}</p>
+                                <div className="p-3 rounded-lg bg-zinc-50 mb-6">
+                                    <p className="text-xs text-zinc-400 uppercase tracking-wide mb-1">Kimler için?</p>
+                                    <p className="text-sm text-zinc-500">{pkg.forWho}</p>
                                 </div>
 
                                 <Button
                                     className={`w-full ${pkg.popular
-                                        ? 'bg-white text-black hover:bg-zinc-200'
-                                        : 'bg-zinc-800 hover:bg-zinc-700'
+                                        ? 'bg-zinc-900 text-white hover:bg-zinc-800'
+                                        : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-900'
                                         }`}
                                     asChild
                                 >
@@ -297,7 +299,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                         className="text-center mb-12"
                     >
                         <h2 className="text-4xl md:text-5xl font-bold mb-4">Süreç</h2>
-                        <p className="text-zinc-400 text-lg">Adım adım nasıl çalışıyoruz</p>
+                        <p className="text-zinc-500 text-lg">Adım adım nasıl çalışıyoruz</p>
                     </motion.div>
 
                     <div className="max-w-4xl mx-auto">
@@ -308,7 +310,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="relative pl-8 pb-12 last:pb-0 border-l-2 border-zinc-800 last:border-transparent"
+                                className="relative pl-8 pb-12 last:pb-0 border-l-2 border-zinc-200 last:border-transparent"
                             >
                                 {/* Step number */}
                                 <div className="absolute -left-4 top-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-sm font-bold">
@@ -320,13 +322,13 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                     <p className="text-zinc-500 mb-4">{step.description}</p>
 
                                     <div className="grid md:grid-cols-2 gap-4">
-                                        <div className="p-4 rounded-lg bg-zinc-900/50 border border-zinc-800">
-                                            <p className="text-xs text-blue-400 uppercase tracking-wide mb-2">Sizden</p>
-                                            <p className="text-sm text-zinc-400">{step.youDo}</p>
+                                        <div className="p-4 rounded-lg bg-zinc-50 border border-zinc-200">
+                                            <p className="text-xs text-blue-500 uppercase tracking-wide mb-2">Sizden</p>
+                                            <p className="text-sm text-zinc-500">{step.youDo}</p>
                                         </div>
-                                        <div className="p-4 rounded-lg bg-zinc-900/50 border border-zinc-800">
-                                            <p className="text-xs text-purple-400 uppercase tracking-wide mb-2">Bizden</p>
-                                            <p className="text-sm text-zinc-400">{step.weDo}</p>
+                                        <div className="p-4 rounded-lg bg-zinc-50 border border-zinc-200">
+                                            <p className="text-xs text-purple-500 uppercase tracking-wide mb-2">Bizden</p>
+                                            <p className="text-sm text-zinc-500">{step.weDo}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -337,7 +339,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
             </section>
 
             {/* 6. CASE STUDIES */}
-            <section className="py-20 px-4 bg-zinc-950">
+            <section className="py-20 px-4 bg-zinc-50">
                 <div className="container mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -346,7 +348,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                         className="text-center mb-12"
                     >
                         <h2 className="text-4xl md:text-5xl font-bold mb-4">Örnek Çalışmalar</h2>
-                        <p className="text-zinc-400 text-lg">Gerçek sonuçlar, gerçek markalar</p>
+                        <p className="text-zinc-500 text-lg">Gerçek sonuçlar, gerçek markalar</p>
                     </motion.div>
 
                     <div className={`grid gap-6 max-w-6xl mx-auto ${content.caseStudies.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}>
@@ -357,10 +359,10 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="group p-6 rounded-2xl bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 transition-all"
+                                className="group p-6 rounded-2xl bg-white border border-zinc-200 hover:border-zinc-300 shadow-sm transition-all"
                             >
                                 {/* Case study image */}
-                                <div className="aspect-[3/4] rounded-lg bg-zinc-800 mb-4 overflow-hidden relative">
+                                <div className="aspect-[3/4] rounded-lg bg-zinc-100 mb-4 overflow-hidden relative">
                                     {study.image ? (
                                         <Image
                                             src={study.image}
@@ -387,7 +389,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                     </div>
 
                     <div className="text-center mt-10">
-                        <Button variant="outline" className="border-zinc-700 text-zinc-300 hover:bg-zinc-800" asChild>
+                        <Button variant="outline" className="border-zinc-300 text-zinc-600 hover:bg-zinc-100" asChild>
                             <Link href="/calismalar">
                                 Tüm Çalışmaları Gör
                                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -407,7 +409,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                         className="text-center mb-12"
                     >
                         <h2 className="text-4xl md:text-5xl font-bold mb-4">Sık Sorulan Sorular</h2>
-                        <p className="text-zinc-400 text-lg">Merak ettiklerinize yanıtlar</p>
+                        <p className="text-zinc-500 text-lg">Merak ettiklerinize yanıtlar</p>
                     </motion.div>
 
                     <div className="space-y-4">
@@ -418,11 +420,11 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.05 }}
-                                className="border border-zinc-800 rounded-xl overflow-hidden"
+                                className="border border-zinc-200 rounded-xl overflow-hidden"
                             >
                                 <button
                                     onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                                    className="w-full flex items-center justify-between p-5 text-left hover:bg-zinc-900/50 transition-colors"
+                                    className="w-full flex items-center justify-between p-5 text-left hover:bg-zinc-50 transition-colors"
                                 >
                                     <span className="font-medium">{faq.question}</span>
                                     {openFaq === idx ? (
@@ -439,7 +441,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.2 }}
                                         >
-                                            <div className="px-5 pb-5 text-zinc-400">
+                                            <div className="px-5 pb-5 text-zinc-500">
                                                 {faq.answer}
                                             </div>
                                         </motion.div>
@@ -452,7 +454,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
             </section>
 
             {/* FINAL CTA */}
-            <section className="py-20 px-4 bg-gradient-to-b from-zinc-950 to-black">
+            <section className="py-20 px-4 bg-gradient-to-b from-zinc-50 to-white">
                 <div className="container mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -463,13 +465,13 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                         <h2 className="text-4xl md:text-5xl font-bold mb-6">
                             Projenizi Başlatalım
                         </h2>
-                        <p className="text-xl text-zinc-400 mb-10">
+                        <p className="text-xl text-zinc-500 mb-10">
                             Size özel teklif için hemen iletişime geçin.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
                             <Button
                                 size="lg"
-                                className="h-14 px-10 text-lg bg-white text-black hover:bg-zinc-200 rounded-full"
+                                className="h-14 px-10 text-lg bg-zinc-900 text-white hover:bg-zinc-800 rounded-full"
                                 asChild
                             >
                                 <Link href="/booking">
@@ -480,11 +482,11 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                             <Button
                                 size="lg"
                                 variant="outline"
-                                className="h-14 px-10 text-lg border-green-500 text-green-400 hover:bg-green-500/10 rounded-full"
+                                className="h-14 px-10 text-lg border-green-500 text-green-600 hover:bg-green-50 rounded-full"
                                 asChild
                             >
                                 <a
-                                    href="https://wa.me/905321234567"
+                                    href="https://wa.me/905309303276"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -504,16 +506,16 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                         initial={{ y: 100, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: 100, opacity: 0 }}
-                        className="fixed bottom-0 left-0 right-0 z-50 bg-zinc-900/95 backdrop-blur-lg border-t border-zinc-800 py-4 px-4"
+                        className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-t border-zinc-200 py-4 px-4"
                     >
                         <div className="container mx-auto flex items-center justify-between">
                             <div className="hidden md:block">
                                 <p className="font-medium">{content.title}</p>
-                                <p className="text-sm text-zinc-400">Hemen teklif alın</p>
+                                <p className="text-sm text-zinc-500">Hemen teklif alın</p>
                             </div>
                             <div className="flex items-center gap-3 w-full md:w-auto justify-center md:justify-end">
                                 <Button
-                                    className="bg-white text-black hover:bg-zinc-200"
+                                    className="bg-zinc-900 text-white hover:bg-zinc-800"
                                     asChild
                                 >
                                     <Link href="/booking">
@@ -523,11 +525,11 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 </Button>
                                 <Button
                                     variant="outline"
-                                    className="border-green-500 text-green-400 hover:bg-green-500/10"
+                                    className="border-green-500 text-green-600 hover:bg-green-50"
                                     asChild
                                 >
                                     <a
-                                        href="https://wa.me/905321234567"
+                                        href="https://wa.me/905309303276"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >

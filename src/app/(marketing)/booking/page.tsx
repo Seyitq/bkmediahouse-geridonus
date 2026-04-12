@@ -88,29 +88,29 @@ export default function BookingPage() {
 
     if (isSuccess && bookedSlot) {
         return (
-            <div className="min-h-screen bg-black pt-32 pb-24 flex items-center justify-center">
+            <div className="min-h-screen bg-white pt-32 pb-24 flex items-center justify-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center max-w-md mx-auto px-4"
                 >
-                    <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-8">
+                    <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-8">
                         <Check className="w-10 h-10 text-green-500" />
                     </div>
-                    <h1 className="text-3xl font-bold text-white mb-4">Randevu Talebiniz Alındı!</h1>
-                    <p className="text-zinc-400 mb-4">
+                    <h1 className="text-3xl font-bold text-zinc-900 mb-4">Randevu Talebiniz Alındı!</h1>
+                    <p className="text-zinc-500 mb-4">
                         Talebinizi inceleyip en kısa sürede sizinle iletişime geçeceğiz.
                     </p>
 
                     {/* Booking details */}
-                    <div className="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4 mb-8">
-                        <div className="flex items-center justify-center gap-3 text-white mb-2">
+                    <div className="bg-zinc-50 border border-zinc-200 rounded-lg p-4 mb-8">
+                        <div className="flex items-center justify-center gap-3 text-zinc-900 mb-2">
                             <CalendarDays className="h-5 w-5 text-blue-400" />
                             <span className="font-medium">
                                 {format(new Date(bookedSlot.startTime), 'd MMMM yyyy', { locale: tr })}
                             </span>
                         </div>
-                        <div className="flex items-center justify-center gap-2 text-zinc-400">
+                        <div className="flex items-center justify-center gap-2 text-zinc-500">
                             <Clock className="h-4 w-4" />
                             <span>
                                 {format(new Date(bookedSlot.startTime), 'HH:mm')} - {format(new Date(bookedSlot.endTime), 'HH:mm')}
@@ -120,13 +120,13 @@ export default function BookingPage() {
 
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                         <AddToCalendar
-                            title="BK Media House - Randevu"
+                            title="New Social Agency - Randevu"
                             description={`Randevu: ${formData.clientName}\nE-posta: ${formData.clientEmail}${formData.notes ? `\nNotlar: ${formData.notes}` : ''}`}
                             startTime={new Date(bookedSlot.startTime)}
                             endTime={new Date(bookedSlot.endTime)}
-                            location="BK Media House, İstanbul"
+                            location="New Social Agency, Ankara"
                         />
-                        <Button onClick={() => router.push('/')} className="bg-white text-black hover:bg-zinc-200">
+                        <Button onClick={() => router.push('/')} className="bg-zinc-900 text-white hover:bg-zinc-800">
                             Ana Sayfaya Dön
                         </Button>
                     </div>
@@ -136,14 +136,14 @@ export default function BookingPage() {
     }
 
     return (
-        <div className="min-h-screen bg-black pt-32 pb-24">
+        <div className="min-h-screen bg-white pt-32 pb-24">
             <div className="container px-4 mx-auto max-w-4xl">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tighter mb-4">
+                    <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 tracking-tighter mb-4">
                         Randevu Oluştur
                     </h1>
-                    <p className="text-lg text-zinc-400">
+                    <p className="text-lg text-zinc-500">
                         Uygun bir zaman seçin ve sizinle iletişime geçelim.
                     </p>
                 </div>
@@ -161,9 +161,9 @@ export default function BookingPage() {
 
                     <div className="grid gap-8 lg:grid-cols-2">
                         {/* Available Slots */}
-                        <Card className="border-zinc-800 bg-zinc-900/50">
+                        <Card className="border-zinc-200 bg-white shadow-sm">
                             <CardHeader>
-                                <CardTitle className="text-white flex items-center gap-2">
+                                <CardTitle className="text-zinc-900 flex items-center gap-2">
                                     <CalendarDays className="h-5 w-5" />
                                     Uygun Zamanlar
                                 </CardTitle>
@@ -174,7 +174,7 @@ export default function BookingPage() {
                             <CardContent>
                                 {slots.length === 0 ? (
                                     <div className="text-center py-12">
-                                        <Calendar className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
+                                        <Calendar className="h-12 w-12 text-zinc-300 mx-auto mb-4" />
                                         <p className="text-zinc-500">
                                             Şu anda uygun randevu bulunamadı.
                                         </p>
@@ -189,8 +189,8 @@ export default function BookingPage() {
                                                 key={slot.id}
                                                 onClick={() => setSelectedSlot(slot.id)}
                                                 className={`p-4 rounded-lg border cursor-pointer transition-all ${selectedSlot === slot.id
-                                                    ? 'bg-white/10 border-white text-white'
-                                                    : 'bg-zinc-800/50 border-zinc-700 text-zinc-300 hover:border-zinc-600'
+                                                    ? 'bg-blue-50 border-blue-500 text-zinc-900'
+                                                    : 'bg-zinc-50 border-zinc-200 text-zinc-700 hover:border-zinc-300'
                                                     }`}
                                             >
                                                 <div className="flex items-center justify-between">
@@ -215,9 +215,9 @@ export default function BookingPage() {
                         </Card>
 
                         {/* Contact Form */}
-                        <Card className="border-zinc-800 bg-zinc-900/50">
+                        <Card className="border-zinc-200 bg-white shadow-sm">
                             <CardHeader>
-                                <CardTitle className="text-white flex items-center gap-2">
+                                <CardTitle className="text-zinc-900 flex items-center gap-2">
                                     <User className="h-5 w-5" />
                                     İletişim Bilgileri
                                 </CardTitle>
@@ -227,7 +227,7 @@ export default function BookingPage() {
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 <div className="space-y-2">
-                                    <Label htmlFor="clientName" className="text-zinc-300">Ad Soyad *</Label>
+                                    <Label htmlFor="clientName" className="text-zinc-700">Ad Soyad *</Label>
                                     <div className="relative">
                                         <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                         <Input
@@ -235,14 +235,14 @@ export default function BookingPage() {
                                             required
                                             value={formData.clientName}
                                             onChange={(e) => setFormData(prev => ({ ...prev, clientName: e.target.value }))}
-                                            className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                            className="pl-10 bg-zinc-50 border-zinc-300 text-zinc-900"
                                             placeholder="İsminiz"
                                         />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <Label htmlFor="clientEmail" className="text-zinc-300">E-posta *</Label>
+                                    <Label htmlFor="clientEmail" className="text-zinc-700">E-posta *</Label>
                                     <div className="relative">
                                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                         <Input
@@ -251,28 +251,28 @@ export default function BookingPage() {
                                             required
                                             value={formData.clientEmail}
                                             onChange={(e) => setFormData(prev => ({ ...prev, clientEmail: e.target.value }))}
-                                            className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                            className="pl-10 bg-zinc-50 border-zinc-300 text-zinc-900"
                                             placeholder="ornek@email.com"
                                         />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <Label htmlFor="clientPhone" className="text-zinc-300">Telefon</Label>
+                                    <Label htmlFor="clientPhone" className="text-zinc-700">Telefon</Label>
                                     <div className="relative">
                                         <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                         <Input
                                             id="clientPhone"
                                             value={formData.clientPhone}
                                             onChange={(e) => setFormData(prev => ({ ...prev, clientPhone: e.target.value }))}
-                                            className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                            className="pl-10 bg-zinc-50 border-zinc-300 text-zinc-900"
                                             placeholder="+90 5XX XXX XX XX"
                                         />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <Label htmlFor="notes" className="text-zinc-300">Notlar</Label>
+                                    <Label htmlFor="notes" className="text-zinc-700">Notlar</Label>
                                     <div className="relative">
                                         <FileText className="absolute left-3 top-3 h-4 w-4 text-zinc-500" />
                                         <Textarea
@@ -280,7 +280,7 @@ export default function BookingPage() {
                                             rows={3}
                                             value={formData.notes}
                                             onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
-                                            className="pl-10 bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                            className="pl-10 bg-zinc-50 border-zinc-300 text-zinc-900 resize-none"
                                             placeholder="Randevu hakkında notlarınız..."
                                         />
                                     </div>
@@ -289,7 +289,7 @@ export default function BookingPage() {
                                 <Button
                                     type="submit"
                                     disabled={!selectedSlot || !formData.clientName || !formData.clientEmail || isLoading}
-                                    className="w-full bg-white text-black hover:bg-zinc-200 h-12 text-base"
+                                    className="w-full bg-zinc-900 text-white hover:bg-zinc-800 h-12 text-base"
                                 >
                                     {isLoading ? (
                                         <>

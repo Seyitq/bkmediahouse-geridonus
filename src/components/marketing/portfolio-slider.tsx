@@ -55,7 +55,7 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
     if (projects.length === 0) return null
 
     return (
-        <section className="py-20 bg-zinc-950">
+        <section className="py-20 bg-zinc-50">
             <div className="container px-4 mx-auto">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
@@ -80,8 +80,8 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                                 onClick={() => scroll('left')}
                                 disabled={!canScrollLeft}
                                 className={`p-3 rounded-full border transition-all ${canScrollLeft
-                                    ? 'border-zinc-700 text-white hover:bg-zinc-800'
-                                    : 'border-zinc-800 text-zinc-600 cursor-not-allowed'
+                                    ? 'border-zinc-300 text-zinc-700 hover:bg-zinc-100'
+                                    : 'border-zinc-200 text-zinc-300 cursor-not-allowed'
                                     }`}
                             >
                                 <ChevronLeft className="w-5 h-5" />
@@ -90,8 +90,8 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                                 onClick={() => scroll('right')}
                                 disabled={!canScrollRight}
                                 className={`p-3 rounded-full border transition-all ${canScrollRight
-                                    ? 'border-zinc-700 text-white hover:bg-zinc-800'
-                                    : 'border-zinc-800 text-zinc-600 cursor-not-allowed'
+                                    ? 'border-zinc-300 text-zinc-700 hover:bg-zinc-100'
+                                    : 'border-zinc-200 text-zinc-300 cursor-not-allowed'
                                     }`}
                             >
                                 <ChevronRight className="w-5 h-5" />
@@ -99,7 +99,7 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                         </div>
 
                         <Link href="/calismalar">
-                            <Button className="bg-white text-black hover:bg-zinc-200 group">
+                            <Button className="bg-zinc-900 text-white hover:bg-zinc-800 group">
                                 Tümünü Gör
                                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </Button>
@@ -110,8 +110,8 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                 {/* Slider */}
                 <div className="relative">
                     {/* Gradient fade edges */}
-                    <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-zinc-950 to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-zinc-950 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-zinc-50 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-zinc-50 to-transparent z-10 pointer-events-none" />
 
                     {/* Scrollable container */}
                     <div
@@ -129,17 +129,18 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                                 className="flex-shrink-0 w-[320px] md:w-[400px] snap-start"
                             >
                                 <Link href={`/calismalar/${project.slug}`} className="group block">
-                                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 group-hover:border-zinc-700 transition-all">
+                                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200 group-hover:border-zinc-300 group-hover:shadow-lg transition-all">
                                         {project.coverImage ? (
                                             <Image
                                                 src={project.coverImage}
                                                 alt={project.title}
                                                 fill
                                                 className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                                unoptimized
                                             />
                                         ) : (
-                                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-purple-500/20">
-                                                <span className="text-zinc-600">Görsel</span>
+                                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-zinc-100">
+                                                <span className="text-zinc-400">Görsel</span>
                                             </div>
                                         )}
 
@@ -153,7 +154,7 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                                                     {project.clientName}
                                                 </span>
                                             )}
-                                            <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
+                                            <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">
                                                 {project.title}
                                             </h3>
 
@@ -178,8 +179,8 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                                         </div>
 
                                         {/* Hover arrow */}
-                                        <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                                            <ArrowRight className="w-5 h-5 text-white" />
+                                        <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-sm">
+                                            <ArrowRight className="w-5 h-5 text-zinc-900" />
                                         </div>
                                     </div>
                                 </Link>

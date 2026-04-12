@@ -3,13 +3,14 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Save, Loader2, Building2, Link2, Image as ImageIcon } from 'lucide-react'
+import { ArrowLeft, Save, Loader2, Building2, Link2 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Switch } from '@/components/ui/switch'
+import { ImageUploader } from '@/components/admin/image-uploader'
 import { createTrustedCompany } from '@/actions/social-proof'
 
 export default function NewCompanyPage() {
@@ -92,18 +93,11 @@ export default function NewCompanyPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="logoUrl" className="text-zinc-300">Logo URL *</Label>
-                            <div className="relative">
-                                <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
-                                <Input
-                                    id="logoUrl"
-                                    required
-                                    value={formData.logoUrl}
-                                    onChange={(e) => setFormData(prev => ({ ...prev, logoUrl: e.target.value }))}
-                                    className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
-                                    placeholder="https://example.com/logo.png"
-                                />
-                            </div>
+                            <Label className="text-zinc-300">Firma Logosu *</Label>
+                            <ImageUploader
+                                value={formData.logoUrl}
+                                onChange={(url) => setFormData(prev => ({ ...prev, logoUrl: url }))}
+                            />
                         </div>
 
                         <div className="space-y-2">

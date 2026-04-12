@@ -22,16 +22,21 @@ async function getCurrentUser() {
 }
 
 export default async function SettingsPage() {
-    const settings = await getSettings()
+    const session = await auth()
     const user = await getCurrentUser()
 
     if (!user) return null
+
+    const isAdmin = session?.user?.role === 'ADMIN'
+    const settings = isAdmin ? await getSettings() : {}
 
     return (
         <div className="space-y-6">
             <div>
                 <h1 className="text-2xl font-bold text-white">Ayarlar</h1>
-                <p className="text-zinc-500">Site ve hesap ayarlarını yönetin</p>
+                <p className="text-zinc-500">
+                    {isAdmin ? 'Site ve hesap ayarlarını yönetin' : 'Hesap ayarlarınızı yönetin'}
+                </p>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-2">
@@ -67,55 +72,57 @@ export default async function SettingsPage() {
                     </CardContent>
                 </Card>
 
-                {/* Site Settings */}
-                <Card className="border-zinc-800 bg-zinc-900/50 lg:col-span-2">
-                    <CardHeader>
-                        <CardTitle className="text-white flex items-center gap-2">
-                            <Globe className="h-5 w-5" />
-                            Site Ayarları
-                        </CardTitle>
-                        <CardDescription className="text-zinc-500">
-                            Genel site ayarlarını düzenleyin
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="grid gap-6 md:grid-cols-2">
-                            <SiteSettingForm
-                                settingKey="site_title"
-                                label="Site Başlığı"
-                                initialValue={settings.site_title || 'BK Media House'}
-                            />
-                            <SiteSettingForm
-                                settingKey="site_tagline"
-                                label="Slogan"
-                                initialValue={settings.site_tagline || 'Dijital Medya Ajansı'}
-                            />
-                            <SiteSettingForm
-                                settingKey="contact_email"
-                                label="İletişim E-postası"
-                                initialValue={settings.contact_email || 'info@bkmediahouse.com'}
-                                placeholder="info@..."
-                            />
-                            <SiteSettingForm
-                                settingKey="contact_phone"
-                                label="İletişim Telefonu"
-                                initialValue={settings.contact_phone || '+90 212 123 45 67'}
-                                placeholder="+90..."
-                            />
-                            <SiteSettingForm
-                                settingKey="social_instagram"
-                                label="Instagram"
-                                initialValue={settings.social_instagram || '@bkmediahouse'}
-                            />
-                            <SiteSettingForm
-                                settingKey="social_linkedin"
-                                label="LinkedIn"
-                                initialValue={settings.social_linkedin || ''}
-                                placeholder="linkedin.com/company/..."
-                            />
-                        </div>
-                    </CardContent>
-                </Card>
+                {/* Site Settings - Admin Only */}
+                {isAdmin && (
+                    <Card className="border-zinc-800 bg-zinc-900/50 lg:col-span-2">
+                        <CardHeader>
+                            <CardTitle className="text-white flex items-center gap-2">
+                                <Globe className="h-5 w-5" />
+                                Site Ayarları
+                            </CardTitle>
+                            <CardDescription className="text-zinc-500">
+                                Genel site ayarlarını düzenleyin
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="grid gap-6 md:grid-cols-2">
+                                <SiteSettingForm
+                                    settingKey="site_title"
+                                    label="Site Başlığı"
+                                    initialValue={settings.site_title || 'New Social Agency'}
+                                />
+                                <SiteSettingForm
+                                    settingKey="site_tagline"
+                                    label="Slogan"
+                                    initialValue={settings.site_tagline || 'Dijital Medya Ajansı'}
+                                />
+                                <SiteSettingForm
+                                    settingKey="contact_email"
+                                    label="İletişim E-postası"
+                                    initialValue={settings.contact_email || 'info@newsocialankara.com'}
+                                    placeholder="info@..."
+                                />
+                                <SiteSettingForm
+                                    settingKey="contact_phone"
+                                    label="İletişim Telefonu"
+                                    initialValue={settings.contact_phone || '+90 212 123 45 67'}
+                                    placeholder="+90..."
+                                />
+                                <SiteSettingForm
+                                    settingKey="social_instagram"
+                                    label="Instagram"
+                                    initialValue={settings.social_instagram || '@newsocialankara'}
+                                />
+                                <SiteSettingForm
+                                    settingKey="social_linkedin"
+                                    label="LinkedIn"
+                                    initialValue={settings.social_linkedin || ''}
+                                    placeholder="linkedin.com/company/..."
+                                />
+                            </div>
+                        </CardContent>
+                    </Card>
+                )}
             </div>
         </div>
     )
