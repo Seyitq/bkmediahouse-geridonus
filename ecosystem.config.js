@@ -9,7 +9,8 @@ module.exports = {
       HOSTNAME: '0.0.0.0',
       AUTH_SECRET: 'u7eYxOlaaz7/pSUs3tMtwJSoii35WV0fc34WZa/+XTg=',
       NEXTAUTH_URL: 'https://newsocialankara.com',
-      NEXT_PUBLIC_GA_ID: 'G-77Y7HCGDLB'
+      NEXT_PUBLIC_GA_ID: 'G-77Y7HCGDLB',
+      DATABASE_URL: 'file:/root/var/www/bkmediahouse-geridonus/prisma/dev.db'
     },
     instances: 1,
     autorestart: true,
