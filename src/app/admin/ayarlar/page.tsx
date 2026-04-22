@@ -105,7 +105,7 @@ export default async function SettingsPage() {
                                 <SiteSettingForm
                                     settingKey="contact_phone"
                                     label="İletişim Telefonu"
-                                    initialValue={settings.contact_phone || '+90 212 123 45 67'}
+                                    initialValue={settings.contact_phone || '+90 541 271 77 95'}
                                     placeholder="+90..."
                                 />
                                 <SiteSettingForm
