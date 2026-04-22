@@ -1,4 +1,4 @@
-// New Social Agency - Prisma Schema
+// BK Media House - Prisma Schema
 // Local SQLite database
 
 generator client {

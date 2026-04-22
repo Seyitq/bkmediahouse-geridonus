@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+﻿import { db } from '@/lib/db'
 
 // Force dynamic rendering to prevent build-time database calls
 export const dynamic = 'force-dynamic'
@@ -44,20 +44,20 @@ export default async function CompaniesPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Referans Firmalar</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Referans Firmalar</h1>
                     <p className="text-zinc-500">Güvenilen firmaların logolarını yönetin</p>
                 </div>
                 <Link href="/admin/firmalar/yeni">
-                    <Button className="bg-white text-zinc-900 hover:bg-zinc-200">
+                    <Button className="bg-zinc-50 text-white hover:bg-zinc-100">
                         <Plus className="mr-2 h-4 w-4" />
                         Yeni Firma Ekle
                     </Button>
                 </Link>
             </div>
 
-            <Card className="border-zinc-800 bg-zinc-900/50">
+            <Card className="border-zinc-200 bg-white">
                 <CardHeader>
-                    <CardTitle className="text-white">Tüm Firmalar</CardTitle>
+                    <CardTitle className="text-zinc-900">Tüm Firmalar</CardTitle>
                     <CardDescription className="text-zinc-500">
                         Ana sayfada gösterilecek firma logoları
                     </CardDescription>
@@ -68,7 +68,7 @@ export default async function CompaniesPage() {
                             <Building2 className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
                             <p className="text-zinc-500">Henüz firma eklenmemiş.</p>
                             <Link href="/admin/firmalar/yeni" className="mt-4 inline-block">
-                                <Button variant="outline" className="border-zinc-700 text-zinc-400 hover:text-white">
+                                <Button variant="outline" className="border-zinc-700 text-zinc-400 hover:text-zinc-900">
                                     İlk Firmayı Ekle
                                 </Button>
                             </Link>
@@ -76,7 +76,7 @@ export default async function CompaniesPage() {
                     ) : (
                         <Table>
                             <TableHeader>
-                                <TableRow className="border-zinc-800 hover:bg-transparent">
+                                <TableRow className="border-zinc-200 hover:bg-transparent">
                                     <TableHead className="text-zinc-400 w-16">Sıra</TableHead>
                                     <TableHead className="text-zinc-400">Logo</TableHead>
                                     <TableHead className="text-zinc-400">Firma Adı</TableHead>
@@ -89,12 +89,12 @@ export default async function CompaniesPage() {
                                 {companies.map((company) => {
                                     const hasValidLogo = isValidImageUrl(company.logoUrl)
                                     return (
-                                        <TableRow key={company.id} className="border-zinc-800">
+                                        <TableRow key={company.id} className="border-zinc-200">
                                             <TableCell className="text-zinc-500">
                                                 <GripVertical className="h-4 w-4" />
                                             </TableCell>
                                             <TableCell>
-                                                <div className="w-24 h-12 relative bg-zinc-800 rounded flex items-center justify-center overflow-hidden">
+                                                <div className="w-24 h-12 relative bg-zinc-100 rounded flex items-center justify-center overflow-hidden">
                                                     {hasValidLogo ? (
                                                         /* eslint-disable-next-line @next/next/no-img-element */
                                                         <img
@@ -136,11 +136,11 @@ export default async function CompaniesPage() {
                                             <TableCell className="text-right">
                                                 <DropdownMenu>
                                                     <DropdownMenuTrigger asChild>
-                                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-white">
+                                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-zinc-900">
                                                             <MoreHorizontal className="h-4 w-4" />
                                                         </Button>
                                                     </DropdownMenuTrigger>
-                                                    <DropdownMenuContent align="end" className="bg-zinc-900 border-zinc-800">
+                                                    <DropdownMenuContent align="end" className="bg-white border-zinc-200">
                                                         <Link href={`/admin/firmalar/${company.id}`}>
                                                             <DropdownMenuItem>Düzenle</DropdownMenuItem>
                                                         </Link>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -146,17 +147,20 @@ export function Sidebar({ userRole }: SidebarProps) {
     const sidebarContent = (
         <div className="flex h-full flex-col">
             {/* Logo */}
-            <div className="flex h-16 items-center justify-between border-b border-zinc-800 px-6">
+            <div className="flex h-16 items-center justify-between border-b border-zinc-200 px-6">
                 <Link href="/admin" className="flex items-center gap-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white">
-                        <span className="text-sm font-bold text-zinc-900">BK</span>
-                    </div>
-                    <span className="text-lg font-semibold text-white">Media House</span>
+                    <Image
+                        src="/bk-logo.jpg"
+                        alt="BK Media House"
+                        width={40}
+                        height={40}
+                        className="h-10 w-auto object-contain"
+                    />
                 </Link>
                 {/* Mobile close button */}
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="lg:hidden p-1 text-zinc-400 hover:text-white transition-colors"
+                    className="lg:hidden p-1 text-zinc-400 hover:text-zinc-900 transition-colors"
                 >
                     <X className="h-5 w-5" />
                 </button>
@@ -171,7 +175,7 @@ export function Sidebar({ userRole }: SidebarProps) {
                     return (
                         <div key={link.href}>
                             {link.separator && index > 0 && (
-                                <div className="my-2 border-t border-zinc-800/50" />
+                                <div className="my-2 border-t border-zinc-200" />
                             )}
                             <Link href={link.href}>
                                 <motion.div
@@ -179,19 +183,19 @@ export function Sidebar({ userRole }: SidebarProps) {
                                     className={cn(
                                         'group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                                         isActive
-                                            ? 'bg-zinc-800 text-white'
-                                            : 'text-zinc-400 hover:bg-zinc-900 hover:text-white'
+                                            ? 'bg-zinc-100 text-zinc-900'
+                                            : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'
                                     )}
                                 >
                                     <span className={cn(
                                         'transition-colors',
-                                        isActive ? 'text-white' : 'text-zinc-500 group-hover:text-white'
+                                        isActive ? 'text-zinc-900' : 'text-zinc-400 group-hover:text-zinc-900'
                                     )}>
                                         {link.icon}
                                     </span>
                                     {link.label}
                                     {isActive && (
-                                        <ChevronRight className="ml-auto h-4 w-4 text-zinc-500" />
+                                        <ChevronRight className="ml-auto h-4 w-4 text-zinc-400" />
                                     )}
                                 </motion.div>
                             </Link>
@@ -201,11 +205,11 @@ export function Sidebar({ userRole }: SidebarProps) {
             </nav>
 
             {/* Logout */}
-            <div className="border-t border-zinc-800 p-3">
+            <div className="border-t border-zinc-200 p-3">
                 <Button
                     variant="ghost"
                     onClick={handleLogout}
-                    className="w-full justify-start gap-3 text-zinc-400 hover:bg-zinc-900 hover:text-white"
+                    className="w-full justify-start gap-3 text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"
                 >
                     <LogOut className="h-5 w-5" />
                     Çıkış Yap
@@ -219,14 +223,14 @@ export function Sidebar({ userRole }: SidebarProps) {
             {/* Mobile hamburger button */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="fixed top-4 left-4 z-50 lg:hidden p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white transition-colors"
+                className="fixed top-4 left-4 z-50 lg:hidden p-2 rounded-lg bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-900 transition-colors shadow-sm"
                 aria-label="Menüyü aç"
             >
                 <Menu className="h-5 w-5" />
             </button>
 
             {/* Desktop sidebar */}
-            <aside className="hidden lg:block fixed left-0 top-0 z-40 h-screen w-64 border-r border-zinc-800 bg-zinc-950">
+            <aside className="hidden lg:block fixed left-0 top-0 z-40 h-screen w-64 border-r border-zinc-200 bg-white">
                 {sidebarContent}
             </aside>
 
@@ -248,7 +252,7 @@ export function Sidebar({ userRole }: SidebarProps) {
                             animate={{ x: 0 }}
                             exit={{ x: '-100%' }}
                             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                            className="fixed left-0 top-0 z-50 h-screen w-72 border-r border-zinc-800 bg-zinc-950 lg:hidden"
+                            className="fixed left-0 top-0 z-50 h-screen w-72 border-r border-zinc-200 bg-white lg:hidden"
                         >
                             {sidebarContent}
                         </motion.aside>

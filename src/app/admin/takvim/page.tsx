@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+﻿import { db } from '@/lib/db'
 
 // Force dynamic rendering to prevent build-time database calls
 export const dynamic = 'force-dynamic'
@@ -69,18 +69,18 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Takvim</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Takvim</h1>
                     <p className="text-zinc-500">Randevular ve uygun zamanların takvim görünümü</p>
                 </div>
                 <div className="flex items-center gap-2">
                     <Link href="/admin/slotlar/yeni">
-                        <Button variant="outline" className="border-zinc-700 text-zinc-300 hover:bg-zinc-800">
+                        <Button variant="outline" className="border-zinc-700 text-zinc-700 hover:bg-zinc-100">
                             <Plus className="mr-2 h-4 w-4" />
                             Yeni Slot
                         </Button>
                     </Link>
                     <Link href="/admin/randevular/yeni">
-                        <Button className="bg-white text-zinc-900 hover:bg-zinc-200">
+                        <Button className="bg-zinc-50 text-white hover:bg-zinc-100">
                             <Plus className="mr-2 h-4 w-4" />
                             Yeni Randevu
                         </Button>
@@ -90,7 +90,7 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
 
             <div className="grid gap-6 lg:grid-cols-4">
                 {/* Calendar */}
-                <Card className="lg:col-span-3 border-zinc-800 bg-zinc-900/50">
+                <Card className="lg:col-span-3 border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-white flex items-center gap-2">
                             <Calendar className="h-5 w-5" />
@@ -98,17 +98,17 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
                         </CardTitle>
                         <div className="flex items-center gap-2">
                             <Link href={`/admin/takvim?month=${prevMonth}`}>
-                                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                                     <ChevronLeft className="h-5 w-5" />
                                 </Button>
                             </Link>
                             <Link href={`/admin/takvim?month=${format(new Date(), 'yyyy-MM')}`}>
-                                <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-white">
+                                <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-zinc-900">
                                     Bugün
                                 </Button>
                             </Link>
                             <Link href={`/admin/takvim?month=${nextMonth}`}>
-                                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                                     <ChevronRight className="h-5 w-5" />
                                 </Button>
                             </Link>
@@ -128,7 +128,7 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
                         <div className="grid grid-cols-7 gap-1">
                             {/* Empty cells for offset */}
                             {Array.from({ length: startOffset }).map((_, i) => (
-                                <div key={`empty-${i}`} className="aspect-square bg-zinc-900/30 rounded-lg" />
+                                <div key={`empty-${i}`} className="aspect-square bg-zinc-50/30 rounded-lg" />
                             ))}
 
                             {/* Day cells */}
@@ -142,7 +142,7 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
                                         key={day.toISOString()}
                                         className={`aspect-square rounded-lg p-1 ${isToday
                                             ? 'bg-white/10 border border-white/20'
-                                            : 'bg-zinc-900/50 hover:bg-zinc-800/50'
+                                            : 'bg-white hover:bg-zinc-100/50'
                                             }`}
                                     >
                                         <div className={`text-sm font-medium mb-1 ${isToday ? 'text-white' : 'text-zinc-400'}`}>
@@ -180,7 +180,7 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
                         </div>
 
                         {/* Legend */}
-                        <div className="flex items-center gap-6 mt-6 pt-4 border-t border-zinc-800">
+                        <div className="flex items-center gap-6 mt-6 pt-4 border-t border-zinc-200">
                             <div className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded bg-green-500/40" />
                                 <span className="text-sm text-zinc-400">Müsait Slot</span>
@@ -198,7 +198,7 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
                 </Card>
 
                 {/* Sidebar - Upcoming */}
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader>
                         <CardTitle className="text-white text-base flex items-center gap-2">
                             <Clock className="h-4 w-4" />
@@ -210,10 +210,10 @@ export default async function CalendarPage({ searchParams }: CalendarPageProps) 
                             <p className="text-sm text-zinc-500 text-center py-4">Yaklaşan randevu yok</p>
                         ) : (
                             upcomingBookings.map(booking => (
-                                <div key={booking.id} className="p-3 rounded-lg bg-zinc-800/50 border border-zinc-700/50">
+                                <div key={booking.id} className="p-3 rounded-lg bg-zinc-100/50 border border-zinc-700/50">
                                     <div className="flex items-center gap-2 mb-2">
                                         <User className="h-3 w-3 text-zinc-500" />
-                                        <span className="text-sm font-medium text-white">{booking.clientName}</span>
+                                        <span className="text-sm font-medium text-zinc-900">{booking.clientName}</span>
                                     </div>
                                     <div className="text-xs text-zinc-400">
                                         {format(new Date(booking.startTime), 'd MMM, HH:mm', { locale: tr })}

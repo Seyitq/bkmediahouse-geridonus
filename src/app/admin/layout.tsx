@@ -19,7 +19,7 @@ export default async function AdminLayout({
     }
 
     return (
-        <div className="min-h-screen bg-zinc-950">
+        <div className="min-h-screen bg-gray-50">
             <Sidebar userRole={session.user.role} />
             <div className="lg:pl-64">
                 <Topbar user={session.user} />

@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+﻿import { db } from '@/lib/db'
 
 // Force dynamic rendering to prevent build-time database calls
 export const dynamic = 'force-dynamic'
@@ -55,11 +55,11 @@ export default async function SlotsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Uygun Zamanlar</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Uygun Zamanlar</h1>
                     <p className="text-zinc-500">Randevu için uygun zaman dilimlerini yönetin</p>
                 </div>
                 <Link href="/admin/slotlar/yeni">
-                    <Button className="bg-white text-zinc-900 hover:bg-zinc-200">
+                    <Button className="bg-zinc-50 text-white hover:bg-zinc-100">
                         <Plus className="mr-2 h-4 w-4" />
                         Yeni Slot Ekle
                     </Button>
@@ -68,16 +68,16 @@ export default async function SlotsPage() {
 
             {/* Stats */}
             <div className="grid gap-4 md:grid-cols-4">
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Toplam Slot</CardTitle>
                         <Calendar className="h-4 w-4 text-zinc-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-white">{stats.total}</div>
+                        <div className="text-2xl font-bold text-zinc-900">{stats.total}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Müsait</CardTitle>
                         <Check className="h-4 w-4 text-green-500" />
@@ -86,7 +86,7 @@ export default async function SlotsPage() {
                         <div className="text-2xl font-bold text-green-500">{stats.available}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Dolu</CardTitle>
                         <X className="h-4 w-4 text-red-500" />
@@ -95,7 +95,7 @@ export default async function SlotsPage() {
                         <div className="text-2xl font-bold text-red-500">{stats.booked}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Yaklaşan</CardTitle>
                         <Clock className="h-4 w-4 text-blue-500" />
@@ -107,9 +107,9 @@ export default async function SlotsPage() {
             </div>
 
             {/* Slots Table */}
-            <Card className="border-zinc-800 bg-zinc-900/50">
+            <Card className="border-zinc-200 bg-white">
                 <CardHeader>
-                    <CardTitle className="text-white">Tüm Zaman Dilimleri</CardTitle>
+                    <CardTitle className="text-zinc-900">Tüm Zaman Dilimleri</CardTitle>
                     <CardDescription className="text-zinc-500">
                         Oluşturduğunuz uygun zamanların listesi
                     </CardDescription>
@@ -120,7 +120,7 @@ export default async function SlotsPage() {
                             <Calendar className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
                             <p className="text-zinc-500">Henüz zaman dilimi eklenmemiş.</p>
                             <Link href="/admin/slotlar/yeni" className="mt-4 inline-block">
-                                <Button variant="outline" className="border-zinc-700 text-zinc-400 hover:text-white">
+                                <Button variant="outline" className="border-zinc-700 text-zinc-400 hover:text-zinc-900">
                                     İlk Slotu Ekle
                                 </Button>
                             </Link>
@@ -128,7 +128,7 @@ export default async function SlotsPage() {
                     ) : (
                         <Table>
                             <TableHeader>
-                                <TableRow className="border-zinc-800 hover:bg-transparent">
+                                <TableRow className="border-zinc-200 hover:bg-transparent">
                                     <TableHead className="text-zinc-400">Tarih</TableHead>
                                     <TableHead className="text-zinc-400">Saat</TableHead>
                                     <TableHead className="text-zinc-400">Süre</TableHead>
@@ -144,11 +144,11 @@ export default async function SlotsPage() {
                                     const isPast = start < new Date()
 
                                     return (
-                                        <TableRow key={slot.id} className="border-zinc-800">
-                                            <TableCell className="text-white">
+                                        <TableRow key={slot.id} className="border-zinc-200">
+                                            <TableCell className="text-zinc-900">
                                                 {format(start, 'd MMMM yyyy', { locale: tr })}
                                             </TableCell>
-                                            <TableCell className="text-zinc-300">
+                                            <TableCell className="text-zinc-700">
                                                 {format(start, 'HH:mm')} - {format(end, 'HH:mm')}
                                             </TableCell>
                                             <TableCell className="text-zinc-400">
@@ -156,7 +156,7 @@ export default async function SlotsPage() {
                                             </TableCell>
                                             <TableCell>
                                                 {isPast ? (
-                                                    <Badge variant="outline" className="bg-zinc-800/50 text-zinc-500 border-zinc-700">
+                                                    <Badge variant="outline" className="bg-zinc-100/50 text-zinc-500 border-zinc-700">
                                                         Geçmiş
                                                     </Badge>
                                                 ) : slot.isBooked ? (
@@ -172,11 +172,11 @@ export default async function SlotsPage() {
                                             <TableCell className="text-right">
                                                 <DropdownMenu>
                                                     <DropdownMenuTrigger asChild>
-                                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-white">
+                                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-zinc-900">
                                                             <MoreHorizontal className="h-4 w-4" />
                                                         </Button>
                                                     </DropdownMenuTrigger>
-                                                    <DropdownMenuContent align="end" className="bg-zinc-900 border-zinc-800">
+                                                    <DropdownMenuContent align="end" className="bg-white border-zinc-200">
                                                         {!isPast && (
                                                             <form action={async () => {
                                                                 'use server'

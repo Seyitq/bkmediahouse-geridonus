@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useTransition } from 'react'
 import { Plus, Pencil, Trash2 } from 'lucide-react'
@@ -80,7 +80,7 @@ export function CategoryActions({ categories }: CategoryActionsProps) {
     return (
         <div className="space-y-6">
             {/* Add Category */}
-            <Card className="border-zinc-800 bg-zinc-900/50">
+            <Card className="border-zinc-200 bg-white">
                 <CardHeader>
                     <CardTitle className="text-white text-base">Yeni Kategori Ekle</CardTitle>
                 </CardHeader>
@@ -92,7 +92,7 @@ export function CategoryActions({ categories }: CategoryActionsProps) {
                                 value={newName}
                                 onChange={(e) => setNewName(e.target.value)}
                                 required
-                                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none"
+                                className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none"
                                 placeholder="Sosyal Medya Tasarımı..."
                             />
                         </div>
@@ -127,14 +127,14 @@ export function CategoryActions({ categories }: CategoryActionsProps) {
                 {categories.map((cat) => (
                     <div
                         key={cat.id}
-                        className="flex items-center gap-3 p-3 rounded-lg bg-zinc-900/50 border border-zinc-800 hover:bg-zinc-900/80 transition-colors"
+                        className="flex items-center gap-3 p-3 rounded-lg bg-white border border-zinc-200 hover:bg-zinc-50/80 transition-colors"
                     >
                         <div
                             className="h-4 w-4 rounded-full shrink-0"
                             style={{ backgroundColor: cat.color }}
                         />
                         <span className="text-sm font-medium text-white flex-1">{cat.name}</span>
-                        <Badge variant="outline" className="bg-zinc-800 text-zinc-400 border-zinc-700 text-xs">
+                        <Badge variant="outline" className="bg-zinc-100 text-zinc-400 border-zinc-700 text-xs">
                             {cat._count.tasks} görev
                         </Badge>
                         <div className="flex items-center gap-1">
@@ -147,7 +147,7 @@ export function CategoryActions({ categories }: CategoryActionsProps) {
                                         handleUpdate(cat.id, newName, cat.color)
                                     }
                                 }}
-                                className="h-7 w-7 p-0 text-zinc-500 hover:text-white"
+                                className="h-7 w-7 p-0 text-zinc-500 hover:text-zinc-900"
                             >
                                 <Pencil className="h-3.5 w-3.5" />
                             </Button>

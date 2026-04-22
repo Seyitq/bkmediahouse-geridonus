@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+﻿import { Suspense } from 'react'
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
@@ -32,9 +32,9 @@ async function CategoryList() {
 function CategorySkeleton() {
     return (
         <div className="space-y-4">
-            <div className="h-24 rounded-lg bg-zinc-800/50 animate-pulse" />
+            <div className="h-24 rounded-lg bg-zinc-100/50 animate-pulse" />
             {[...Array(4)].map((_, i) => (
-                <div key={i} className="h-16 rounded-lg bg-zinc-800/50 animate-pulse" />
+                <div key={i} className="h-16 rounded-lg bg-zinc-100/50 animate-pulse" />
             ))}
         </div>
     )
@@ -44,7 +44,7 @@ export default function KategorilerPage() {
     return (
         <div className="space-y-6">
             <div>
-                <h1 className="text-2xl font-bold text-white">Görev Kategorileri</h1>
+                <h1 className="text-2xl font-bold text-zinc-900">Görev Kategorileri</h1>
                 <p className="text-zinc-500">Görev kategorilerini yönetin</p>
             </div>
 

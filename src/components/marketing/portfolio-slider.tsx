@@ -65,7 +65,7 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                         viewport={{ once: true }}
                         className="space-y-3"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                        <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 tracking-tight">
                             Çalışmalarımız
                         </h2>
                         <p className="text-zinc-400 max-w-md">

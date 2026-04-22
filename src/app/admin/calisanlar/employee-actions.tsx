@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useTransition } from 'react'
 import { Pencil, Trash2, MoreHorizontal } from 'lucide-react'
@@ -49,8 +49,8 @@ export function EmployeeActions({ employee }: EmployeeActionsProps) {
     if (showEdit) {
         return (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-                <div className="w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-xl p-6 space-y-4">
-                    <h3 className="text-lg font-semibold text-white">Çalışanı Düzenle</h3>
+                <div className="w-full max-w-lg bg-zinc-50 border border-zinc-200 rounded-xl p-6 space-y-4">
+                    <h3 className="text-lg font-semibold text-zinc-900">Çalışanı Düzenle</h3>
                     <form onSubmit={handleUpdate} className="space-y-4">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="space-y-1">
@@ -59,7 +59,7 @@ export function EmployeeActions({ employee }: EmployeeActionsProps) {
                                     name="name"
                                     defaultValue={employee.name || ''}
                                     required
-                                    className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
+                                    className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
                                 />
                             </div>
                             <div className="space-y-1">
@@ -69,7 +69,7 @@ export function EmployeeActions({ employee }: EmployeeActionsProps) {
                                     type="email"
                                     defaultValue={employee.email}
                                     required
-                                    className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
+                                    className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
                                 />
                             </div>
                         </div>
@@ -79,7 +79,7 @@ export function EmployeeActions({ employee }: EmployeeActionsProps) {
                                 <input
                                     name="title"
                                     defaultValue={employee.title || ''}
-                                    className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
+                                    className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
                                 />
                             </div>
                             <div className="space-y-1">
@@ -87,7 +87,7 @@ export function EmployeeActions({ employee }: EmployeeActionsProps) {
                                 <input
                                     name="phone"
                                     defaultValue={employee.phone || ''}
-                                    className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
+                                    className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
                                 />
                             </div>
                         </div>
@@ -96,7 +96,7 @@ export function EmployeeActions({ employee }: EmployeeActionsProps) {
                             <input
                                 name="password"
                                 type="password"
-                                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
+                                className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-3 py-2 text-sm text-white focus:border-blue-500 focus:outline-none"
                             />
                         </div>
                         <div className="flex gap-2 justify-end pt-2">
@@ -128,7 +128,7 @@ export function EmployeeActions({ employee }: EmployeeActionsProps) {
                 size="sm"
                 variant="ghost"
                 onClick={() => setShowEdit(true)}
-                className="h-7 w-7 p-0 text-zinc-500 hover:text-white"
+                className="h-7 w-7 p-0 text-zinc-500 hover:text-zinc-900"
             >
                 <Pencil className="h-3.5 w-3.5" />
             </Button>

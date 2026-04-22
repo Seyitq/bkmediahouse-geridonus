@@ -13,14 +13,14 @@ import { CTASection } from '@/components/marketing/cta-section'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Ankara Dijital Ajans | Sosyal Medya Yönetimi, Video Prodüksiyon, Web Tasarım',
-  description: 'Ankara\'nın lider dijital ajansı New Social Agency. Emlak sosyal medya yönetimi, kurumsal video prodüksiyon, drone çekimi, web tasarım, marka kimliği, reklam kampanyası. Gayrimenkul, inşaat ve kurumsal firmalar için dijital çözümler.',
+  title: 'Konya Dijital Ajans | Sosyal Medya Yönetimi, Video Prodüksiyon, Web Tasarım',
+  description: 'Konya\'nın lider dijital ajansı BK Media House. Emlak sosyal medya yönetimi, kurumsal video prodüksiyon, drone çekimi, web tasarım, marka kimliği, reklam kampanyası. Gayrimenkul, inşaat ve kurumsal firmalar için dijital çözümler.',
   path: '/',
   keywords: [
-    'dijital ajans ankara', 'sosyal medya yönetimi ankara', 'video prodüksiyon ankara',
-    'web tasarım ankara', 'emlak sosyal medya yönetimi', 'gayrimenkul dijital pazarlama',
-    'drone çekimi ankara', 'reklam ajansı ankara', 'marka kimliği ankara',
-    'kurumsal video çekimi ankara', 'ankara reklam ajansı', 'en iyi dijital ajans ankara',
+    'dijital ajans konya', 'sosyal medya yönetimi konya', 'video prodüksiyon konya',
+    'web tasarım konya', 'emlak sosyal medya yönetimi', 'gayrimenkul dijital pazarlama',
+    'drone çekimi konya', 'reklam ajansı konya', 'marka kimliği konya',
+    'kurumsal video çekimi konya', 'konya reklam ajansı', 'en iyi dijital ajans konya',
   ],
 })
 

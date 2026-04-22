@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -71,12 +71,12 @@ export default function NewSlotPage() {
         <div className="space-y-6">
             <div className="flex items-center gap-4">
                 <Link href="/admin/slotlar">
-                    <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                    <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                         <ArrowLeft className="h-5 w-5" />
                     </Button>
                 </Link>
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Yeni Zaman Dilimi</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Yeni Zaman Dilimi</h1>
                     <p className="text-zinc-500">Randevu için uygun bir zaman dilimi ekleyin</p>
                 </div>
             </div>
@@ -94,7 +94,7 @@ export default function NewSlotPage() {
 
                 <div className="grid gap-6 lg:grid-cols-2">
                     {/* Date & Time */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <Calendar className="h-5 w-5" />
@@ -106,21 +106,21 @@ export default function NewSlotPage() {
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <div className="space-y-2">
-                                <Label htmlFor="date" className="text-zinc-300">Tarih</Label>
+                                <Label htmlFor="date" className="text-zinc-700">Tarih</Label>
                                 <Input
                                     id="date"
                                     type="date"
                                     required
                                     value={formData.date}
                                     onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white [color-scheme:dark]"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white [color-scheme:dark]"
                                     min={new Date().toISOString().split('T')[0]}
                                 />
                             </div>
 
                             <div className="grid gap-4 md:grid-cols-2">
                                 <div className="space-y-2">
-                                    <Label htmlFor="startTime" className="text-zinc-300">Başlangıç Saati</Label>
+                                    <Label htmlFor="startTime" className="text-zinc-700">Başlangıç Saati</Label>
                                     <div className="relative">
                                         <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                         <Input
@@ -129,13 +129,13 @@ export default function NewSlotPage() {
                                             required
                                             value={formData.startTime}
                                             onChange={(e) => setFormData(prev => ({ ...prev, startTime: e.target.value }))}
-                                            className="pl-10 bg-zinc-800/50 border-zinc-700 text-white [color-scheme:dark]"
+                                            className="pl-10 bg-zinc-100/50 border-zinc-700 text-white [color-scheme:dark]"
                                         />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <Label htmlFor="endTime" className="text-zinc-300">Bitiş Saati</Label>
+                                    <Label htmlFor="endTime" className="text-zinc-700">Bitiş Saati</Label>
                                     <div className="relative">
                                         <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                         <Input
@@ -144,7 +144,7 @@ export default function NewSlotPage() {
                                             required
                                             value={formData.endTime}
                                             onChange={(e) => setFormData(prev => ({ ...prev, endTime: e.target.value }))}
-                                            className="pl-10 bg-zinc-800/50 border-zinc-700 text-white [color-scheme:dark]"
+                                            className="pl-10 bg-zinc-100/50 border-zinc-700 text-white [color-scheme:dark]"
                                         />
                                     </div>
                                 </div>
@@ -153,7 +153,7 @@ export default function NewSlotPage() {
                     </Card>
 
                     {/* Quick Add */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <Plus className="h-5 w-5" />
@@ -172,7 +172,7 @@ export default function NewSlotPage() {
                                     type="button"
                                     variant="outline"
                                     onClick={() => addQuickSlot(0.5)}
-                                    className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                                    className="border-zinc-700 text-zinc-700 hover:bg-zinc-100"
                                 >
                                     30 Dakika
                                 </Button>
@@ -180,7 +180,7 @@ export default function NewSlotPage() {
                                     type="button"
                                     variant="outline"
                                     onClick={() => addQuickSlot(1)}
-                                    className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                                    className="border-zinc-700 text-zinc-700 hover:bg-zinc-100"
                                 >
                                     1 Saat
                                 </Button>
@@ -188,7 +188,7 @@ export default function NewSlotPage() {
                                     type="button"
                                     variant="outline"
                                     onClick={() => addQuickSlot(1.5)}
-                                    className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                                    className="border-zinc-700 text-zinc-700 hover:bg-zinc-100"
                                 >
                                     1.5 Saat
                                 </Button>
@@ -196,7 +196,7 @@ export default function NewSlotPage() {
                                     type="button"
                                     variant="outline"
                                     onClick={() => addQuickSlot(2)}
-                                    className="border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                                    className="border-zinc-700 text-zinc-700 hover:bg-zinc-100"
                                 >
                                     2 Saat
                                 </Button>
@@ -209,7 +209,7 @@ export default function NewSlotPage() {
                     <Button
                         type="submit"
                         disabled={isLoading || !formData.date || !formData.startTime || !formData.endTime}
-                        className="bg-white text-zinc-900 hover:bg-zinc-200 min-w-[150px]"
+                        className="bg-zinc-50 text-white hover:bg-zinc-100 min-w-[150px]"
                     >
                         {isLoading ? (
                             <>

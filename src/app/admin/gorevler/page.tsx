@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+﻿import { Suspense } from 'react'
 import Link from 'next/link'
 import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -86,7 +86,7 @@ function TaskListSkeleton() {
     return (
         <div className="space-y-3">
             {[...Array(5)].map((_, i) => (
-                <div key={i} className="h-24 rounded-lg bg-zinc-800/50 animate-pulse" />
+                <div key={i} className="h-24 rounded-lg bg-zinc-100/50 animate-pulse" />
             ))}
         </div>
     )
@@ -97,7 +97,7 @@ export default function GorevlerPage({ searchParams }: { searchParams: Promise<R
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Görevler</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Görevler</h1>
                     <p className="text-zinc-500">Tüm görevleri yönetin ve takip edin</p>
                 </div>
                 <Link href="/admin/gorevler/yeni">

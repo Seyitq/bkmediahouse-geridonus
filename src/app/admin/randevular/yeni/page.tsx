@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -96,12 +96,12 @@ export default function NewBookingPage() {
         <div className="space-y-6">
             <div className="flex items-center gap-4">
                 <Link href="/admin/randevular">
-                    <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                    <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                         <ArrowLeft className="h-5 w-5" />
                     </Button>
                 </Link>
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Yeni Randevu</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Yeni Randevu</h1>
                     <p className="text-zinc-500">Manuel olarak yeni bir randevu oluşturun</p>
                 </div>
             </div>
@@ -119,7 +119,7 @@ export default function NewBookingPage() {
 
                 <div className="grid gap-6 lg:grid-cols-2">
                     {/* Date & Time */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <Calendar className="h-5 w-5" />
@@ -132,13 +132,13 @@ export default function NewBookingPage() {
                         <CardContent className="space-y-4">
                             <div className="grid gap-4 md:grid-cols-2">
                                 <div className="space-y-2">
-                                    <Label htmlFor="startTime" className="text-zinc-300">Başlangıç Zamanı</Label>
+                                    <Label htmlFor="startTime" className="text-zinc-700">Başlangıç Zamanı</Label>
                                     <div className="relative">
                                         <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                         <Input
                                             id="startTime"
                                             type="datetime-local"
-                                            className="pl-10 bg-zinc-800/50 border-zinc-700 text-white [color-scheme:dark]"
+                                            className="pl-10 bg-zinc-100/50 border-zinc-700 text-white [color-scheme:dark]"
                                             {...register('startTime')}
                                         />
                                     </div>
@@ -148,13 +148,13 @@ export default function NewBookingPage() {
                                 </div>
 
                                 <div className="space-y-2">
-                                    <Label htmlFor="endTime" className="text-zinc-300">Bitiş Zamanı</Label>
+                                    <Label htmlFor="endTime" className="text-zinc-700">Bitiş Zamanı</Label>
                                     <div className="relative">
                                         <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                         <Input
                                             id="endTime"
                                             type="datetime-local"
-                                            className="pl-10 bg-zinc-800/50 border-zinc-700 text-white [color-scheme:dark]"
+                                            className="pl-10 bg-zinc-100/50 border-zinc-700 text-white [color-scheme:dark]"
                                             {...register('endTime')}
                                         />
                                     </div>
@@ -167,7 +167,7 @@ export default function NewBookingPage() {
                     </Card>
 
                     {/* Client Details */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <User className="h-5 w-5" />
@@ -179,13 +179,13 @@ export default function NewBookingPage() {
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <div className="space-y-2">
-                                <Label htmlFor="clientName" className="text-zinc-300">Müşteri Adı</Label>
+                                <Label htmlFor="clientName" className="text-zinc-700">Müşteri Adı</Label>
                                 <div className="relative">
                                     <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                     <Input
                                         id="clientName"
                                         placeholder="Ad Soyad"
-                                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                        className="pl-10 bg-zinc-100/50 border-zinc-700 text-white"
                                         {...register('clientName')}
                                     />
                                 </div>
@@ -195,14 +195,14 @@ export default function NewBookingPage() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="clientEmail" className="text-zinc-300">E-posta</Label>
+                                <Label htmlFor="clientEmail" className="text-zinc-700">E-posta</Label>
                                 <div className="relative">
                                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                     <Input
                                         id="clientEmail"
                                         type="email"
                                         placeholder="ornek@email.com"
-                                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                        className="pl-10 bg-zinc-100/50 border-zinc-700 text-white"
                                         {...register('clientEmail')}
                                     />
                                 </div>
@@ -212,13 +212,13 @@ export default function NewBookingPage() {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="clientPhone" className="text-zinc-300">Telefon (İsteğe bağlı)</Label>
+                                <Label htmlFor="clientPhone" className="text-zinc-700">Telefon (İsteğe bağlı)</Label>
                                 <div className="relative">
                                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                     <Input
                                         id="clientPhone"
                                         placeholder="+90 5XX XXX XX XX"
-                                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                        className="pl-10 bg-zinc-100/50 border-zinc-700 text-white"
                                         {...register('clientPhone')}
                                     />
                                 </div>
@@ -230,7 +230,7 @@ export default function NewBookingPage() {
                     </Card>
 
                     {/* Notes */}
-                    <Card className="border-zinc-800 bg-zinc-900/50 lg:col-span-2">
+                    <Card className="border-zinc-200 bg-white lg:col-span-2">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <FileText className="h-5 w-5" />
@@ -241,7 +241,7 @@ export default function NewBookingPage() {
                             <Textarea
                                 rows={4}
                                 placeholder="Randevu hakkında notlar (isteğe bağlı)"
-                                className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                className="bg-zinc-100/50 border-zinc-700 text-white resize-none"
                                 {...register('notes')}
                             />
                         </CardContent>
@@ -252,7 +252,7 @@ export default function NewBookingPage() {
                     <Button
                         type="submit"
                         disabled={isLoading}
-                        className="bg-white text-zinc-900 hover:bg-zinc-200 min-w-[150px]"
+                        className="bg-zinc-50 text-white hover:bg-zinc-100 min-w-[150px]"
                     >
                         {isLoading ? (
                             <>

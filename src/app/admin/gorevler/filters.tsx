@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Badge } from '@/components/ui/badge'
@@ -44,7 +44,7 @@ export function TaskFilters({ employees, categories }: TaskFiltersProps) {
                         onClick={() => updateFilter('status', s.value)}
                         className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${currentStatus === s.value
                             ? 'bg-zinc-700 text-white ring-1 ring-zinc-600'
-                            : 'bg-zinc-800/50 text-zinc-400 hover:bg-zinc-800 hover:text-white'
+                            : 'bg-zinc-100/50 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900'
                             }`}
                     >
                         {s.color && <span className={`h-2 w-2 rounded-full ${s.color}`} />}
@@ -59,7 +59,7 @@ export function TaskFilters({ employees, categories }: TaskFiltersProps) {
                     <select
                         value={currentAssignee}
                         onChange={(e) => updateFilter('assignedToId', e.target.value)}
-                        className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-xs text-white focus:border-blue-500 focus:outline-none"
+                        className="rounded-lg border border-zinc-700 bg-zinc-100 px-3 py-1.5 text-xs text-white focus:border-blue-500 focus:outline-none"
                     >
                         <option value="">Tüm Çalışanlar</option>
                         {employees.map((emp) => (
@@ -73,7 +73,7 @@ export function TaskFilters({ employees, categories }: TaskFiltersProps) {
                     <select
                         value={currentCategory}
                         onChange={(e) => updateFilter('categoryId', e.target.value)}
-                        className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-xs text-white focus:border-blue-500 focus:outline-none"
+                        className="rounded-lg border border-zinc-700 bg-zinc-100 px-3 py-1.5 text-xs text-white focus:border-blue-500 focus:outline-none"
                     >
                         <option value="">Tüm Kategoriler</option>
                         {categories.map((cat) => (

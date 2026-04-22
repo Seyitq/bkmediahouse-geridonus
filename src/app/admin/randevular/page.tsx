@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { Plus, Calendar, Clock, User, Mail, Phone, MoreHorizontal, Check, X } from 'lucide-react'
 import { db } from '@/lib/db'
 
@@ -65,18 +65,18 @@ function BookingActions({ booking }: { booking: { id: string; status: string } }
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                     <MoreHorizontal className="h-4 w-4" />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-zinc-900 border-zinc-800">
+            <DropdownMenuContent align="end" className="bg-white border-zinc-200">
                 {booking.status === 'PENDING' && (
                     <>
                         <form action={async () => {
                             'use server'
                             await updateBookingStatus(booking.id, 'CONFIRMED')
                         }}>
-                            <DropdownMenuItem asChild className="cursor-pointer text-green-400 focus:bg-zinc-800 focus:text-green-400">
+                            <DropdownMenuItem asChild className="cursor-pointer text-green-400 focus:bg-zinc-50 focus:text-green-400">
                                 <button type="submit" className="w-full flex items-center">
                                     <Check className="mr-2 h-4 w-4" />
                                     Onayla
@@ -87,14 +87,14 @@ function BookingActions({ booking }: { booking: { id: string; status: string } }
                             'use server'
                             await updateBookingStatus(booking.id, 'REJECTED')
                         }}>
-                            <DropdownMenuItem asChild className="cursor-pointer text-red-400 focus:bg-zinc-800 focus:text-red-400">
+                            <DropdownMenuItem asChild className="cursor-pointer text-red-400 focus:bg-zinc-50 focus:text-red-400">
                                 <button type="submit" className="w-full flex items-center">
                                     <X className="mr-2 h-4 w-4" />
                                     Reddet
                                 </button>
                             </DropdownMenuItem>
                         </form>
-                        <DropdownMenuSeparator className="bg-zinc-800" />
+                        <DropdownMenuSeparator className="bg-zinc-100" />
                     </>
                 )}
                 {booking.status === 'CONFIRMED' && (
@@ -103,21 +103,21 @@ function BookingActions({ booking }: { booking: { id: string; status: string } }
                             'use server'
                             await updateBookingStatus(booking.id, 'CANCELLED')
                         }}>
-                            <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-800 focus:text-white">
+                            <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-50 focus:text-zinc-900">
                                 <button type="submit" className="w-full flex items-center">
                                     <X className="mr-2 h-4 w-4" />
                                     İptal Et
                                 </button>
                             </DropdownMenuItem>
                         </form>
-                        <DropdownMenuSeparator className="bg-zinc-800" />
+                        <DropdownMenuSeparator className="bg-zinc-100" />
                     </>
                 )}
                 <form action={async () => {
                     'use server'
                     await deleteBooking(booking.id)
                 }}>
-                    <DropdownMenuItem asChild className="cursor-pointer text-red-400 focus:bg-zinc-800 focus:text-red-400">
+                    <DropdownMenuItem asChild className="cursor-pointer text-red-400 focus:bg-zinc-50 focus:text-red-400">
                         <button type="submit" className="w-full flex items-center">
                             <X className="mr-2 h-4 w-4" />
                             Sil
@@ -147,11 +147,11 @@ export default async function BookingsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Randevular</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Randevular</h1>
                     <p className="text-zinc-500">Randevu taleplerini yönetin</p>
                 </div>
                 <Link href="/admin/randevular/yeni">
-                    <Button className="bg-white text-zinc-900 hover:bg-zinc-200">
+                    <Button className="bg-zinc-50 text-white hover:bg-zinc-100">
                         <Plus className="mr-2 h-4 w-4" />
                         Yeni Randevu
                     </Button>
@@ -160,16 +160,16 @@ export default async function BookingsPage() {
 
             {/* Stats Cards */}
             <div className="grid gap-4 md:grid-cols-4">
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Toplam</CardTitle>
                         <Calendar className="h-4 w-4 text-zinc-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-white">{stats.total}</div>
+                        <div className="text-2xl font-bold text-zinc-900">{stats.total}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Beklemede</CardTitle>
                         <Clock className="h-4 w-4 text-yellow-500" />
@@ -178,7 +178,7 @@ export default async function BookingsPage() {
                         <div className="text-2xl font-bold text-yellow-500">{stats.pending}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Onaylanan</CardTitle>
                         <Check className="h-4 w-4 text-green-500" />
@@ -187,7 +187,7 @@ export default async function BookingsPage() {
                         <div className="text-2xl font-bold text-green-500">{stats.confirmed}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Bugün</CardTitle>
                         <Calendar className="h-4 w-4 text-blue-500" />
@@ -199,9 +199,9 @@ export default async function BookingsPage() {
             </div>
 
             {/* Bookings Table */}
-            <Card className="border-zinc-800 bg-zinc-900/50">
+            <Card className="border-zinc-200 bg-white">
                 <CardHeader>
-                    <CardTitle className="text-white">Tüm Randevular</CardTitle>
+                    <CardTitle className="text-zinc-900">Tüm Randevular</CardTitle>
                     <CardDescription className="text-zinc-500">
                         Toplam {bookings.length} randevu
                     </CardDescription>
@@ -215,7 +215,7 @@ export default async function BookingsPage() {
                     ) : (
                         <Table>
                             <TableHeader>
-                                <TableRow className="border-zinc-800 hover:bg-transparent">
+                                <TableRow className="border-zinc-200 hover:bg-transparent">
                                     <TableHead className="text-zinc-400">Müşteri</TableHead>
                                     <TableHead className="text-zinc-400">Tarih & Saat</TableHead>
                                     <TableHead className="text-zinc-400">İletişim</TableHead>
@@ -225,14 +225,14 @@ export default async function BookingsPage() {
                             </TableHeader>
                             <TableBody>
                                 {bookings.map((booking) => (
-                                    <TableRow key={booking.id} className="border-zinc-800 hover:bg-zinc-800/50">
+                                    <TableRow key={booking.id} className="border-zinc-200 hover:bg-zinc-100/50">
                                         <TableCell>
                                             <div className="flex items-center gap-3">
-                                                <div className="h-9 w-9 rounded-full bg-zinc-800 flex items-center justify-center">
+                                                <div className="h-9 w-9 rounded-full bg-zinc-100 flex items-center justify-center">
                                                     <User className="h-4 w-4 text-zinc-400" />
                                                 </div>
                                                 <div>
-                                                    <div className="font-medium text-white">{booking.clientName}</div>
+                                                    <div className="font-medium text-zinc-900">{booking.clientName}</div>
                                                     {booking.notes && (
                                                         <div className="text-xs text-zinc-500 truncate max-w-[200px]">{booking.notes}</div>
                                                     )}
@@ -240,7 +240,7 @@ export default async function BookingsPage() {
                                             </div>
                                         </TableCell>
                                         <TableCell>
-                                            <div className="text-white">
+                                            <div className="text-zinc-900">
                                                 {new Date(booking.startTime).toLocaleDateString('tr-TR', {
                                                     day: 'numeric',
                                                     month: 'long',
@@ -259,7 +259,7 @@ export default async function BookingsPage() {
                                         </TableCell>
                                         <TableCell>
                                             <div className="flex flex-col gap-1">
-                                                <div className="flex items-center gap-1 text-sm text-zinc-300">
+                                                <div className="flex items-center gap-1 text-sm text-zinc-700">
                                                     <Mail className="h-3 w-3" />
                                                     {booking.clientEmail}
                                                 </div>

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -62,25 +62,25 @@ export function ProfileForm({ user }: { user: { name: string | null; email: stri
                 </div>
             )}
             <div className="space-y-2">
-                <Label htmlFor="name" className="text-zinc-300">Ad Soyad</Label>
+                <Label htmlFor="name" className="text-zinc-700">Ad Soyad</Label>
                 <Input
                     id="name"
-                    className="bg-zinc-800/50 border-zinc-700 text-white"
+                    className="bg-zinc-100/50 border-zinc-700 text-white"
                     {...register('name')}
                 />
                 {errors.name && <p className="text-sm text-red-400">{errors.name?.message}</p>}
             </div>
             <div className="space-y-2">
-                <Label htmlFor="email" className="text-zinc-300">E-posta</Label>
+                <Label htmlFor="email" className="text-zinc-700">E-posta</Label>
                 <Input
                     id="email"
                     type="email"
-                    className="bg-zinc-800/50 border-zinc-700 text-white"
+                    className="bg-zinc-100/50 border-zinc-700 text-white"
                     {...register('email')}
                 />
                 {errors.email && <p className="text-sm text-red-400">{errors.email?.message}</p>}
             </div>
-            <Button type="submit" disabled={isLoading} className="bg-white text-zinc-900 hover:bg-zinc-200">
+            <Button type="submit" disabled={isLoading} className="bg-zinc-50 text-white hover:bg-zinc-100">
                 {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
                 Kaydet
             </Button>
@@ -127,36 +127,36 @@ export function PasswordForm() {
                 </div>
             )}
             <div className="space-y-2">
-                <Label htmlFor="currentPassword" className="text-zinc-300">Mevcut Şifre</Label>
+                <Label htmlFor="currentPassword" className="text-zinc-700">Mevcut Şifre</Label>
                 <Input
                     id="currentPassword"
                     type="password"
-                    className="bg-zinc-800/50 border-zinc-700 text-white"
+                    className="bg-zinc-100/50 border-zinc-700 text-white"
                     {...register('currentPassword')}
                 />
                 {errors.currentPassword && <p className="text-sm text-red-400">{errors.currentPassword?.message}</p>}
             </div>
             <div className="space-y-2">
-                <Label htmlFor="newPassword" className="text-zinc-300">Yeni Şifre</Label>
+                <Label htmlFor="newPassword" className="text-zinc-700">Yeni Şifre</Label>
                 <Input
                     id="newPassword"
                     type="password"
-                    className="bg-zinc-800/50 border-zinc-700 text-white"
+                    className="bg-zinc-100/50 border-zinc-700 text-white"
                     {...register('newPassword')}
                 />
                 {errors.newPassword && <p className="text-sm text-red-400">{errors.newPassword?.message}</p>}
             </div>
             <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-zinc-300">Yeni Şifre (Tekrar)</Label>
+                <Label htmlFor="confirmPassword" className="text-zinc-700">Yeni Şifre (Tekrar)</Label>
                 <Input
                     id="confirmPassword"
                     type="password"
-                    className="bg-zinc-800/50 border-zinc-700 text-white"
+                    className="bg-zinc-100/50 border-zinc-700 text-white"
                     {...register('confirmPassword')}
                 />
                 {errors.confirmPassword && <p className="text-sm text-red-400">{errors.confirmPassword?.message}</p>}
             </div>
-            <Button type="submit" disabled={isLoading} className="bg-white text-zinc-900 hover:bg-zinc-200">
+            <Button type="submit" disabled={isLoading} className="bg-zinc-50 text-white hover:bg-zinc-100">
                 {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Lock className="mr-2 h-4 w-4" />}
                 Şifreyi Güncelle
             </Button>
@@ -183,19 +183,19 @@ export function SiteSettingForm({ settingKey, label, initialValue, placeholder }
 
     return (
         <div className="space-y-2">
-            <Label className="text-zinc-300">{label}</Label>
+            <Label className="text-zinc-700">{label}</Label>
             <div className="flex gap-2">
                 <Input
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     placeholder={placeholder}
-                    className="bg-zinc-800/50 border-zinc-700 text-white"
+                    className="bg-zinc-100/50 border-zinc-700 text-white"
                 />
                 <Button
                     onClick={handleSave}
                     disabled={isLoading || value === initialValue && !isSaved}
                     size="icon"
-                    className={`transition-colors ${isSaved ? 'bg-green-600 hover:bg-green-700' : 'bg-zinc-800 hover:bg-zinc-700'}`}
+                    className={`transition-colors ${isSaved ? 'bg-green-600 hover:bg-green-700' : 'bg-zinc-100 hover:bg-zinc-700'}`}
                 >
                     {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : (isSaved ? <Save className="h-4 w-4" /> : <Save className="h-4 w-4" />)}
                 </Button>

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useTransition } from 'react'
 import { useRouter } from 'next/navigation'
@@ -47,9 +47,9 @@ export function EmployeeForm({ employee, onClose }: EmployeeFormProps) {
     }
 
     return (
-        <Card className="border-zinc-800 bg-zinc-900/50">
+        <Card className="border-zinc-200 bg-white">
             <CardHeader>
-                <CardTitle className="text-white">
+                <CardTitle className="text-zinc-900">
                     {isEditing ? 'Çalışanı Düzenle' : 'Yeni Çalışan Ekle'}
                 </CardTitle>
             </CardHeader>
@@ -57,26 +57,26 @@ export function EmployeeForm({ employee, onClose }: EmployeeFormProps) {
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <Label htmlFor="name" className="text-zinc-300">İsim *</Label>
+                            <Label htmlFor="name" className="text-zinc-700">İsim *</Label>
                             <input
                                 id="name"
                                 name="name"
                                 type="text"
                                 required
                                 defaultValue={employee?.name || ''}
-                                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                                 placeholder="Ad Soyad"
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="email" className="text-zinc-300">E-posta *</Label>
+                            <Label htmlFor="email" className="text-zinc-700">E-posta *</Label>
                             <input
                                 id="email"
                                 name="email"
                                 type="email"
                                 required
                                 defaultValue={employee?.email || ''}
-                                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                                 placeholder="ornek@email.com"
                             />
                         </div>
@@ -84,31 +84,31 @@ export function EmployeeForm({ employee, onClose }: EmployeeFormProps) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <Label htmlFor="title" className="text-zinc-300">Unvan / Pozisyon</Label>
+                            <Label htmlFor="title" className="text-zinc-700">Unvan / Pozisyon</Label>
                             <input
                                 id="title"
                                 name="title"
                                 type="text"
                                 defaultValue={employee?.title || ''}
-                                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                                 placeholder="Grafik Tasarımcı, Yazılımcı..."
                             />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="phone" className="text-zinc-300">Telefon</Label>
+                            <Label htmlFor="phone" className="text-zinc-700">Telefon</Label>
                             <input
                                 id="phone"
                                 name="phone"
                                 type="tel"
                                 defaultValue={employee?.phone || ''}
-                                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                                 placeholder="05XX XXX XX XX"
                             />
                         </div>
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="password" className="text-zinc-300">
+                        <Label htmlFor="password" className="text-zinc-700">
                             Şifre {isEditing ? '(Değiştirmek için doldurun)' : '*'}
                         </Label>
                         <input
@@ -116,7 +116,7 @@ export function EmployeeForm({ employee, onClose }: EmployeeFormProps) {
                             name="password"
                             type="password"
                             required={!isEditing}
-                            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                            className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                             placeholder={isEditing ? 'Boş bırakırsanız değişmez' : 'En az 6 karakter'}
                         />
                     </div>
@@ -134,7 +134,7 @@ export function EmployeeForm({ employee, onClose }: EmployeeFormProps) {
                                 type="button"
                                 variant="ghost"
                                 onClick={onClose}
-                                className="text-zinc-400 hover:text-white"
+                                className="text-zinc-400 hover:text-zinc-900"
                             >
                                 İptal
                             </Button>
