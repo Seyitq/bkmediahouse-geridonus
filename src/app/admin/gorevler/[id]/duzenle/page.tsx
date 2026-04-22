@@ -31,7 +31,7 @@ export default async function EditTaskPage({ params }: { params: Promise<{ id: s
     return (
         <div className="space-y-6 max-w-3xl">
             <div>
-                <h1 className="text-2xl font-bold text-white">Görevi Düzenle</h1>
+                <h1 className="text-2xl font-bold text-zinc-900">Görevi Düzenle</h1>
                 <p className="text-zinc-500">{task.title}</p>
             </div>
 

@@ -38,14 +38,14 @@ export function Topbar({ user }: TopbarProps) {
         : 'UK'
 
     return (
-        <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-zinc-800 bg-zinc-950/80 px-4 sm:px-6 pl-14 lg:pl-6 backdrop-blur-xl">
+        <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-zinc-200 bg-white/80 px-4 sm:px-6 pl-14 lg:pl-6 backdrop-blur-xl">
             {/* Search */}
             <div className="flex-1">
                 <div className="relative max-w-md">
-                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
                     <Input
                         placeholder="Ara..."
-                        className="pl-10 bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus:border-zinc-700"
+                        className="pl-10 bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-300"
                     />
                 </div>
             </div>
@@ -56,7 +56,7 @@ export function Topbar({ user }: TopbarProps) {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="relative text-zinc-400 hover:text-white hover:bg-zinc-800"
+                    className="relative text-zinc-500 hover:text-zinc-900 hover:bg-zinc-100"
                 >
                     <Bell className="h-5 w-5" />
                     <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-red-500" />
@@ -67,11 +67,11 @@ export function Topbar({ user }: TopbarProps) {
                     <DropdownMenuTrigger asChild>
                         <Button
                             variant="ghost"
-                            className="flex items-center gap-2 text-zinc-400 hover:text-white hover:bg-zinc-800"
+                            className="flex items-center gap-2 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100"
                         >
                             <Avatar className="h-8 w-8">
                                 <AvatarImage src={user?.image || undefined} />
-                                <AvatarFallback className="bg-zinc-800 text-zinc-300 text-xs">
+                                <AvatarFallback className="bg-zinc-100 text-zinc-700 text-xs">
                                     {userInitials}
                                 </AvatarFallback>
                             </Avatar>
@@ -82,20 +82,20 @@ export function Topbar({ user }: TopbarProps) {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                         align="end"
-                        className="w-56 bg-zinc-900 border-zinc-800"
+                        className="w-56 bg-white border-zinc-200"
                     >
-                        <DropdownMenuLabel className="text-zinc-300">
+                        <DropdownMenuLabel className="text-zinc-700">
                             Hesabım
                         </DropdownMenuLabel>
-                        <DropdownMenuSeparator className="bg-zinc-800" />
-                        <DropdownMenuItem className="text-zinc-400 focus:bg-zinc-800 focus:text-white cursor-pointer">
+                        <DropdownMenuSeparator className="bg-zinc-100" />
+                        <DropdownMenuItem className="text-zinc-600 focus:bg-zinc-50 focus:text-zinc-900 cursor-pointer">
                             <User className="mr-2 h-4 w-4" />
                             Profil
                         </DropdownMenuItem>
-                        <DropdownMenuSeparator className="bg-zinc-800" />
+                        <DropdownMenuSeparator className="bg-zinc-100" />
                         <DropdownMenuItem
                             onClick={handleLogout}
-                            className="text-red-400 focus:bg-zinc-800 focus:text-red-400 cursor-pointer"
+                            className="text-red-500 focus:bg-red-50 focus:text-red-600 cursor-pointer"
                         >
                             Çıkış Yap
                         </DropdownMenuItem>

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { Plus, MoreHorizontal, Star, Eye, EyeOff, Pencil, Trash2 } from 'lucide-react'
 import { db } from '@/lib/db'
 
@@ -35,29 +35,29 @@ function ProjectActions({ project }: { project: { id: string; slug: string; feat
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                     <MoreHorizontal className="h-4 w-4" />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-zinc-900 border-zinc-800">
-                <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-800 focus:text-white">
+            <DropdownMenuContent align="end" className="bg-white border-zinc-200">
+                <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-50 focus:text-zinc-900">
                     <Link href={`/admin/projeler/${project.id}`}>
                         <Pencil className="mr-2 h-4 w-4" />
                         Düzenle
                     </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-800 focus:text-white">
+                <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-50 focus:text-zinc-900">
                     <Link href={`/calismalar/${project.slug}`} target="_blank">
                         <Eye className="mr-2 h-4 w-4" />
                         Görüntüle
                     </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="bg-zinc-800" />
+                <DropdownMenuSeparator className="bg-zinc-100" />
                 <form action={async () => {
                     'use server'
                     await toggleProjectFeatured(project.id)
                 }}>
-                    <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-800 focus:text-white">
+                    <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-50 focus:text-zinc-900">
                         <button type="submit" className="w-full flex items-center">
                             <Star className={`mr-2 h-4 w-4 ${project.featured ? 'fill-yellow-500 text-yellow-500' : ''}`} />
                             {project.featured ? 'Öne Çıkarmayı Kaldır' : 'Öne Çıkar'}
@@ -72,7 +72,7 @@ function ProjectActions({ project }: { project: { id: string; slug: string; feat
                         await publishProject(project.id)
                     }
                 }}>
-                    <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-800 focus:text-white">
+                    <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-50 focus:text-zinc-900">
                         <button type="submit" className="w-full flex items-center">
                             {project.publishedAt ? (
                                 <>
@@ -88,12 +88,12 @@ function ProjectActions({ project }: { project: { id: string; slug: string; feat
                         </button>
                     </DropdownMenuItem>
                 </form>
-                <DropdownMenuSeparator className="bg-zinc-800" />
+                <DropdownMenuSeparator className="bg-zinc-100" />
                 <form action={async () => {
                     'use server'
                     await deleteProject(project.id)
                 }}>
-                    <DropdownMenuItem asChild className="cursor-pointer text-red-400 focus:bg-zinc-800 focus:text-red-400">
+                    <DropdownMenuItem asChild className="cursor-pointer text-red-400 focus:bg-zinc-50 focus:text-red-400">
                         <button type="submit" className="w-full flex items-center">
                             <Trash2 className="mr-2 h-4 w-4" />
                             Sil
@@ -112,20 +112,20 @@ export default async function ProjectsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Projeler</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Projeler</h1>
                     <p className="text-zinc-500">Portföy projelerinizi yönetin</p>
                 </div>
                 <Link href="/admin/projeler/yeni">
-                    <Button className="bg-white text-zinc-900 hover:bg-zinc-200">
+                    <Button className="bg-zinc-50 text-white hover:bg-zinc-100">
                         <Plus className="mr-2 h-4 w-4" />
                         Yeni Proje
                     </Button>
                 </Link>
             </div>
 
-            <Card className="border-zinc-800 bg-zinc-900/50">
+            <Card className="border-zinc-200 bg-white">
                 <CardHeader>
-                    <CardTitle className="text-white">Tüm Projeler</CardTitle>
+                    <CardTitle className="text-zinc-900">Tüm Projeler</CardTitle>
                     <CardDescription className="text-zinc-500">
                         Toplam {projects.length} proje
                     </CardDescription>
@@ -135,7 +135,7 @@ export default async function ProjectsPage() {
                         <div className="text-center py-12">
                             <p className="text-zinc-500 mb-4">Henüz proje eklenmemiş</p>
                             <Link href="/admin/projeler/yeni">
-                                <Button className="bg-white text-zinc-900 hover:bg-zinc-200">
+                                <Button className="bg-zinc-50 text-white hover:bg-zinc-100">
                                     <Plus className="mr-2 h-4 w-4" />
                                     İlk Projeyi Ekle
                                 </Button>
@@ -144,7 +144,7 @@ export default async function ProjectsPage() {
                     ) : (
                         <Table>
                             <TableHeader>
-                                <TableRow className="border-zinc-800 hover:bg-transparent">
+                                <TableRow className="border-zinc-200 hover:bg-transparent">
                                     <TableHead className="text-zinc-400">Proje</TableHead>
                                     <TableHead className="text-zinc-400">Müşteri</TableHead>
                                     <TableHead className="text-zinc-400">Durum</TableHead>
@@ -154,11 +154,11 @@ export default async function ProjectsPage() {
                             </TableHeader>
                             <TableBody>
                                 {projects.map((project) => (
-                                    <TableRow key={project.id} className="border-zinc-800 hover:bg-zinc-800/50">
+                                    <TableRow key={project.id} className="border-zinc-200 hover:bg-zinc-100/50">
                                         <TableCell>
                                             <div className="flex items-center gap-3">
                                                 <div
-                                                    className="h-10 w-14 rounded bg-cover bg-center bg-zinc-800"
+                                                    className="h-10 w-14 rounded bg-cover bg-center bg-zinc-100"
                                                     style={{ backgroundImage: `url(${project.coverImage})` }}
                                                 />
                                                 <div>
@@ -172,7 +172,7 @@ export default async function ProjectsPage() {
                                                 </div>
                                             </div>
                                         </TableCell>
-                                        <TableCell className="text-zinc-300">{project.clientName}</TableCell>
+                                        <TableCell className="text-zinc-700">{project.clientName}</TableCell>
                                         <TableCell>
                                             {project.publishedAt ? (
                                                 <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">

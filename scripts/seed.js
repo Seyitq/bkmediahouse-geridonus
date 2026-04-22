@@ -7,7 +7,7 @@ async function main() {
     console.log('🌱 Seeding database...')
 
     // Create admin user
-    const adminEmail = 'admin@newsocialankara.com'
+    const adminEmail = 'admin@bkmediahouse.com.tr'
     const existingAdmin = await prisma.user.findUnique({
         where: { email: adminEmail },
     })
@@ -25,7 +25,7 @@ async function main() {
         })
 
         console.log('✅ Admin user created:')
-        console.log('   Email: admin@newsocialankara.com')
+        console.log('   Email: admin@bkmediahouse.com.tr')
         console.log('   Password: admin123')
     } else {
         console.log('ℹ️ Admin user already exists')

@@ -12,19 +12,19 @@ export function getOrganizationJsonLd() {
         description: siteConfig.description,
         address: {
             '@type': 'PostalAddress',
-            addressLocality: 'Ankara',
-            addressRegion: 'İç Anadolu',
+            addressLocality: 'Selçuklu',
+            addressRegion: 'Konya',
             addressCountry: 'TR',
         },
         contactPoint: {
             '@type': 'ContactPoint',
-            telephone: '+90-530-930-3276',
+            telephone: '+90-545-209-0838',
             contactType: 'customer service',
             availableLanguage: ['Turkish', 'English'],
         },
         sameAs: [
-            'https://instagram.com/newsocialankara',
-            'https://linkedin.com/company/newsocialankara',
+            'https://instagram.com/bkmediahouse',
+            'https://linkedin.com/company/bkmediahouse',
         ],
     }
 }
@@ -38,30 +38,31 @@ export function getLocalBusinessJsonLd() {
         name: siteConfig.shortName,
         url: siteConfig.url,
         image: `${siteConfig.url}/logo.png`,
-        description: 'Ankara merkezli dijital ajans. Emlak sosyal medya yönetimi, kurumsal video prodüksiyon, drone çekimi, web tasarım, marka kimliği, reklam kampanyası ve etkinlik yönetimi hizmetleri sunuyoruz.',
-        telephone: '+90-530-930-3276',
+        description: 'Konya Selçuklu merkezli dijital ajans. Emlak sosyal medya yönetimi, kurumsal video prodüksiyon, drone çekimi, web tasarım, marka kimliği, reklam kampanyası ve etkinlik yönetimi hizmetleri sunuyoruz.',
+        telephone: '+90-545-209-0838',
         email: siteConfig.email,
         address: {
             '@type': 'PostalAddress',
-            addressLocality: 'Ankara',
-            addressRegion: 'İç Anadolu Bölgesi',
+            addressLocality: 'Selçuklu',
+            addressRegion: 'Konya',
             addressCountry: 'TR',
         },
         geo: {
             '@type': 'GeoCoordinates',
-            latitude: 39.9334,
-            longitude: 32.8597,
+            latitude: 37.9181,
+            longitude: 32.4846,
         },
         areaServed: [
-            { '@type': 'City', name: 'Ankara' },
+            { '@type': 'City', name: 'Selçuklu' },
+            { '@type': 'City', name: 'Konya' },
             { '@type': 'Country', name: 'Türkiye' },
         ],
         serviceArea: {
             '@type': 'GeoCircle',
             geoMidpoint: {
                 '@type': 'GeoCoordinates',
-                latitude: 39.9334,
-                longitude: 32.8597,
+                latitude: 37.9181,
+                longitude: 32.4846,
             },
         },
         priceRange: '₺₺',
@@ -123,7 +124,7 @@ export function getServiceJsonLd(service: {
         },
         areaServed: {
             '@type': 'City',
-            name: 'Ankara',
+            name: 'Konya',
         },
         url: service.url,
     }

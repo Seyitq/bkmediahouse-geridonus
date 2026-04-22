@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
@@ -189,9 +189,9 @@ export function EditProjectForm({ project }: { project: Project }) {
                 {/* Main Content */}
                 <div className="lg:col-span-2 space-y-6">
                     {/* Basic Info */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
-                            <CardTitle className="text-white">Temel Bilgiler</CardTitle>
+                            <CardTitle className="text-zinc-900">Temel Bilgiler</CardTitle>
                             <CardDescription className="text-zinc-500">
                                 Projenin temel bilgilerini düzenleyin
                             </CardDescription>
@@ -199,10 +199,10 @@ export function EditProjectForm({ project }: { project: Project }) {
                         <CardContent className="space-y-4">
                             <div className="grid gap-4 md:grid-cols-2">
                                 <div className="space-y-2">
-                                    <Label htmlFor="title" className="text-zinc-300">Proje Başlığı</Label>
+                                    <Label htmlFor="title" className="text-zinc-700">Proje Başlığı</Label>
                                     <Input
                                         id="title"
-                                        className="bg-zinc-800/50 border-zinc-700 text-white"
+                                        className="bg-zinc-100/50 border-zinc-700 text-white"
                                         {...register('title')}
                                     />
                                     {errors.title && (
@@ -210,10 +210,10 @@ export function EditProjectForm({ project }: { project: Project }) {
                                     )}
                                 </div>
                                 <div className="space-y-2">
-                                    <Label htmlFor="slug" className="text-zinc-300">URL Slug</Label>
+                                    <Label htmlFor="slug" className="text-zinc-700">URL Slug</Label>
                                     <Input
                                         id="slug"
-                                        className="bg-zinc-800/50 border-zinc-700 text-white"
+                                        className="bg-zinc-100/50 border-zinc-700 text-white"
                                         {...register('slug')}
                                     />
                                     {errors.slug && (
@@ -223,20 +223,20 @@ export function EditProjectForm({ project }: { project: Project }) {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="clientName" className="text-zinc-300">Müşteri Adı</Label>
+                                <Label htmlFor="clientName" className="text-zinc-700">Müşteri Adı</Label>
                                 <Input
                                     id="clientName"
-                                    className="bg-zinc-800/50 border-zinc-700 text-white"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white"
                                     {...register('clientName')}
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="description" className="text-zinc-300">Açıklama</Label>
+                                <Label htmlFor="description" className="text-zinc-700">Açıklama</Label>
                                 <Textarea
                                     id="description"
                                     rows={4}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white resize-none"
                                     {...register('description')}
                                 />
                             </div>
@@ -244,40 +244,40 @@ export function EditProjectForm({ project }: { project: Project }) {
                     </Card>
 
                     {/* Case Study Details */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
-                            <CardTitle className="text-white">Vaka Çalışması Detayları</CardTitle>
+                            <CardTitle className="text-zinc-900">Vaka Çalışması Detayları</CardTitle>
                             <CardDescription className="text-zinc-500">
                                 Zorluk, Çözüm ve Sonuç formatında detaylar
                             </CardDescription>
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <div className="space-y-2">
-                                <Label htmlFor="challenge" className="text-zinc-300">Zorluk</Label>
+                                <Label htmlFor="challenge" className="text-zinc-700">Zorluk</Label>
                                 <Textarea
                                     id="challenge"
                                     rows={3}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white resize-none"
                                     {...register('challenge')}
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="solution" className="text-zinc-300">Çözüm</Label>
+                                <Label htmlFor="solution" className="text-zinc-700">Çözüm</Label>
                                 <Textarea
                                     id="solution"
                                     rows={3}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white resize-none"
                                     {...register('solution')}
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="result" className="text-zinc-300">Sonuç</Label>
+                                <Label htmlFor="result" className="text-zinc-700">Sonuç</Label>
                                 <Textarea
                                     id="result"
                                     rows={3}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white resize-none"
                                     {...register('result')}
                                 />
                             </div>
@@ -285,7 +285,7 @@ export function EditProjectForm({ project }: { project: Project }) {
                     </Card>
 
                     {/* Stats/Results */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <TrendingUp className="h-5 w-5" />
@@ -303,7 +303,7 @@ export function EditProjectForm({ project }: { project: Project }) {
                                             placeholder="İstatistik Adı"
                                             value={stat.label}
                                             onChange={(e) => updateStat(index, 'label', e.target.value)}
-                                            className="bg-zinc-800/50 border-zinc-700 text-white"
+                                            className="bg-zinc-100/50 border-zinc-700 text-white"
                                         />
                                     </div>
                                     <div className="w-24">
@@ -311,7 +311,7 @@ export function EditProjectForm({ project }: { project: Project }) {
                                             placeholder="%150"
                                             value={stat.value}
                                             onChange={(e) => updateStat(index, 'value', e.target.value)}
-                                            className="bg-zinc-800/50 border-zinc-700 text-white"
+                                            className="bg-zinc-100/50 border-zinc-700 text-white"
                                         />
                                     </div>
                                     <Button
@@ -329,7 +329,7 @@ export function EditProjectForm({ project }: { project: Project }) {
                                 type="button"
                                 variant="outline"
                                 onClick={addStat}
-                                className="w-full border-zinc-700 text-zinc-400 hover:text-white"
+                                className="w-full border-zinc-700 text-zinc-400 hover:text-zinc-900"
                             >
                                 <Plus className="mr-2 h-4 w-4" />
                                 İstatistik Ekle
@@ -341,7 +341,7 @@ export function EditProjectForm({ project }: { project: Project }) {
                 {/* Sidebar */}
                 <div className="space-y-6">
                     {/* Cover Image */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white text-base">Kapak Görseli</CardTitle>
                         </CardHeader>
@@ -354,7 +354,7 @@ export function EditProjectForm({ project }: { project: Project }) {
                     </Card>
 
                     {/* Gallery Images */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white text-base">Proje Görselleri</CardTitle>
                             <CardDescription className="text-zinc-500">
@@ -371,7 +371,7 @@ export function EditProjectForm({ project }: { project: Project }) {
                     </Card>
 
                     {/* Services */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white text-base">Sunulan Hizmetler</CardTitle>
                         </CardHeader>
@@ -395,7 +395,7 @@ export function EditProjectForm({ project }: { project: Project }) {
                     </Card>
 
                     {/* Status */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white text-base">Durum</CardTitle>
                         </CardHeader>
@@ -416,12 +416,12 @@ export function EditProjectForm({ project }: { project: Project }) {
                     </Card>
 
                     {/* Actions */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardContent className="pt-6 space-y-3">
                             <Button
                                 type="submit"
                                 disabled={isLoading}
-                                className="w-full bg-white text-zinc-900 hover:bg-zinc-200"
+                                className="w-full bg-zinc-50 text-white hover:bg-zinc-100"
                             >
                                 {isLoading ? (
                                     <>

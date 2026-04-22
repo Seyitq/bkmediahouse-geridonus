@@ -30,12 +30,12 @@ export default async function EditProjectPage({ params }: { params: Promise<{ id
         <div className="space-y-6">
             <div className="flex items-center gap-4">
                 <Link href="/admin/projeler">
-                    <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                    <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                         <ArrowLeft className="h-5 w-5" />
                     </Button>
                 </Link>
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Proje Düzenle</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Proje Düzenle</h1>
                     <p className="text-zinc-500">{project.title}</p>
                 </div>
             </div>

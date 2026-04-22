@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -52,12 +52,12 @@ export default function NewCompanyPage() {
         <div className="space-y-6">
             <div className="flex items-center gap-4">
                 <Link href="/admin/firmalar">
-                    <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                    <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                         <ArrowLeft className="h-5 w-5" />
                     </Button>
                 </Link>
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Yeni Firma Ekle</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Yeni Firma Ekle</h1>
                     <p className="text-zinc-500">Referans firmaları listesine yeni firma ekleyin</p>
                 </div>
             </div>
@@ -69,7 +69,7 @@ export default function NewCompanyPage() {
                     </div>
                 )}
 
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                             <Building2 className="h-5 w-5" />
@@ -81,19 +81,19 @@ export default function NewCompanyPage() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
-                            <Label htmlFor="name" className="text-zinc-300">Firma Adı *</Label>
+                            <Label htmlFor="name" className="text-zinc-700">Firma Adı *</Label>
                             <Input
                                 id="name"
                                 required
                                 value={formData.name}
                                 onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                                className="bg-zinc-800/50 border-zinc-700 text-white"
+                                className="bg-zinc-100/50 border-zinc-700 text-white"
                                 placeholder="Örn: Google"
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <Label className="text-zinc-300">Firma Logosu *</Label>
+                            <Label className="text-zinc-700">Firma Logosu *</Label>
                             <ImageUploader
                                 value={formData.logoUrl}
                                 onChange={(url) => setFormData(prev => ({ ...prev, logoUrl: url }))}
@@ -101,33 +101,33 @@ export default function NewCompanyPage() {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="websiteUrl" className="text-zinc-300">Website URL</Label>
+                            <Label htmlFor="websiteUrl" className="text-zinc-700">Website URL</Label>
                             <div className="relative">
                                 <Link2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                 <Input
                                     id="websiteUrl"
                                     value={formData.websiteUrl}
                                     onChange={(e) => setFormData(prev => ({ ...prev, websiteUrl: e.target.value }))}
-                                    className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                    className="pl-10 bg-zinc-100/50 border-zinc-700 text-white"
                                     placeholder="https://example.com"
                                 />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="order" className="text-zinc-300">Sıralama</Label>
+                            <Label htmlFor="order" className="text-zinc-700">Sıralama</Label>
                             <Input
                                 id="order"
                                 type="number"
                                 value={formData.order}
                                 onChange={(e) => setFormData(prev => ({ ...prev, order: parseInt(e.target.value) || 0 }))}
-                                className="bg-zinc-800/50 border-zinc-700 text-white w-32"
+                                className="bg-zinc-100/50 border-zinc-700 text-white w-32"
                             />
                         </div>
 
                         <div className="flex items-center justify-between pt-4">
                             <div>
-                                <Label htmlFor="isActive" className="text-zinc-300">Aktif</Label>
+                                <Label htmlFor="isActive" className="text-zinc-700">Aktif</Label>
                                 <p className="text-sm text-zinc-500">Firma ana sayfada gösterilsin mi?</p>
                             </div>
                             <Switch
@@ -143,7 +143,7 @@ export default function NewCompanyPage() {
                     <Button
                         type="submit"
                         disabled={isLoading || !formData.name || !formData.logoUrl}
-                        className="bg-white text-zinc-900 hover:bg-zinc-200 min-w-[150px]"
+                        className="bg-zinc-50 text-white hover:bg-zinc-100 min-w-[150px]"
                     >
                         {isLoading ? (
                             <>

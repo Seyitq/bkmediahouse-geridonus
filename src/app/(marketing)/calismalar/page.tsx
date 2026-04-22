@@ -12,12 +12,12 @@ import { SERVICE_LABELS } from '@/lib/validations/inquiry'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = generatePageMetadata({
-    title: 'Çalışmalarımız | Ankara Dijital Ajans Portföy & Referanslar',
-    description: 'New Social Agency Ankara portföyü. Emlak, gayrimenkul, inşaat ve kurumsal firmalar için gerçekleştirdiğimiz sosyal medya, video prodüksiyon, web tasarım ve marka kimliği çalışmaları.',
+    title: 'Çalışmalarımız | Konya Dijital Ajans Portföy & Referanslar',
+    description: 'BK Media House Konya portföyü. Emlak, gayrimenkul, inşaat ve kurumsal firmalar için gerçekleştirdiğimiz sosyal medya, video prodüksiyon, web tasarım ve marka kimliği çalışmaları.',
     path: '/calismalar',
     keywords: [
-        'dijital ajans portföy ankara', 'ankara reklam ajansı çalışmaları', 'sosyal medya çalışmaları',
-        'video prodüksiyon portföy', 'web tasarım portföy ankara', 'emlak sosyal medya örnekleri',
+        'dijital ajans portföy konya', 'konya reklam ajansı çalışmaları', 'sosyal medya çalışmaları',
+        'video prodüksiyon portföy', 'web tasarım portföy konya', 'emlak sosyal medya örnekleri',
     ],
 })
 

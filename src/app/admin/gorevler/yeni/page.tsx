@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+﻿import { db } from '@/lib/db'
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import { TaskForm } from '@/components/dashboard/task-form'
@@ -26,7 +26,7 @@ export default async function YeniGorevPage() {
     return (
         <div className="space-y-6 max-w-3xl">
             <div>
-                <h1 className="text-2xl font-bold text-white">Yeni Görev</h1>
+                <h1 className="text-2xl font-bold text-zinc-900">Yeni Görev</h1>
                 <p className="text-zinc-500">Yeni bir görev oluşturun</p>
             </div>
 

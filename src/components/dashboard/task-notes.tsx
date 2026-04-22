@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useTransition } from 'react'
 import { Button } from '@/components/ui/button'
@@ -48,7 +48,7 @@ export function TaskNotes({ taskId, notes }: TaskNotesProps) {
     }
 
     return (
-        <Card className="border-zinc-800 bg-zinc-900/50">
+        <Card className="border-zinc-200 bg-white">
             <CardHeader>
                 <CardTitle className="text-white text-base">Notlar</CardTitle>
             </CardHeader>
@@ -60,7 +60,7 @@ export function TaskNotes({ taskId, notes }: TaskNotesProps) {
                         value={noteText}
                         onChange={(e) => setNoteText(e.target.value)}
                         placeholder="Not ekleyin..."
-                        className="flex-1 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        className="flex-1 rounded-lg border border-zinc-700 bg-zinc-100 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     />
                     <Button
                         type="submit"
@@ -82,14 +82,14 @@ export function TaskNotes({ taskId, notes }: TaskNotesProps) {
                         {notes.map((note) => (
                             <div
                                 key={note.id}
-                                className="flex gap-3 p-3 rounded-lg bg-zinc-800/50 border border-zinc-800"
+                                className="flex gap-3 p-3 rounded-lg bg-zinc-100/50 border border-zinc-200"
                             >
                                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-700 flex items-center justify-center">
                                     <User className="h-4 w-4 text-zinc-400" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center gap-2 mb-1">
-                                        <span className="text-sm font-medium text-white">
+                                        <span className="text-sm font-medium text-zinc-900">
                                             {note.author.name || 'Bilinmeyen'}
                                         </span>
                                         <span className="text-xs text-zinc-600">
@@ -104,7 +104,7 @@ export function TaskNotes({ taskId, notes }: TaskNotesProps) {
                                             })}
                                         </span>
                                     </div>
-                                    <p className="text-sm text-zinc-300 break-words">{note.content}</p>
+                                    <p className="text-sm text-zinc-700 break-words">{note.content}</p>
                                 </div>
                             </div>
                         ))}

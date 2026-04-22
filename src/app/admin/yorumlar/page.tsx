@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+﻿import { db } from '@/lib/db'
 
 // Force dynamic rendering to prevent build-time database calls
 export const dynamic = 'force-dynamic'
@@ -39,20 +39,20 @@ export default async function TestimonialsPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Müşteri Yorumları</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Müşteri Yorumları</h1>
                     <p className="text-zinc-500">Müşteri referanslarını yönetin</p>
                 </div>
                 <Link href="/admin/yorumlar/yeni">
-                    <Button className="bg-white text-zinc-900 hover:bg-zinc-200">
+                    <Button className="bg-zinc-50 text-white hover:bg-zinc-100">
                         <Plus className="mr-2 h-4 w-4" />
                         Yeni Yorum Ekle
                     </Button>
                 </Link>
             </div>
 
-            <Card className="border-zinc-800 bg-zinc-900/50">
+            <Card className="border-zinc-200 bg-white">
                 <CardHeader>
-                    <CardTitle className="text-white">Tüm Yorumlar</CardTitle>
+                    <CardTitle className="text-zinc-900">Tüm Yorumlar</CardTitle>
                     <CardDescription className="text-zinc-500">
                         Ana sayfada gösterilecek müşteri yorumları
                     </CardDescription>
@@ -63,7 +63,7 @@ export default async function TestimonialsPage() {
                             <MessageCircle className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
                             <p className="text-zinc-500">Henüz yorum eklenmemiş.</p>
                             <Link href="/admin/yorumlar/yeni" className="mt-4 inline-block">
-                                <Button variant="outline" className="border-zinc-700 text-zinc-400 hover:text-white">
+                                <Button variant="outline" className="border-zinc-700 text-zinc-400 hover:text-zinc-900">
                                     İlk Yorumu Ekle
                                 </Button>
                             </Link>
@@ -71,7 +71,7 @@ export default async function TestimonialsPage() {
                     ) : (
                         <Table>
                             <TableHeader>
-                                <TableRow className="border-zinc-800 hover:bg-transparent">
+                                <TableRow className="border-zinc-200 hover:bg-transparent">
                                     <TableHead className="text-zinc-400">Fotoğraf</TableHead>
                                     <TableHead className="text-zinc-400">Kişi</TableHead>
                                     <TableHead className="text-zinc-400">Yorum</TableHead>
@@ -82,9 +82,9 @@ export default async function TestimonialsPage() {
                             </TableHeader>
                             <TableBody>
                                 {testimonials.map((testimonial) => (
-                                    <TableRow key={testimonial.id} className="border-zinc-800">
+                                    <TableRow key={testimonial.id} className="border-zinc-200">
                                         <TableCell>
-                                            <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center overflow-hidden">
+                                            <div className="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center overflow-hidden">
                                                 {testimonial.photoUrl ? (
                                                     <Image
                                                         src={testimonial.photoUrl}
@@ -122,11 +122,11 @@ export default async function TestimonialsPage() {
                                         <TableCell className="text-right">
                                             <DropdownMenu>
                                                 <DropdownMenuTrigger asChild>
-                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-white">
+                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-zinc-900">
                                                         <MoreHorizontal className="h-4 w-4" />
                                                     </Button>
                                                 </DropdownMenuTrigger>
-                                                <DropdownMenuContent align="end" className="bg-zinc-900 border-zinc-800">
+                                                <DropdownMenuContent align="end" className="bg-white border-zinc-200">
                                                     <Link href={`/admin/yorumlar/${testimonial.id}`}>
                                                         <DropdownMenuItem>Düzenle</DropdownMenuItem>
                                                     </Link>

@@ -121,12 +121,12 @@ export default function EditServicePage({ params }: PageProps) {
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                     <Link href="/admin/hizmetler">
-                        <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                        <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                             <ArrowLeft className="h-5 w-5" />
                         </Button>
                     </Link>
                     <div>
-                        <h1 className="text-2xl font-bold text-white">Hizmet Düzenle</h1>
+                        <h1 className="text-2xl font-bold text-zinc-900">Hizmet Düzenle</h1>
                         <p className="text-zinc-500">Hizmet bilgilerini güncelleyin</p>
                     </div>
                 </div>
@@ -148,7 +148,7 @@ export default function EditServicePage({ params }: PageProps) {
                 )}
 
                 <div className="grid gap-6 lg:grid-cols-2">
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <Layers className="h-5 w-5" />
@@ -160,19 +160,19 @@ export default function EditServicePage({ params }: PageProps) {
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <div className="space-y-2">
-                                <Label htmlFor="name" className="text-zinc-300">Hizmet Adı *</Label>
+                                <Label htmlFor="name" className="text-zinc-700">Hizmet Adı *</Label>
                                 <Input
                                     id="name"
                                     required
                                     value={formData.name}
                                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white"
                                     placeholder="Video Prodüksiyon"
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="slug" className="text-zinc-300">Slug *</Label>
+                                <Label htmlFor="slug" className="text-zinc-700">Slug *</Label>
                                 <div className="relative">
                                     <Hash className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                     <Input
@@ -180,39 +180,39 @@ export default function EditServicePage({ params }: PageProps) {
                                         required
                                         value={formData.slug}
                                         onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
-                                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                        className="pl-10 bg-zinc-100/50 border-zinc-700 text-white"
                                         placeholder="video-produksiyon"
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="description" className="text-zinc-300">Kısa Açıklama *</Label>
+                                <Label htmlFor="description" className="text-zinc-700">Kısa Açıklama *</Label>
                                 <Textarea
                                     id="description"
                                     required
                                     rows={2}
                                     value={formData.description}
                                     onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white resize-none"
                                     placeholder="Hizmetin kısa açıklaması..."
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="longDescription" className="text-zinc-300">Detaylı Açıklama</Label>
+                                <Label htmlFor="longDescription" className="text-zinc-700">Detaylı Açıklama</Label>
                                 <Textarea
                                     id="longDescription"
                                     rows={4}
                                     value={formData.longDescription}
                                     onChange={(e) => setFormData(prev => ({ ...prev, longDescription: e.target.value }))}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white resize-none"
                                     placeholder="Hizmet detay sayfası için uzun açıklama..."
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="features" className="text-zinc-300">Özellikler (virgülle ayırın)</Label>
+                                <Label htmlFor="features" className="text-zinc-700">Özellikler (virgülle ayırın)</Label>
                                 <div className="relative">
                                     <FileText className="absolute left-3 top-3 h-4 w-4 text-zinc-500" />
                                     <Textarea
@@ -220,7 +220,7 @@ export default function EditServicePage({ params }: PageProps) {
                                         rows={2}
                                         value={formData.features}
                                         onChange={(e) => setFormData(prev => ({ ...prev, features: e.target.value }))}
-                                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                        className="pl-10 bg-zinc-100/50 border-zinc-700 text-white resize-none"
                                         placeholder="Profesyonel ekipman, Hızlı teslimat, 4K çekim..."
                                     />
                                 </div>
@@ -228,14 +228,14 @@ export default function EditServicePage({ params }: PageProps) {
                         </CardContent>
                     </Card>
 
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
-                            <CardTitle className="text-white">Durum</CardTitle>
+                            <CardTitle className="text-zinc-900">Durum</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <Label htmlFor="isActive" className="text-zinc-300">Aktif</Label>
+                                    <Label htmlFor="isActive" className="text-zinc-700">Aktif</Label>
                                     <p className="text-sm text-zinc-500">Hizmet görünür olsun mu?</p>
                                 </div>
                                 <Switch
@@ -248,7 +248,7 @@ export default function EditServicePage({ params }: PageProps) {
                     </Card>
 
                     {/* Service Photos */}
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <ImageIcon className="h-5 w-5" />
@@ -275,7 +275,7 @@ export default function EditServicePage({ params }: PageProps) {
                     <Button
                         type="submit"
                         disabled={isLoading || !formData.name || !formData.slug || !formData.description}
-                        className="bg-white text-zinc-900 hover:bg-zinc-200 min-w-[150px]"
+                        className="bg-zinc-900 text-white hover:bg-zinc-800 min-w-[150px]"
                     >
                         {isLoading ? (
                             <>

@@ -37,6 +37,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ['/admin/', '/api/', '/giris'],
             },
         ],
-        sitemap: 'https://newsocialankara.com/sitemap.xml',
+        sitemap: 'https://bkmediahouse.com.tr/sitemap.xml',
     }
 }

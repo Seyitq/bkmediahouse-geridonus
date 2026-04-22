@@ -33,22 +33,22 @@ export default async function SettingsPage() {
     return (
         <div className="space-y-6">
             <div>
-                <h1 className="text-2xl font-bold text-white">Ayarlar</h1>
+                <h1 className="text-2xl font-bold text-zinc-900">Ayarlar</h1>
                 <p className="text-zinc-500">
-                    {isAdmin ? 'Site ve hesap ayarlarÄ±nÄ± yÃ¶netin' : 'Hesap ayarlarÄ±nÄ±zÄ± yÃ¶netin'}
+                    {isAdmin ? 'Site ve hesap ayarlarýný yönetin' : 'Hesap ayarlarýnýzý yönetin'}
                 </p>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-2">
                 {/* Profile Settings */}
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                             <User className="h-5 w-5" />
                             Profil Bilgileri
                         </CardTitle>
                         <CardDescription className="text-zinc-500">
-                            Hesap bilgilerinizi gÃ¼ncelleyin
+                            Hesap bilgilerinizi güncelleyin
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -57,14 +57,14 @@ export default async function SettingsPage() {
                 </Card>
 
                 {/* Change Password */}
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                             <Lock className="h-5 w-5" />
-                            Åžifre DeÄŸiÅŸtir
+                            Þifre Deðiþtir
                         </CardTitle>
                         <CardDescription className="text-zinc-500">
-                            Hesap ÅŸifrenizi gÃ¼ncelleyin
+                            Hesap þifrenizi güncelleyin
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -74,44 +74,44 @@ export default async function SettingsPage() {
 
                 {/* Site Settings - Admin Only */}
                 {isAdmin && (
-                    <Card className="border-zinc-800 bg-zinc-900/50 lg:col-span-2">
+                    <Card className="border-zinc-200 bg-white lg:col-span-2">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <Globe className="h-5 w-5" />
-                                Site AyarlarÄ±
+                                Site Ayarlarý
                             </CardTitle>
                             <CardDescription className="text-zinc-500">
-                                Genel site ayarlarÄ±nÄ± dÃ¼zenleyin
+                                Genel site ayarlarýný düzenleyin
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <div className="grid gap-6 md:grid-cols-2">
                                 <SiteSettingForm
                                     settingKey="site_title"
-                                    label="Site BaÅŸlÄ±ÄŸÄ±"
-                                    initialValue={settings.site_title || 'New Social Agency'}
+                                    label="Site Baþlýðý"
+                                    initialValue={settings.site_title || 'BK Media House'}
                                 />
                                 <SiteSettingForm
                                     settingKey="site_tagline"
                                     label="Slogan"
-                                    initialValue={settings.site_tagline || 'Dijital Medya AjansÄ±'}
+                                    initialValue={settings.site_tagline || 'Dijital Medya Ajansý'}
                                 />
                                 <SiteSettingForm
                                     settingKey="contact_email"
-                                    label="Ä°letiÅŸim E-postasÄ±"
-                                    initialValue={settings.contact_email || 'info@newsocialankara.com'}
+                                    label="Ýletiþim E-postasý"
+                                    initialValue={settings.contact_email || 'info@bkmediahouse.com.tr'}
                                     placeholder="info@..."
                                 />
                                 <SiteSettingForm
                                     settingKey="contact_phone"
-                                    label="Ä°letiÅŸim Telefonu"
+                                    label="Ýletiþim Telefonu"
                                     initialValue={settings.contact_phone || '+90 212 123 45 67'}
                                     placeholder="+90..."
                                 />
                                 <SiteSettingForm
                                     settingKey="social_instagram"
                                     label="Instagram"
-                                    initialValue={settings.social_instagram || '@newsocialankara'}
+                                    initialValue={settings.social_instagram || '@bkmediahouse'}
                                 />
                                 <SiteSettingForm
                                     settingKey="social_linkedin"

@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+﻿import { Suspense } from 'react'
 import Link from 'next/link'
 import {
     FolderKanban,
@@ -140,7 +140,7 @@ function StatCard({
     trend?: 'up' | 'down' | 'neutral'
 }) {
     return (
-        <Card className="border-zinc-800 bg-zinc-900/50">
+        <Card className="border-zinc-200 bg-white">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-zinc-400">
                     {title}
@@ -148,7 +148,7 @@ function StatCard({
                 <Icon className="h-4 w-4 text-zinc-500" />
             </CardHeader>
             <CardContent>
-                <div className="text-2xl font-bold text-white">{value}</div>
+                <div className="text-2xl font-bold text-zinc-900">{value}</div>
                 {description && (
                     <p className="text-xs text-zinc-500 mt-1 flex items-center gap-1">
                         {trend === 'up' && <TrendingUp className="h-3 w-3 text-green-500" />}
@@ -205,7 +205,7 @@ async function DashboardContent() {
                     value={stats.totalTasks}
                     icon={ClipboardList}
                 />
-                <Card className="border-zinc-800 bg-zinc-900/50 border-l-4 border-l-red-500">
+                <Card className="border-zinc-200 bg-white border-l-4 border-l-red-500">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Bekliyor</CardTitle>
                     </CardHeader>
@@ -213,7 +213,7 @@ async function DashboardContent() {
                         <div className="text-2xl font-bold text-red-400">{stats.pendingTasks}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50 border-l-4 border-l-green-500">
+                <Card className="border-zinc-200 bg-white border-l-4 border-l-green-500">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Devam Ediyor</CardTitle>
                     </CardHeader>
@@ -221,7 +221,7 @@ async function DashboardContent() {
                         <div className="text-2xl font-bold text-green-400">{stats.inProgressTasks}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50 border-l-4 border-l-blue-500">
+                <Card className="border-zinc-200 bg-white border-l-4 border-l-blue-500">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Ödeme Bekliyor</CardTitle>
                     </CardHeader>
@@ -229,7 +229,7 @@ async function DashboardContent() {
                         <div className="text-2xl font-bold text-blue-400">{stats.completedTasks}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50 border-l-4 border-l-orange-500">
+                <Card className="border-zinc-200 bg-white border-l-4 border-l-orange-500">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Ödendi</CardTitle>
                     </CardHeader>
@@ -270,7 +270,7 @@ async function DashboardContent() {
             {/* Recent Activity */}
             <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
                 {/* Recent Tasks */}
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader>
                         <div className="flex items-center justify-between">
                             <CardTitle className="text-white flex items-center gap-2">
@@ -296,7 +296,7 @@ async function DashboardContent() {
                                     const statusCfg = taskStatusConfig[task.status] || taskStatusConfig.PENDING
                                     return (
                                         <Link key={task.id} href={`/admin/gorevler/${task.id}`}>
-                                            <div className="flex items-center justify-between border-b border-zinc-800 pb-3 last:border-0 last:pb-0 hover:bg-zinc-800/30 -mx-2 px-2 py-1 rounded transition-colors">
+                                            <div className="flex items-center justify-between border-b border-zinc-200 pb-3 last:border-0 last:pb-0 hover:bg-zinc-100/30 -mx-2 px-2 py-1 rounded transition-colors">
                                                 <div className="space-y-1 min-w-0 flex-1">
                                                     <p className="text-sm font-medium text-white truncate">
                                                         {task.title}
@@ -324,7 +324,7 @@ async function DashboardContent() {
 
                 {/* Recent Bookings (Admin only) */}
                 {stats.isAdmin && (
-                    <Card className="border-zinc-800 bg-zinc-900/50">
+                    <Card className="border-zinc-200 bg-white">
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <Calendar className="h-5 w-5" />
@@ -344,10 +344,10 @@ async function DashboardContent() {
                                     {recentBookings.map((booking) => (
                                         <div
                                             key={booking.id}
-                                            className="flex items-center justify-between border-b border-zinc-800 pb-3 last:border-0 last:pb-0"
+                                            className="flex items-center justify-between border-b border-zinc-200 pb-3 last:border-0 last:pb-0"
                                         >
                                             <div className="space-y-1">
-                                                <p className="text-sm font-medium text-white">
+                                                <p className="text-sm font-medium text-zinc-900">
                                                     {booking.clientName}
                                                 </p>
                                                 <p className="text-xs text-zinc-500 flex items-center gap-1">
@@ -378,12 +378,12 @@ function DashboardSkeleton() {
         <div className="space-y-6">
             <div className="grid gap-3 grid-cols-2 lg:grid-cols-5">
                 {[...Array(5)].map((_, i) => (
-                    <Card key={i} className="border-zinc-800 bg-zinc-900/50">
+                    <Card key={i} className="border-zinc-200 bg-white">
                         <CardHeader className="pb-2">
-                            <div className="h-4 w-24 bg-zinc-800 rounded animate-pulse" />
+                            <div className="h-4 w-24 bg-zinc-100 rounded animate-pulse" />
                         </CardHeader>
                         <CardContent>
-                            <div className="h-8 w-16 bg-zinc-800 rounded animate-pulse" />
+                            <div className="h-8 w-16 bg-zinc-100 rounded animate-pulse" />
                         </CardContent>
                     </Card>
                 ))}
@@ -398,7 +398,7 @@ export default async function AdminDashboardPage() {
     return (
         <div className="space-y-6">
             <div>
-                <h1 className="text-2xl font-bold text-white">Panel</h1>
+                <h1 className="text-2xl font-bold text-zinc-900">Panel</h1>
                 <p className="text-zinc-500">
                     Hoş geldiniz{session?.user?.name ? `, ${session.user.name}` : ''}! İşte genel bakış.
                 </p>

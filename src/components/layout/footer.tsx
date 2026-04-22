@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
@@ -13,9 +14,13 @@ export function Footer() {
                     {/* Brand Column */}
                     <div className="footer-col-brand space-y-6">
                         <Link href="/" className="block">
-                            <span className="text-2xl font-bold tracking-tight text-zinc-900">
-                                New Social<span className="text-blue-600">.</span>
-                            </span>
+                            <Image
+                                src="/bk-logo.jpg"
+                                alt="BK Media House"
+                                width={56}
+                                height={56}
+                                className="h-14 w-auto object-contain"
+                            />
                         </Link>
                         <p className="text-zinc-500 max-w-xs leading-relaxed">
                             Markanızın dijital dünyadaki potansiyelini modern tasarım ve stratejik içerik ile açığa çıkarıyoruz.
@@ -47,20 +52,20 @@ export function Footer() {
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3 text-zinc-500">
                                 <Mail className="h-5 w-5 shrink-0 mt-0.5" />
-                                <a href="mailto:info@newsocialankara.com" className="hover:text-zinc-900 transition-colors">
-                                    info@newsocialankara.com
+                                <a href="mailto:info@bkmediahouse.com.tr" className="hover:text-zinc-900 transition-colors">
+                                    info@bkmediahouse.com.tr
                                 </a>
                             </li>
                             <li className="flex items-start gap-3 text-zinc-500">
                                 <Phone className="h-5 w-5 shrink-0 mt-0.5" />
-                                <a href="tel:+905309303276" className="hover:text-zinc-900 transition-colors">
-                                    +90 530 930 32 76
+                                <a href="tel:+905452090838" className="hover:text-zinc-900 transition-colors">
+                                    +90 545 209 08 38
                                 </a>
                             </li>
                             <li className="flex items-start gap-3 text-zinc-500">
                                 <MapPin className="h-5 w-5 shrink-0 mt-0.5" />
                                 <span>
-                                    Ankara, Türkiye
+                                    Selçuklu, Konya, Türkiye
                                 </span>
                             </li>
                         </ul>
@@ -84,7 +89,7 @@ export function Footer() {
                 <Separator className="bg-zinc-200 mb-8" />
 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-400 text-sm">
-                    <p>© {currentYear} New Social Agency. Tüm hakları saklıdır.</p>
+                    <p>© {currentYear} BK Media House. Tüm hakları saklıdır.</p>
                     <div className="flex gap-6">
                         <Link href="/privacy" className="hover:text-zinc-600 transition-colors">Gizlilik Politikası</Link>
                         <Link href="/terms" className="hover:text-zinc-600 transition-colors">Kullanım Şartları</Link>

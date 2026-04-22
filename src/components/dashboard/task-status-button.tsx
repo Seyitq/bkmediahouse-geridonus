@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useTransition } from 'react'
 import { Button } from '@/components/ui/button'
@@ -73,7 +73,7 @@ export function TaskStatusButtons({ taskId, currentStatus, userRole }: TaskStatu
                         onClick={() => handleStatusChange(item.status)}
                         className={`${isActive
                             ? `${item.color} text-white ring-2 ring-offset-2 ring-offset-zinc-900`
-                            : 'bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-700'
+                            : 'bg-zinc-100 text-zinc-400 hover:text-zinc-900 border border-zinc-700'
                             } transition-all text-xs`}
                     >
                         <span className={`h-2 w-2 rounded-full ${item.dotColor} mr-1.5 ${isActive ? 'animate-pulse' : 'opacity-50'}`} />

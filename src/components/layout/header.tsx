@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
@@ -42,9 +43,14 @@ export function Header() {
             >
                 <div className="container mx-auto px-4 flex items-center justify-between">
                     <Link href="/" className="relative z-50 group">
-                        <span className="text-2xl font-bold tracking-tight text-zinc-900">
-                            New Social<span className="text-blue-600">.</span>
-                        </span>
+                        <Image
+                            src="/bk-logo.jpg"
+                            alt="BK Media House"
+                            width={56}
+                            height={56}
+                            className="h-14 w-auto object-contain"
+                            priority
+                        />
                     </Link>
 
                     {/* Desktop Navigation */}

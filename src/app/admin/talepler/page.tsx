@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+﻿import { db } from '@/lib/db'
 
 // Force dynamic rendering to prevent build-time database calls
 export const dynamic = 'force-dynamic'
@@ -76,17 +76,17 @@ function InquiryActions({ inquiry }: { inquiry: { id: string; isRead: boolean; i
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                     <MoreHorizontal className="h-4 w-4" />
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-zinc-900 border-zinc-800">
+            <DropdownMenuContent align="end" className="bg-white border-zinc-200">
                 {!inquiry.isRead && (
                     <form action={async () => {
                         'use server'
                         await markAsRead(inquiry.id)
                     }}>
-                        <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-800 focus:text-white">
+                        <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-50 focus:text-zinc-900">
                             <button type="submit" className="w-full flex items-center">
                                 <Eye className="mr-2 h-4 w-4" />
                                 Okundu İşaretle
@@ -98,19 +98,19 @@ function InquiryActions({ inquiry }: { inquiry: { id: string; isRead: boolean; i
                     'use server'
                     await toggleArchive(inquiry.id, inquiry.isArchived)
                 }}>
-                    <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-800 focus:text-white">
+                    <DropdownMenuItem asChild className="cursor-pointer text-zinc-400 focus:bg-zinc-50 focus:text-zinc-900">
                         <button type="submit" className="w-full flex items-center">
                             <Archive className="mr-2 h-4 w-4" />
                             {inquiry.isArchived ? 'Arşivden Çıkar' : 'Arşivle'}
                         </button>
                     </DropdownMenuItem>
                 </form>
-                <DropdownMenuSeparator className="bg-zinc-800" />
+                <DropdownMenuSeparator className="bg-zinc-100" />
                 <form action={async () => {
                     'use server'
                     await deleteInquiry(inquiry.id)
                 }}>
-                    <DropdownMenuItem asChild className="cursor-pointer text-red-400 focus:bg-zinc-800 focus:text-red-400">
+                    <DropdownMenuItem asChild className="cursor-pointer text-red-400 focus:bg-zinc-50 focus:text-red-400">
                         <button type="submit" className="w-full flex items-center">
                             Sil
                         </button>
@@ -141,22 +141,22 @@ export default async function InquiriesPage() {
     return (
         <div className="space-y-6">
             <div>
-                <h1 className="text-2xl font-bold text-white">Talepler</h1>
+                <h1 className="text-2xl font-bold text-zinc-900">Talepler</h1>
                 <p className="text-zinc-500">İletişim formundan gelen talepleri yönetin</p>
             </div>
 
             {/* Stats Cards */}
             <div className="grid gap-4 md:grid-cols-3">
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Toplam Talep</CardTitle>
                         <MessageSquare className="h-4 w-4 text-zinc-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-white">{stats.total}</div>
+                        <div className="text-2xl font-bold text-zinc-900">{stats.total}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Okunmamış</CardTitle>
                         <Mail className="h-4 w-4 text-blue-500" />
@@ -165,7 +165,7 @@ export default async function InquiriesPage() {
                         <div className="text-2xl font-bold text-blue-500">{stats.unread}</div>
                     </CardContent>
                 </Card>
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium text-zinc-400">Bu Hafta</CardTitle>
                         <Calendar className="h-4 w-4 text-green-500" />
@@ -178,7 +178,7 @@ export default async function InquiriesPage() {
 
             {/* Unread Inquiries */}
             {unreadInquiries.length > 0 && (
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                             <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
@@ -195,9 +195,9 @@ export default async function InquiriesPage() {
             )}
 
             {/* Read Inquiries */}
-            <Card className="border-zinc-800 bg-zinc-900/50">
+            <Card className="border-zinc-200 bg-white">
                 <CardHeader>
-                    <CardTitle className="text-white">Tüm Talepler</CardTitle>
+                    <CardTitle className="text-zinc-900">Tüm Talepler</CardTitle>
                     <CardDescription className="text-zinc-500">
                         {readInquiries.length} okunmuş talep
                     </CardDescription>
@@ -216,7 +216,7 @@ export default async function InquiriesPage() {
 
             {/* Archived */}
             {archivedInquiries.length > 0 && (
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader>
                         <CardTitle className="text-white text-zinc-500">Arşivlenenler</CardTitle>
                         <CardDescription className="text-zinc-600">
@@ -240,7 +240,7 @@ function InquiriesTable({ inquiries }: { inquiries: Awaited<ReturnType<typeof ge
     return (
         <Table>
             <TableHeader>
-                <TableRow className="border-zinc-800 hover:bg-transparent">
+                <TableRow className="border-zinc-200 hover:bg-transparent">
                     <TableHead className="text-zinc-400">Müşteri</TableHead>
                     <TableHead className="text-zinc-400">Hizmetler</TableHead>
                     <TableHead className="text-zinc-400">Bütçe</TableHead>
@@ -258,7 +258,7 @@ function InquiriesTable({ inquiries }: { inquiries: Awaited<ReturnType<typeof ge
                     }
 
                     return (
-                        <TableRow key={inquiry.id} className="border-zinc-800 hover:bg-zinc-800/50">
+                        <TableRow key={inquiry.id} className="border-zinc-200 hover:bg-zinc-100/50">
                             <TableCell>
                                 <div className="space-y-1">
                                     <div className="font-medium text-white flex items-center gap-2">
@@ -302,7 +302,7 @@ function InquiriesTable({ inquiries }: { inquiries: Awaited<ReturnType<typeof ge
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <span className="text-zinc-300">
+                                <span className="text-zinc-700">
                                     {BUDGET_LABELS[inquiry.budgetRange] || inquiry.budgetRange}
                                 </span>
                             </TableCell>

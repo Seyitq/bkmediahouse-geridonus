@@ -120,11 +120,11 @@ export default function BookingPage() {
 
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                         <AddToCalendar
-                            title="New Social Agency - Randevu"
+                            title="BK Media House - Randevu"
                             description={`Randevu: ${formData.clientName}\nE-posta: ${formData.clientEmail}${formData.notes ? `\nNotlar: ${formData.notes}` : ''}`}
                             startTime={new Date(bookedSlot.startTime)}
                             endTime={new Date(bookedSlot.endTime)}
-                            location="New Social Agency, Ankara"
+                            location="BK Media House, Selçuklu, Konya"
                         />
                         <Button onClick={() => router.push('/')} className="bg-zinc-900 text-white hover:bg-zinc-800">
                             Ana Sayfaya Dön

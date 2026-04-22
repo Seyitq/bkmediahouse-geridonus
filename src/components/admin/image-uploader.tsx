@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -140,7 +140,7 @@ export function ImageUploader(props: ImageUploaderProps) {
                     /* Preview */
                     <div className="relative group rounded-lg overflow-hidden border border-zinc-700">
                         <div
-                            className="aspect-video bg-zinc-800 bg-cover bg-center"
+                            className="aspect-video bg-zinc-100 bg-cover bg-center"
                             style={{ backgroundImage: `url(${props.value})` }}
                         />
                         <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
@@ -178,7 +178,7 @@ export function ImageUploader(props: ImageUploaderProps) {
                             flex flex-col items-center justify-center gap-2 transition-all
                             ${isDragOver
                                 ? 'border-white bg-white/5 scale-[1.02]'
-                                : 'border-zinc-700 bg-zinc-800/50 hover:border-zinc-500 hover:bg-zinc-800'
+                                : 'border-zinc-700 bg-zinc-100/50 hover:border-zinc-500 hover:bg-zinc-100'
                             }
                             ${isUploading ? 'pointer-events-none' : ''}
                         `}
@@ -242,7 +242,7 @@ export function ImageUploader(props: ImageUploaderProps) {
                             className="relative group aspect-square rounded-lg overflow-hidden border border-zinc-700"
                         >
                             <div
-                                className="w-full h-full bg-zinc-800 bg-cover bg-center"
+                                className="w-full h-full bg-zinc-100 bg-cover bg-center"
                                 style={{ backgroundImage: `url(${url})` }}
                             />
                             <button
@@ -267,7 +267,7 @@ export function ImageUploader(props: ImageUploaderProps) {
                         flex flex-col items-center justify-center gap-1 transition-all
                         ${isDragOver
                             ? 'border-white bg-white/5 scale-[1.02]'
-                            : 'border-zinc-700 bg-zinc-800/50 hover:border-zinc-500 hover:bg-zinc-800'
+                            : 'border-zinc-700 bg-zinc-100/50 hover:border-zinc-500 hover:bg-zinc-100'
                         }
                         ${isUploading ? 'pointer-events-none' : ''}
                     `}

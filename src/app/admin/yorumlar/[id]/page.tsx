@@ -111,12 +111,12 @@ export default function EditTestimonialPage({ params }: PageProps) {
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                     <Link href="/admin/yorumlar">
-                        <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-white">
+                        <Button variant="ghost" size="icon" className="text-zinc-400 hover:text-zinc-900">
                             <ArrowLeft className="h-5 w-5" />
                         </Button>
                     </Link>
                     <div>
-                        <h1 className="text-2xl font-bold text-white">Yorum Düzenle</h1>
+                        <h1 className="text-2xl font-bold text-zinc-900">Yorum Düzenle</h1>
                         <p className="text-zinc-500">Müşteri yorumunu güncelleyin</p>
                     </div>
                 </div>
@@ -137,7 +137,7 @@ export default function EditTestimonialPage({ params }: PageProps) {
                     </div>
                 )}
 
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                             <MessageCircle className="h-5 w-5" />
@@ -150,7 +150,7 @@ export default function EditTestimonialPage({ params }: PageProps) {
                     <CardContent className="space-y-4">
                         <div className="grid gap-4 md:grid-cols-2">
                             <div className="space-y-2">
-                                <Label htmlFor="name" className="text-zinc-300">İsim *</Label>
+                                <Label htmlFor="name" className="text-zinc-700">İsim *</Label>
                                 <div className="relative">
                                     <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                     <Input
@@ -158,20 +158,20 @@ export default function EditTestimonialPage({ params }: PageProps) {
                                         required
                                         value={formData.name}
                                         onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                        className="pl-10 bg-zinc-100/50 border-zinc-700 text-white"
                                         placeholder="Ahmet Yılmaz"
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="title" className="text-zinc-300">Unvan *</Label>
+                                <Label htmlFor="title" className="text-zinc-700">Unvan *</Label>
                                 <Input
                                     id="title"
                                     required
                                     value={formData.title}
                                     onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white"
                                     placeholder="CEO"
                                 />
                             </div>
@@ -179,28 +179,28 @@ export default function EditTestimonialPage({ params }: PageProps) {
 
                         <div className="grid gap-4 md:grid-cols-2">
                             <div className="space-y-2">
-                                <Label htmlFor="company" className="text-zinc-300">Şirket</Label>
+                                <Label htmlFor="company" className="text-zinc-700">Şirket</Label>
                                 <div className="relative">
                                     <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                     <Input
                                         id="company"
                                         value={formData.company}
                                         onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
-                                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                        className="pl-10 bg-zinc-100/50 border-zinc-700 text-white"
                                         placeholder="ABC Şirketi"
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="photoUrl" className="text-zinc-300">Fotoğraf URL</Label>
+                                <Label htmlFor="photoUrl" className="text-zinc-700">Fotoğraf URL</Label>
                                 <div className="relative">
                                     <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
                                     <Input
                                         id="photoUrl"
                                         value={formData.photoUrl}
                                         onChange={(e) => setFormData(prev => ({ ...prev, photoUrl: e.target.value }))}
-                                        className="pl-10 bg-zinc-800/50 border-zinc-700 text-white"
+                                        className="pl-10 bg-zinc-100/50 border-zinc-700 text-white"
                                         placeholder="https://example.com/photo.jpg"
                                     />
                                 </div>
@@ -208,21 +208,21 @@ export default function EditTestimonialPage({ params }: PageProps) {
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="content" className="text-zinc-300">Yorum *</Label>
+                            <Label htmlFor="content" className="text-zinc-700">Yorum *</Label>
                             <Textarea
                                 id="content"
                                 required
                                 rows={4}
                                 value={formData.content}
                                 onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
-                                className="bg-zinc-800/50 border-zinc-700 text-white resize-none"
+                                className="bg-zinc-100/50 border-zinc-700 text-white resize-none"
                                 placeholder="Müşterinin yorumunu buraya yazın..."
                             />
                         </div>
 
                         <div className="grid gap-4 md:grid-cols-2">
                             <div className="space-y-2">
-                                <Label className="text-zinc-300">Puan</Label>
+                                <Label className="text-zinc-700">Puan</Label>
                                 <div className="flex items-center gap-2">
                                     {[1, 2, 3, 4, 5].map((star) => (
                                         <button
@@ -243,20 +243,20 @@ export default function EditTestimonialPage({ params }: PageProps) {
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="order" className="text-zinc-300">Sıralama</Label>
+                                <Label htmlFor="order" className="text-zinc-700">Sıralama</Label>
                                 <Input
                                     id="order"
                                     type="number"
                                     value={formData.order}
                                     onChange={(e) => setFormData(prev => ({ ...prev, order: parseInt(e.target.value) || 0 }))}
-                                    className="bg-zinc-800/50 border-zinc-700 text-white w-32"
+                                    className="bg-zinc-100/50 border-zinc-700 text-white w-32"
                                 />
                             </div>
                         </div>
 
                         <div className="flex items-center justify-between pt-4">
                             <div>
-                                <Label htmlFor="isActive" className="text-zinc-300">Aktif</Label>
+                                <Label htmlFor="isActive" className="text-zinc-700">Aktif</Label>
                                 <p className="text-sm text-zinc-500">Yorum ana sayfada gösterilsin mi?</p>
                             </div>
                             <Switch
@@ -272,7 +272,7 @@ export default function EditTestimonialPage({ params }: PageProps) {
                     <Button
                         type="submit"
                         disabled={isLoading || !formData.name || !formData.title || !formData.content}
-                        className="bg-white text-zinc-900 hover:bg-zinc-200 min-w-[150px]"
+                        className="bg-zinc-900 text-white hover:bg-zinc-800 min-w-[150px]"
                     >
                         {isLoading ? (
                             <>

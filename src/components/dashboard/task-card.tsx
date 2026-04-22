@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
@@ -72,7 +72,7 @@ export function TaskCard({ task }: TaskCardProps) {
 
     return (
         <Link href={`/admin/gorevler/${task.id}`}>
-            <Card className={`border-zinc-800 bg-zinc-900/50 border-l-4 ${status.border} hover:bg-zinc-900/80 transition-all duration-200 cursor-pointer group`}>
+            <Card className={`border-zinc-200 bg-white border-l-4 ${status.border} hover:bg-zinc-50/80 transition-all duration-200 cursor-pointer group`}>
                 <CardContent className="p-4">
                     <div className="flex flex-col gap-3">
                         {/* Header Row */}

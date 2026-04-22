@@ -23,7 +23,7 @@ export async function sendEmail({ to, subject, html }: SendEmailOptions): Promis
         })
 
         await transporter.sendMail({
-            from: `"New Social Agency" <${process.env.SMTP_USER}>`,
+            from: `"BK Media House" <${process.env.SMTP_USER}>`,
             to,
             subject,
             html,
@@ -53,7 +53,7 @@ export async function sendTaskCompletedEmail(taskTitle: string, employeeName: st
         html: `
             <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background: #18181b; color: #fff; border-radius: 12px; overflow: hidden;">
                 <div style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); padding: 24px 32px;">
-                    <h1 style="margin: 0; font-size: 20px; font-weight: 600;">New Social Agency</h1>
+                    <h1 style="margin: 0; font-size: 20px; font-weight: 600;">BK Media House</h1>
                     <p style="margin: 4px 0 0; opacity: 0.9; font-size: 14px;">Görev Bildirimi</p>
                 </div>
                 <div style="padding: 32px;">
@@ -70,7 +70,7 @@ export async function sendTaskCompletedEmail(taskTitle: string, employeeName: st
                     </a>
                 </div>
                 <div style="padding: 16px 32px; background: #09090b; text-align: center;">
-                    <p style="margin: 0; color: #52525b; font-size: 12px;">New Social Agency Briefing Sistemi</p>
+                    <p style="margin: 0; color: #52525b; font-size: 12px;">BK Media House Briefing Sistemi</p>
                 </div>
             </div>
         `,

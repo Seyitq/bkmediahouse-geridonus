@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+﻿import { db } from '@/lib/db'
 
 // Force dynamic rendering to prevent build-time database calls
 export const dynamic = 'force-dynamic'
@@ -46,7 +46,7 @@ export default async function ServicesPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Hizmetler</h1>
+                    <h1 className="text-2xl font-bold text-zinc-900">Hizmetler</h1>
                     <p className="text-zinc-500">Hizmetleri yönetin</p>
                 </div>
                 <div className="flex gap-2">
@@ -56,14 +56,14 @@ export default async function ServicesPage() {
                             await seedDefaultServices()
                             revalidatePath('/admin/hizmetler')
                         }}>
-                            <Button variant="outline" className="border-zinc-700 text-zinc-400 hover:text-white">
+                            <Button variant="outline" className="border-zinc-700 text-zinc-400 hover:text-zinc-900">
                                 <Sparkles className="mr-2 h-4 w-4" />
                                 Varsayılan Hizmetleri Ekle
                             </Button>
                         </form>
                     )}
                     <Link href="/admin/hizmetler/yeni">
-                        <Button className="bg-white text-zinc-900 hover:bg-zinc-200">
+                        <Button className="bg-zinc-50 text-white hover:bg-zinc-100">
                             <Plus className="mr-2 h-4 w-4" />
                             Yeni Hizmet Ekle
                         </Button>
@@ -71,9 +71,9 @@ export default async function ServicesPage() {
                 </div>
             </div>
 
-            <Card className="border-zinc-800 bg-zinc-900/50">
+            <Card className="border-zinc-200 bg-white">
                 <CardHeader>
-                    <CardTitle className="text-white">Tüm Hizmetler</CardTitle>
+                    <CardTitle className="text-zinc-900">Tüm Hizmetler</CardTitle>
                     <CardDescription className="text-zinc-500">
                         Ana sayfada gösterilecek hizmetler
                     </CardDescription>
@@ -90,7 +90,7 @@ export default async function ServicesPage() {
                     ) : (
                         <Table>
                             <TableHeader>
-                                <TableRow className="border-zinc-800 hover:bg-transparent">
+                                <TableRow className="border-zinc-200 hover:bg-transparent">
                                     <TableHead className="text-zinc-400 w-16">Sıra</TableHead>
                                     <TableHead className="text-zinc-400">Icon</TableHead>
                                     <TableHead className="text-zinc-400">Hizmet</TableHead>
@@ -100,7 +100,7 @@ export default async function ServicesPage() {
                             </TableHeader>
                             <TableBody>
                                 {services.map((service) => (
-                                    <TableRow key={service.id} className="border-zinc-800">
+                                    <TableRow key={service.id} className="border-zinc-200">
                                         <TableCell className="text-zinc-500">{service.order}</TableCell>
                                         <TableCell>
                                             <div
@@ -124,11 +124,11 @@ export default async function ServicesPage() {
                                         <TableCell className="text-right">
                                             <DropdownMenu>
                                                 <DropdownMenuTrigger asChild>
-                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-white">
+                                                    <Button variant="ghost" size="icon" className="h-8 w-8 text-zinc-400 hover:text-zinc-900">
                                                         <MoreHorizontal className="h-4 w-4" />
                                                     </Button>
                                                 </DropdownMenuTrigger>
-                                                <DropdownMenuContent align="end" className="bg-zinc-900 border-zinc-800">
+                                                <DropdownMenuContent align="end" className="bg-white border-zinc-200">
                                                     <Link href={`/admin/hizmetler/${service.id}`}>
                                                         <DropdownMenuItem>Düzenle</DropdownMenuItem>
                                                     </Link>

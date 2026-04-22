@@ -62,7 +62,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
     return (
         <div className="space-y-6 max-w-4xl">
             {/* Back Button */}
-            <Link href="/admin/gorevler" className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors">
+            <Link href="/admin/gorevler" className="inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-zinc-900 transition-colors">
                 <ArrowLeft className="h-4 w-4" />
                 Görevlere Dön
             </Link>
@@ -71,7 +71,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                 <div className="space-y-2">
                     <div className="flex items-center gap-3 flex-wrap">
-                        <h1 className="text-xl sm:text-2xl font-bold text-white">{task.title}</h1>
+                        <h1 className="text-xl sm:text-2xl font-bold text-zinc-900">{task.title}</h1>
                         <Badge variant="outline" className={`${status.bg} ${status.color} border-transparent`}>
                             {status.label}
                         </Badge>
@@ -87,7 +87,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
                 {isAdmin && (
                     <div className="flex items-center gap-2 shrink-0">
                         <Link href={`/admin/gorevler/${task.id}/duzenle`}>
-                            <Button size="sm" variant="ghost" className="text-zinc-400 hover:text-white gap-1.5">
+                            <Button size="sm" variant="ghost" className="text-zinc-400 hover:text-zinc-900 gap-1.5">
                                 <Pencil className="h-4 w-4" />
                                 <span className="hidden sm:inline">Düzenle</span>
                             </Button>
@@ -98,7 +98,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
             </div>
 
             {/* Status Buttons */}
-            <Card className="border-zinc-800 bg-zinc-900/50">
+            <Card className="border-zinc-200 bg-white">
                 <CardHeader className="pb-3">
                     <CardTitle className="text-white text-base">Durum Değiştir</CardTitle>
                 </CardHeader>
@@ -114,7 +114,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
             {/* Details Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Task Info */}
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="pb-3">
                         <CardTitle className="text-white text-base">Görev Bilgileri</CardTitle>
                     </CardHeader>
@@ -125,7 +125,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
                                     <User className="h-4 w-4 text-zinc-400" />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-medium text-white">{task.assignedTo.name}</p>
+                                    <p className="text-sm font-medium text-zinc-900">{task.assignedTo.name}</p>
                                     <p className="text-xs text-zinc-500">{task.assignedTo.title || 'Çalışan'}</p>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
                         {task.projectName && (
                             <div className="flex items-center gap-2 text-sm">
                                 <FolderKanban className="h-4 w-4 text-zinc-500 shrink-0" />
-                                <span className="text-zinc-300">{task.projectName}</span>
+                                <span className="text-zinc-700">{task.projectName}</span>
                                 {task.projectPart && (
                                     <span className="text-zinc-600">/ {task.projectPart}</span>
                                 )}
@@ -145,7 +145,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
                             <div className="flex items-center gap-2 text-sm">
                                 <User className="h-4 w-4 text-zinc-500 shrink-0" />
                                 <span className="text-zinc-400">Müşteri:</span>
-                                <span className="text-zinc-300">{task.clientName}</span>
+                                <span className="text-zinc-700">{task.clientName}</span>
                             </div>
                         )}
 
@@ -168,7 +168,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
                 </Card>
 
                 {/* Dates & Payment */}
-                <Card className="border-zinc-800 bg-zinc-900/50">
+                <Card className="border-zinc-200 bg-white">
                     <CardHeader className="pb-3">
                         <CardTitle className="text-white text-base">Tarih & Ödeme</CardTitle>
                     </CardHeader>
@@ -177,7 +177,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
                             <div className="flex items-center gap-2 text-sm">
                                 <Clock className="h-4 w-4 text-zinc-500 shrink-0" />
                                 <span className="text-zinc-400">Son Tarih:</span>
-                                <span className={`text-zinc-300 ${new Date(task.deadline) < new Date() && task.status !== 'COMPLETED' && task.status !== 'PAID' ? 'text-red-400' : ''}`}>
+                                <span className={`text-zinc-700 ${new Date(task.deadline) < new Date() && task.status !== 'COMPLETED' && task.status !== 'PAID' ? 'text-red-400' : ''}`}>
                                     {new Date(task.deadline).toLocaleDateString('tr-TR', {
                                         day: 'numeric', month: 'long', year: 'numeric'
                                     })}
@@ -188,7 +188,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
                         <div className="flex items-center gap-2 text-sm">
                             <Clock className="h-4 w-4 text-zinc-500 shrink-0" />
                             <span className="text-zinc-400">Oluşturulma:</span>
-                            <span className="text-zinc-300">
+                            <span className="text-zinc-700">
                                 {new Date(task.createdAt).toLocaleDateString('tr-TR', {
                                     day: 'numeric', month: 'long', year: 'numeric',
                                     hour: '2-digit', minute: '2-digit'
@@ -200,7 +200,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
                             <div className="flex items-center gap-2 text-sm">
                                 <Clock className="h-4 w-4 text-blue-500 shrink-0" />
                                 <span className="text-zinc-400">Tamamlanma:</span>
-                                <span className="text-zinc-300">
+                                <span className="text-zinc-700">
                                     {new Date(task.completedAt).toLocaleDateString('tr-TR', {
                                         day: 'numeric', month: 'long', year: 'numeric',
                                         hour: '2-digit', minute: '2-digit'
@@ -213,7 +213,7 @@ export default async function TaskDetailPage({ params }: { params: Promise<{ id:
                             <div className="flex items-center gap-2 text-sm">
                                 <DollarSign className="h-4 w-4 text-orange-500 shrink-0" />
                                 <span className="text-zinc-400">Ödeme Tarihi:</span>
-                                <span className="text-zinc-300">
+                                <span className="text-zinc-700">
                                     {new Date(task.paidAt).toLocaleDateString('tr-TR', {
                                         day: 'numeric', month: 'long', year: 'numeric'
                                     })}

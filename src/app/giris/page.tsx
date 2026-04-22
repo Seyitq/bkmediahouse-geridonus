@@ -161,7 +161,7 @@ export default function LoginPage() {
                             transition={{ delay: 0.2, duration: 0.3 }}
                         >
                             <CardTitle className="text-2xl font-bold text-zinc-900">
-                                New Social Agency
+                                BK Media House
                             </CardTitle>
                             <CardDescription className="text-zinc-500">
                                 Yönetim paneline giriş yapın
