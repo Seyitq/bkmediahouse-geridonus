@@ -65,7 +65,7 @@ export function EmployeeForm({ employee, onClose }: EmployeeFormProps) {
                                 required
                                 defaultValue={employee?.name || ''}
                                 className="w-full rounded-lg border border-zinc-700 bg-zinc-100 px-4 py-2.5 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                                placeholder="Ad Soyad"
+                                placeholder="Adı Soyadı"
                             />
                         </div>
                         <div className="space-y-2">
