@@ -43,7 +43,7 @@ export function LogoMarquee({ companies, speed = 80 }: LogoMarqueeProps) {
             <img
                 src={logoUrl}
                 alt={company.name}
-                className="w-full h-full object-contain brightness-0 invert opacity-60 hover:opacity-100 transition-opacity"
+                className="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity"
             />
         ) : (
             <div className="w-full h-full flex items-center justify-center bg-zinc-800 rounded">
