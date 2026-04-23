@@ -55,7 +55,7 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
     if (projects.length === 0) return null
 
     return (
-        <section className="py-20 bg-zinc-50">
+        <section className="py-20 bg-[#0c0c0f]">
             <div className="container px-4 mx-auto">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
@@ -65,10 +65,10 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                         viewport={{ once: true }}
                         className="space-y-3"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 tracking-tight">
+                        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
                             Çalışmalarımız
                         </h2>
-                        <p className="text-zinc-400 max-w-md">
+                        <p className="text-zinc-500 max-w-md">
                             Markalar için ürettiğimiz projelerden örnekler
                         </p>
                     </motion.div>
@@ -80,8 +80,8 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                                 onClick={() => scroll('left')}
                                 disabled={!canScrollLeft}
                                 className={`p-3 rounded-full border transition-all ${canScrollLeft
-                                    ? 'border-zinc-300 text-zinc-700 hover:bg-zinc-100'
-                                    : 'border-zinc-200 text-zinc-300 cursor-not-allowed'
+                                    ? 'border-zinc-700 text-zinc-300 hover:bg-zinc-800'
+                                    : 'border-zinc-800 text-zinc-600 cursor-not-allowed'
                                     }`}
                             >
                                 <ChevronLeft className="w-5 h-5" />
@@ -90,8 +90,8 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                                 onClick={() => scroll('right')}
                                 disabled={!canScrollRight}
                                 className={`p-3 rounded-full border transition-all ${canScrollRight
-                                    ? 'border-zinc-300 text-zinc-700 hover:bg-zinc-100'
-                                    : 'border-zinc-200 text-zinc-300 cursor-not-allowed'
+                                    ? 'border-zinc-700 text-zinc-300 hover:bg-zinc-800'
+                                    : 'border-zinc-800 text-zinc-600 cursor-not-allowed'
                                     }`}
                             >
                                 <ChevronRight className="w-5 h-5" />
@@ -99,7 +99,7 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                         </div>
 
                         <Link href="/calismalar">
-                            <Button className="bg-zinc-900 text-white hover:bg-zinc-800 group">
+                            <Button className="bg-white text-zinc-900 hover:bg-zinc-200 group">
                                 Tümünü Gör
                                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </Button>
@@ -110,8 +110,8 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                 {/* Slider */}
                 <div className="relative">
                     {/* Gradient fade edges */}
-                    <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-zinc-50 to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-zinc-50 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#0c0c0f] to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0c0c0f] to-transparent z-10 pointer-events-none" />
 
                     {/* Scrollable container */}
                     <div
@@ -129,7 +129,7 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                                 className="flex-shrink-0 w-[320px] md:w-[400px] snap-start"
                             >
                                 <Link href={`/calismalar/${project.slug}`} className="group block">
-                                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200 group-hover:border-zinc-300 group-hover:shadow-lg transition-all">
+                                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 group-hover:border-zinc-700 group-hover:shadow-lg group-hover:shadow-black/30 transition-all">
                                         {project.coverImage ? (
                                             <Image
                                                 src={project.coverImage}
@@ -139,8 +139,8 @@ export function PortfolioSlider({ projects }: PortfolioSliderProps) {
                                                 unoptimized
                                             />
                                         ) : (
-                                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-zinc-100">
-                                                <span className="text-zinc-400">Görsel</span>
+                                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-950/30 to-zinc-900">
+                                                <span className="text-zinc-500">Görsel</span>
                                             </div>
                                         )}
 

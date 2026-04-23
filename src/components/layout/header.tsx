@@ -37,14 +37,14 @@ export function Header() {
         <>
             <header
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/90 backdrop-blur-md border-b border-zinc-200 py-4 shadow-sm'
+                    ? 'bg-[#09090b]/90 backdrop-blur-md border-b border-zinc-800 py-4 shadow-sm shadow-black/20'
                     : 'bg-transparent py-6'
                     }`}
             >
                 <div className="container mx-auto px-4 flex items-center justify-between">
                     <Link href="/" className="relative z-50 group">
                         <Image
-                            src="/bk-logo.jpg"
+                            src="/bk-logo.png"
                             alt="BK Media House"
                             width={56}
                             height={56}
@@ -59,7 +59,7 @@ export function Header() {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className={`text-sm font-medium transition-colors hover:text-zinc-900 ${pathname === item.href ? 'text-zinc-900' : 'text-zinc-500'
+                                className={`text-sm font-medium transition-colors hover:text-white ${pathname === item.href ? 'text-white' : 'text-zinc-400'
                                     }`}
                             >
                                 {item.name}
@@ -67,7 +67,7 @@ export function Header() {
                         ))}
                         <Link href="/booking">
                             <Button
-                                className="bg-zinc-900 text-white hover:bg-zinc-800 transition-all"
+                                className="bg-white text-zinc-900 hover:bg-zinc-200 transition-all"
                             >
                                 Randevu Al
                             </Button>
@@ -76,7 +76,7 @@ export function Header() {
 
                     {/* Mobile Menu Toggle */}
                     <button
-                        className="md:hidden relative z-50 text-zinc-900 p-2"
+                        className="md:hidden relative z-50 text-white p-2"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
                         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -91,7 +91,7 @@ export function Header() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="fixed inset-0 z-40 bg-white pt-24 px-4 md:hidden"
+                        className="fixed inset-0 z-40 bg-[#09090b] pt-24 px-4 md:hidden"
                     >
                         <nav className="flex flex-col gap-6">
                             {navItems.map((item, index) => (
@@ -103,7 +103,7 @@ export function Header() {
                                 >
                                     <Link
                                         href={item.href}
-                                        className={`text-3xl font-bold tracking-tight ${pathname === item.href ? 'text-zinc-900' : 'text-zinc-400'
+                                        className={`text-3xl font-bold tracking-tight ${pathname === item.href ? 'text-white' : 'text-zinc-500'
                                             }`}
                                     >
                                         {item.name}
@@ -117,7 +117,7 @@ export function Header() {
                                 className="mt-8"
                             >
                                 <Link href="/booking">
-                                    <Button className="w-full bg-white text-black hover:bg-zinc-200 text-lg py-6">
+                                    <Button className="w-full bg-white text-zinc-900 hover:bg-zinc-200 text-lg py-6">
                                         Randevu Oluştur
                                         <ArrowRight className="ml-2 h-5 w-5" />
                                     </Button>

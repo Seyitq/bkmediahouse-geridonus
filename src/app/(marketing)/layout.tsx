@@ -13,7 +13,7 @@ export default function MarketingLayout({
     const localBusinessJsonLd = getLocalBusinessJsonLd()
 
     return (
-            <div className="flex min-h-screen flex-col bg-white text-zinc-900 selection:bg-zinc-900 selection:text-white">
+            <div className="flex min-h-screen flex-col bg-[#09090b] text-zinc-100 selection:bg-zinc-700 selection:text-white">
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

@@ -43,11 +43,11 @@ export function LogoMarquee({ companies, speed = 80 }: LogoMarqueeProps) {
             <img
                 src={logoUrl}
                 alt={company.name}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain brightness-0 invert opacity-60 hover:opacity-100 transition-opacity"
             />
         ) : (
-            <div className="w-full h-full flex items-center justify-center bg-zinc-100 rounded">
-                <Building2 className="h-6 w-6 text-zinc-400" />
+            <div className="w-full h-full flex items-center justify-center bg-zinc-800 rounded">
+                <Building2 className="h-6 w-6 text-zinc-500" />
             </div>
         )
 
@@ -63,9 +63,9 @@ export function LogoMarquee({ companies, speed = 80 }: LogoMarqueeProps) {
     }
 
     return (
-        <section className="py-16 bg-white overflow-hidden">
+        <section className="py-16 bg-[#09090b] overflow-hidden">
             <div className="container px-4 mx-auto mb-10">
-                <p className="text-center text-zinc-400 text-sm uppercase tracking-widest">
+                <p className="text-center text-zinc-500 text-sm uppercase tracking-widest">
                     Bize Güvenen Markalar
                 </p>
             </div>
