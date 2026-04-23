@@ -45,7 +45,7 @@ export function ServicesMarquee({ services }: ServicesMarqueeProps) {
     }
 
     return (
-        <section className="py-20 md:py-28 bg-white overflow-hidden">
+        <section className="py-20 md:py-28 bg-[#09090b] overflow-hidden">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 {/* Section Header */}
                 <div className="mb-14">
@@ -54,7 +54,7 @@ export function ServicesMarquee({ services }: ServicesMarqueeProps) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="text-sm font-semibold uppercase tracking-widest text-zinc-400 mb-3"
+                        className="text-sm font-semibold uppercase tracking-widest text-zinc-500 mb-3"
                     >
                         Neler Yapıyoruz
                     </motion.p>
@@ -63,7 +63,7 @@ export function ServicesMarquee({ services }: ServicesMarqueeProps) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-3xl md:text-5xl font-bold text-zinc-900 tracking-tight mb-4"
+                        className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4"
                     >
                         Hizmetlerimiz
                     </motion.h2>
@@ -72,7 +72,7 @@ export function ServicesMarquee({ services }: ServicesMarqueeProps) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-zinc-500 max-w-lg text-lg"
+                        className="text-zinc-400 max-w-lg text-lg"
                     >
                         Markanızın ihtiyacı olan tüm dijital çözümler, tek çatı altında.
                     </motion.p>
@@ -104,7 +104,7 @@ export function ServicesMarquee({ services }: ServicesMarqueeProps) {
                 >
                     <Link
                         href="/hizmetler"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:border-zinc-400 hover:shadow-sm transition-all duration-300 group text-sm font-medium"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-700 text-zinc-400 hover:text-white hover:border-zinc-500 hover:shadow-sm transition-all duration-300 group text-sm font-medium"
                     >
                         Tüm Hizmetleri Gör
                         <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -142,18 +142,18 @@ function BentoCard({
         >
             <Link
                 href={`/hizmetler/${service.slug}`}
-                className="group relative flex flex-col justify-between h-full rounded-2xl border border-zinc-100 bg-zinc-50/50 p-6 md:p-8 transition-all duration-500 hover:shadow-xl hover:shadow-zinc-200/50 hover:border-zinc-200 overflow-hidden"
+                className="group relative flex flex-col justify-between h-full rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 md:p-8 transition-all duration-500 hover:shadow-xl hover:shadow-black/30 hover:border-zinc-700 overflow-hidden"
             >
                 {/* Background gradient on hover */}
                 <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-[0.06] transition-opacity duration-500"
+                    className="absolute inset-0 opacity-0 group-hover:opacity-[0.1] transition-opacity duration-500"
                     style={{
                         background: `radial-gradient(ellipse at top left, ${service.color}, transparent 70%)`,
                     }}
                 />
 
                 {/* Large decorative icon in background */}
-                <div className="absolute -bottom-6 -right-6 opacity-[0.04] group-hover:opacity-[0.08] transition-all duration-700 group-hover:scale-110">
+                <div className="absolute -bottom-6 -right-6 opacity-[0.06] group-hover:opacity-[0.12] transition-all duration-700 group-hover:scale-110">
                     <DynamicIcon
                         name={service.icon}
                         className={isLarge ? 'h-48 w-48' : isWide ? 'h-36 w-36' : 'h-28 w-28'}
@@ -168,7 +168,7 @@ function BentoCard({
                             isLarge ? 'w-16 h-16' : 'w-12 h-12'
                         }`}
                         style={{
-                            backgroundColor: `${service.color}15`,
+                            backgroundColor: `${service.color}20`,
                             color: service.color,
                             boxShadow: `0 0 0 0 ${service.color}00`,
                         }}
@@ -182,14 +182,14 @@ function BentoCard({
                     {/* Text */}
                     <div className="flex-1 flex flex-col">
                         <h3
-                            className={`font-semibold text-zinc-900 mb-2 ${
+                            className={`font-semibold text-white mb-2 ${
                                 isLarge ? 'text-xl md:text-2xl' : 'text-base'
                             }`}
                         >
                             {service.name}
                         </h3>
                         <p
-                            className={`text-zinc-500 leading-relaxed ${
+                            className={`text-zinc-400 leading-relaxed ${
                                 isLarge
                                     ? 'text-sm md:text-base line-clamp-4'
                                     : isWide

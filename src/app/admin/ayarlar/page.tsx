@@ -1,4 +1,4 @@
-import { db } from '@/lib/db'
+ï»¿import { db } from '@/lib/db'
 
 // Force dynamic rendering to prevent build-time database calls
 export const dynamic = 'force-dynamic'
@@ -35,7 +35,7 @@ export default async function SettingsPage() {
             <div>
                 <h1 className="text-2xl font-bold text-zinc-900">Ayarlar</h1>
                 <p className="text-zinc-500">
-                    {isAdmin ? 'Site ve hesap ayarlarýný yönetin' : 'Hesap ayarlarýnýzý yönetin'}
+                    {isAdmin ? 'Site ve hesap ayarlarÄ±nÄ± yÃ¶netin' : 'Hesap ayarlarÄ±nÄ±zÄ± yÃ¶netin'}
                 </p>
             </div>
 
@@ -48,7 +48,7 @@ export default async function SettingsPage() {
                             Profil Bilgileri
                         </CardTitle>
                         <CardDescription className="text-zinc-500">
-                            Hesap bilgilerinizi güncelleyin
+                            Hesap bilgilerinizi gÃ¼ncelleyin
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -61,10 +61,10 @@ export default async function SettingsPage() {
                     <CardHeader>
                         <CardTitle className="text-white flex items-center gap-2">
                             <Lock className="h-5 w-5" />
-                            Þifre Deðiþtir
+                            Åžifre DeÄŸiÅŸtir
                         </CardTitle>
                         <CardDescription className="text-zinc-500">
-                            Hesap þifrenizi güncelleyin
+                            Hesap ÅŸifrenizi gÃ¼ncelleyin
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -78,34 +78,34 @@ export default async function SettingsPage() {
                         <CardHeader>
                             <CardTitle className="text-white flex items-center gap-2">
                                 <Globe className="h-5 w-5" />
-                                Site Ayarlarý
+                                Site AyarlarÄ±
                             </CardTitle>
                             <CardDescription className="text-zinc-500">
-                                Genel site ayarlarýný düzenleyin
+                                Genel site ayarlarÄ±nÄ± dÃ¼zenleyin
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
                             <div className="grid gap-6 md:grid-cols-2">
                                 <SiteSettingForm
                                     settingKey="site_title"
-                                    label="Site Baþlýðý"
+                                    label="Site BaÅŸlÄ±ÄŸÄ±"
                                     initialValue={settings.site_title || 'BK Media House'}
                                 />
                                 <SiteSettingForm
                                     settingKey="site_tagline"
                                     label="Slogan"
-                                    initialValue={settings.site_tagline || 'Dijital Medya Ajansý'}
+                                    initialValue={settings.site_tagline || 'Dijital Medya AjansÄ±'}
                                 />
                                 <SiteSettingForm
                                     settingKey="contact_email"
-                                    label="Ýletiþim E-postasý"
+                                    label="Ä°letiÅŸim E-postasÄ±"
                                     initialValue={settings.contact_email || 'info@bkmediahouse.com.tr'}
                                     placeholder="info@..."
                                 />
                                 <SiteSettingForm
                                     settingKey="contact_phone"
-                                    label="Ýletiþim Telefonu"
-                                    initialValue={settings.contact_phone || '+90 212 123 45 67'}
+                                    label="Ä°letiÅŸim Telefonu"
+                                    initialValue={settings.contact_phone || '+90 541 271 77 95'}
                                     placeholder="+90..."
                                 />
                                 <SiteSettingForm

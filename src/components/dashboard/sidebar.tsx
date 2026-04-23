@@ -150,7 +150,7 @@ export function Sidebar({ userRole }: SidebarProps) {
             <div className="flex h-16 items-center justify-between border-b border-zinc-200 px-6">
                 <Link href="/admin" className="flex items-center gap-2">
                     <Image
-                        src="/bk-logo.jpg"
+                        src="/bk-logo.png"
                         alt="BK Media House"
                         width={40}
                         height={40}
