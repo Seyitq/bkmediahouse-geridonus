@@ -8,7 +8,7 @@ export const siteConfig = {
     url: 'https://bkmediahouse.com.tr',
     ogImage: '/og-image.jpg',
     locale: 'tr_TR',
-    phone: '+905452090838',
+    phone: '+905412717795',
     email: 'info@bkmediahouse.com.tr',
     address: {
         city: 'Selçuklu',

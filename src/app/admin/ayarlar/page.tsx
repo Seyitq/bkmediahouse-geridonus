@@ -1,4 +1,4 @@
-﻿import { db } from '@/lib/db'
+import { db } from '@/lib/db'
 
 // Force dynamic rendering to prevent build-time database calls
 export const dynamic = 'force-dynamic'
@@ -8,11 +8,16 @@ import { User, Lock, Globe } from 'lucide-react'
 import { ProfileForm, PasswordForm, SiteSettingForm } from '@/components/admin/settings-forms'
 
 async function getSettings() {
-    const settings = await db.siteSetting.findMany()
-    return settings.reduce((acc, setting) => {
-        acc[setting.key] = setting.value
-        return acc
-    }, {} as Record<string, string>)
+    try {
+        const settings = await db.siteSetting.findMany()
+        return settings.reduce((acc, setting) => {
+            acc[setting.key] = setting.value
+            return acc
+        }, {} as Record<string, string>)
+    } catch (error) {
+        console.error('Site settings yüklenemedi:', error)
+        return {} as Record<string, string>
+    }
 }
 
 async function getCurrentUser() {

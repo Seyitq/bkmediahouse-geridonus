@@ -1,7 +1,7 @@
 'use client'
 
 export function SocialButtons() {
-    const phoneNumber = '905452090838'
+    const phoneNumber = '905412717795'
     const message = 'Merhaba! BK Media House ile iletişime geçmek istiyorum.'
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 

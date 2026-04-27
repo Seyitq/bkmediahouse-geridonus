@@ -18,7 +18,7 @@ export function getOrganizationJsonLd() {
         },
         contactPoint: {
             '@type': 'ContactPoint',
-            telephone: '+90-545-209-0838',
+            telephone: '+90-541-271-7795',
             contactType: 'customer service',
             availableLanguage: ['Turkish', 'English'],
         },
@@ -39,7 +39,7 @@ export function getLocalBusinessJsonLd() {
         url: siteConfig.url,
         image: `${siteConfig.url}/logo.png`,
         description: 'Konya Selçuklu merkezli dijital ajans. Emlak sosyal medya yönetimi, kurumsal video prodüksiyon, drone çekimi, web tasarım, marka kimliği, reklam kampanyası ve etkinlik yönetimi hizmetleri sunuyoruz.',
-        telephone: '+90-545-209-0838',
+        telephone: '+90-541-271-7795',
         email: siteConfig.email,
         address: {
             '@type': 'PostalAddress',

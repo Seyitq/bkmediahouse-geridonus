@@ -90,7 +90,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                     asChild
                                 >
                                     <a
-                                        href="https://wa.me/905309303276"
+                                        href="https://wa.me/905412717795"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -486,7 +486,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                 asChild
                             >
                                 <a
-                                    href="https://wa.me/905309303276"
+                                    href="https://wa.me/905412717795"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
@@ -529,7 +529,7 @@ export function ServiceDetailPageClient({ content }: ServiceDetailPageClientProp
                                     asChild
                                 >
                                     <a
-                                        href="https://wa.me/905309303276"
+                                        href="https://wa.me/905412717795"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
